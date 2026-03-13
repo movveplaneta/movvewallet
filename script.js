@@ -406,19 +406,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.getElementById('nav-menu');
+const navLinks = document.getElementById('nav-links');
 
 mobileMenu.addEventListener('click', () => {
-    // Activa la animación del botón (X)
+    // Activa la X en el botón
     mobileMenu.classList.toggle('active');
-    // Desplaza el menú hacia adentro
-    navMenu.classList.toggle('active');
+    // Muestra el menú deslizándolo
+    navLinks.classList.toggle('active');
 });
 
-// Opcional: Cerrar el menú al hacer clic en un enlace
-document.querySelectorAll('.nav-menu li a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
+// Cerrar el menú automáticamente al hacer clic en un enlace
+document.querySelectorAll('.nav-menu li a').forEach(n => n.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    navLinks.classList.remove('active');
+}));
+
