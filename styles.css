@@ -140,69 +140,44 @@ body{
 }
 
 /* TOGGLE MOBILE */
-.nav-toggle {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 6px;
-    z-index: 1001;
-}
-
-.nav-toggle span {
-    width: 28px;
-    height: 3px;
-    background: var(--movve-green); /* Cambiado a verde neón */
-    transition: 0.3s;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
-}
-
-/* Animación de las barras a X */
-.nav-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-.nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-.nav-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* RESPONSIVO */
 @media (max-width: 768px) {
-    .nav-toggle { 
-        display: flex; 
-    }
-    
+    /* El contenedor del menú en móvil */
     .nav-menu {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 70%;
+        right: -100%; /* Escondido */
+        width: 100%;  /* Ocupa todo el ancho para que se vea centrado */
         height: 100vh;
-        background: var(--movve-dark);
-        display: flex; /* Asegura que se vea como columna */
+        background: #0a0a0a; /* Fondo oscuro de MOVVE */
+        display: flex !important; /* Forzamos el display */
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 25px;
-        transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-        box-shadow: -10px 0 30px rgba(0,0,0,0.8);
-        border-left: 1px solid var(--movve-green);
+        transition: 0.5s ease-in-out;
+        z-index: 1000;
     }
 
-    .nav-menu.active { 
-        right: 0; 
+    .nav-menu.active {
+        right: 0; /* Aparece al dar click */
+    }
+
+    .nav-menu li {
+        margin: 20px 0;
+        list-style: none;
     }
 
     .nav-menu li a {
-        font-size: 1.2rem;
-        color: white;
+        font-size: 1.8rem;
+        color: white !important;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: bold;
+    }
+
+    /* Asegurar que la X se vea por encima del menú */
+    .nav-toggle {
+        z-index: 1001;
     }
 }
-
 /* ================= HERO SECTION ================= */
 
 .hero {
@@ -1080,3 +1055,4 @@ body{
     .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
 
 }
+
