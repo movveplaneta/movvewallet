@@ -402,4 +402,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Encender la galería al cargar
     startCommAuto();
+
+});
+
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+mobileMenu.addEventListener('click', () => {
+    // Activa la animación del botón (X)
+    mobileMenu.classList.toggle('active');
+    // Desplaza el menú hacia adentro
+    navMenu.classList.toggle('active');
+});
+
+// Opcional: Cerrar el menú al hacer clic en un enlace
+document.querySelectorAll('.nav-menu li a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
 });
