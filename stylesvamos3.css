@@ -473,65 +473,59 @@ body{
     .btn-wallet, .btn-cta { width: 100%; justify-content: center; }
 }
 
-/* ================= FOOTER SUPER PRO ================= */
-
+/* ================= FOOTER ESTILO NEÓN ORIGINAL ================= */
 .footer-pro {
-    background-color: var(--movve-dark); /* #1a222b */
-    padding: 80px 5% 30px 5%;
+    background: #050505;
+    padding: 80px 0 20px 0;
     position: relative;
     overflow: hidden;
-    color: white;
+    color: #ffffff;
+    border-top: 1px solid rgba(0, 255, 136, 0.3);
 }
 
-/* EFECTO DE RESPLANDOR FONDO */
+/* El resplandor verde del fondo */
 .footer-glow {
     position: absolute;
     top: -150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0, 230, 118, 0.15) 0%, rgba(0, 230, 118, 0) 70%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
     pointer-events: none;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
     position: relative;
     z-index: 2;
 }
 
-/* MARCA */
+/* --- MARCA --- */
 .footer-brand img {
     height: 50px;
     margin-bottom: 20px;
-}
-
-.footer-brand h3 {
-    color: var(--movve-green);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 800;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
 }
 
 .footer-brand p {
-    color: var(--text-light);
-    font-size: 0.95rem;
+    color: #bbb;
     line-height: 1.6;
     margin-bottom: 25px;
 }
 
-/* BOTONES WALLET EN FOOTER */
 .wallet-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-weight: 800;
     text-transform: uppercase;
-    color: var(--movve-green);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #00ff88;
+    margin-bottom: 15px;
 }
 
 .footer-wallet {
@@ -541,153 +535,225 @@ body{
 
 .wallet-btn {
     background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border-radius: 10px;
+    color: white;
     text-decoration: none;
-    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: var(--transition);
+    font-size: 14px;
+    transition: 0.3s;
 }
 
 .wallet-btn:hover {
-    background: var(--movve-green);
-    color: var(--movve-dark);
-    transform: translateY(-3px);
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
 }
 
-/* COLUMNAS DE LINKS */
-.footer-links h4, .footer-news h4, .footer-social h4 {
-    color: white;
-    font-size: 1.1rem;
+/* --- ENLACES --- */
+.footer-links h4, .footer-social h4, .footer-newsletter h4 {
+    color: #00ff88;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin-bottom: 25px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .footer-links a {
     display: block;
-    color: var(--text-light);
+    color: #ccc;
     text-decoration: none;
     margin-bottom: 12px;
-    transition: var(--transition);
+    transition: 0.3s;
 }
 
 .footer-links a:hover {
-    color: var(--movve-green);
-    padding-left: 5px;
+    color: #00ff88;
+    transform: translateX(5px);
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
-/* NEWSLETTER */
-.footer-news p {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+/* --- NEWSLETTER ESTILO MOVVE --- */
+.footer-newsletter {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.1);
 }
 
-.newsletter {
+#sib-form {
     display: flex;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 5px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    gap: 10px;
 }
 
-.newsletter input {
-    background: transparent;
-    border: none;
+#sib-form input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 12px;
+    border-radius: 10px;
     color: white;
-    padding: 10px;
-    width: 100%;
     outline: none;
 }
 
-.newsletter button {
-    background: var(--movve-green);
-    color: var(--movve-dark);
+#sib-form button {
+    background: #00ff88;
+    color: #000;
+    font-weight: 800;
     border: none;
-    width: 45px;
-    height: 40px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+    transition: 0.3s;
 }
 
-.newsletter button:hover {
+#sib-form button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
 }
 
-/* REDES SOCIALES */
+/* --- REDES SOCIALES --- */
 .social-icons {
     display: flex;
     gap: 15px;
 }
 
 .social-icons a {
-    width: 40px;
-    height: 40px;
+    font-size: 20px;
+    color: white;
+    width: 45px;
+    height: 45px;
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    border: 1px solid rgba(0, 255, 136, 0.1);
 }
 
 .social-icons a:hover {
-    background: var(--movve-green);
-    color: var(--movve-dark);
-    transform: rotate(360deg);
+    background: #00ff88;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
 }
 
-/* FOOTER BOTTOM */
+/* --- BOTTOM --- */
 .footer-bottom {
-    margin-top: 60px;
-    padding-top: 30px;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-bottom p {
-    color: var(--text-light);
-    font-size: 0.85rem;
+    color: #666;
+    font-size: 14px;
 }
 
+/* Botón Subir Neón */
 #scrollTop {
-    background: var(--movve-green);
-    color: var(--movve-dark);
+    background: #00ff88;
+    color: #000;
+    border: none;
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-    border: none;
+    border-radius: 12px;
     cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 230, 118, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    transition: 0.3s;
 }
 
 #scrollTop:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
 }
 
-/* RESPONSIVO */
-@media (max-width: 992px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
+/* Responsivo */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
     }
-    .footer-brand { grid-column: span 2; }
 }
 
-@media (max-width: 600px) {
-    .footer-container { grid-template-columns: 1fr; }
-    .footer-brand { grid-column: span 1; }
-    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+/* ================= BOTÓN WHATSAPP FLOTANTE ================= */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Lo ponemos a la izquierda para no chocar con el botón de subir */
+    background: rgba(37, 211, 102, 0.15); /* Color oficial WA con transparencia */
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    border: 1px solid rgba(37, 211, 102, 0.5);
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float i {
+    color: #25d366; /* Verde oficial de WhatsApp */
+    font-size: 24px;
+    filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5));
+}
+
+.whatsapp-float span {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Efectos de Interacción */
+.whatsapp-float:hover {
+    background: #25d366;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    border-color: #ffffff;
+}
+
+.whatsapp-float:hover i, 
+.whatsapp-float:hover span {
+    color: #000;
+    filter: none;
+}
+
+/* Animación de Pulso Suave */
+@keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+    animation: pulse-wa 2s infinite;
+}
+
+/* Ocultar texto en móviles muy pequeños para que no estorbe */
+@media (max-width: 480px) {
+    .whatsapp-float span {
+        display: none;
+    }
+    .whatsapp-float {
+        padding: 15px;
+        border-radius: 50%;
+    }
 }
