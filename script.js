@@ -421,23 +421,33 @@ document.querySelectorAll('.nav-menu li a').forEach(n => n.addEventListener('cli
     navLinks.classList.remove('active');
 }));
 
-window.addEventListener('scroll', function() {
-    const whatsappBtn = document.querySelector('.whatsapp-float');
+document.addEventListener("DOMContentLoaded", function() {
+    const waButton = document.getElementById('wa-radar');
     const footer = document.querySelector('.footer-pro');
-    
-    // Obtenemos la posición del footer
-    const footerPosition = footer.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
 
-    // Si el tope del footer es menor a la altura de la pantalla, ocultamos
-    if (footerPosition < screenHeight) {
-        whatsappBtn.style.opacity = '0';
-        whatsappBtn.style.pointerEvents = 'none';
-        whatsappBtn.style.transform = 'scale(0.8) translateY(20px)';
-    } else {
-        whatsappBtn.style.opacity = '1';
-        whatsappBtn.style.pointerEvents = 'auto';
-        whatsappBtn.style.transform = 'scale(1) translateY(0)';
+    const observerOptions = {
+        root: null, // usa el viewport
+        threshold: 0.1 // se activa cuando el 10% del footer es visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // El footer entró en vista: escondemos el botón
+                waButton.style.opacity = '0';
+                waButton.style.transform = 'translateX(-100px) scale(0.8)';
+                waButton.style.pointerEvents = 'none';
+            } else {
+                // El footer salió de vista: mostramos el botón
+                waButton.style.opacity = '1';
+                waButton.style.transform = 'translateX(0) scale(1)';
+                waButton.style.pointerEvents = 'auto';
+            }
+        });
+    }, observerOptions);
+
+    if (footer) {
+        observer.observe(footer);
     }
 });
 
