@@ -542,6 +542,110 @@ body{
     }
 }
 
+/* ================= NEWSLETTER MOVVE ELITE ================= */
+.newsletter-movve {
+    background: #050505;
+    background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px; /* Efecto cuadrícula tech */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(0, 255, 136, 0.1);
+    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.newsletter-container {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    padding: 50px 40px;
+    border-radius: 30px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.05);
+}
+
+.newsletter-container h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.newsletter-container p {
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+/* --- ESTILO DEL FORMULARIO --- */
+#movve-newsletter {
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#movve-newsletter input[type="email"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+}
+
+#movve-newsletter button {
+    background: #00ff88;
+    color: #000;
+    padding: 15px 35px;
+    border-radius: 15px;
+    border: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+#movve-newsletter button:hover {
+    background: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+    #movve-newsletter {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    #movve-newsletter input[type="email"] {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+
+    #movve-newsletter button {
+        width: 100%;
+    }
+
+    .newsletter-container h2 {
+        font-size: 1.8rem;
+    }
+}
+
 /* ================= DASHBOARD CONTAINER ================= */
 .dashboard-container {
     max-width: 1200px;
@@ -939,86 +1043,6 @@ body{
     color: #00ff88;
     transform: translateX(5px);
     text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
-}
-
-/* ================= NEWSLETTER ULTRA PRO ================= */
-
-.footer-newsletter{
-max-width:400px;
-}
-
-.newsletter-box{
-
-display:flex;
-align-items:center;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:40px;
-padding:6px;
-backdrop-filter:blur(10px);
-transition:0.3s;
-
-}
-
-.newsletter-box:focus-within{
-
-border-color:#00ffa6;
-box-shadow:0 0 15px rgba(0,255,166,0.4);
-
-}
-
-.newsletter-box input{
-
-flex:1;
-border:none;
-background:transparent;
-color:white;
-padding:12px 15px;
-font-size:14px;
-outline:none;
-
-}
-
-.newsletter-box button{
-
-background:#00ffa6;
-border:none;
-width:42px;
-height:42px;
-border-radius:50%;
-cursor:pointer;
-color:black;
-font-size:16px;
-transition:0.3s;
-
-}
-
-.newsletter-box button:hover{
-
-transform:scale(1.1);
-
-}
-
-/* MENSAJE EXITO */
-
-#newsletter-success{
-
-display:none;
-margin-top:10px;
-color:#00ffa6;
-font-weight:600;
-font-size:14px;
-
-}
-
-/* CONTADOR */
-
-.newsletter-counter{
-
-margin-top:8px;
-font-size:12px;
-opacity:0.7;
-
 }
 
 /* --- REDES SOCIALES --- */
