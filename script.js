@@ -402,7 +402,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Encender la galería al cargar
     startCommAuto();
-
 });
 
 const mobileMenu = document.getElementById('mobile-menu');
@@ -451,58 +450,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/* ================= CONFIGURACION BREVO ================= */
 
-window.LOCALE = "es";
 
-/* MENSAJES DE ERROR */
-
-window.REQUIRED_ERROR_MESSAGE = "Debes ingresar tu correo electrónico.";
-window.EMAIL_INVALID_MESSAGE = "El correo ingresado no es válido.";
-window.GENERIC_INVALID_MESSAGE = "El correo ingresado no es válido. Inténtalo nuevamente.";
-window.REQUIRED_CODE_ERROR_MESSAGE = "Debes seleccionar un código de país.";
-
-/* MENSAJES DE ÉXITO */
-
-window.SUBSCRIPTION_SUCCESS_MESSAGE = "✅ ¡Te has suscrito correctamente a MOVVE PLANETA!";
-
-/* TRADUCCIÓN DE COMPONENTES */
-
-window.translation = {
-  common: {
-    selectedList: '{quantity} lista seleccionada',
-    selectedLists: '{quantity} listas seleccionadas',
-    selectedOption: '{quantity} seleccionado',
-    selectedOptions: '{quantity} seleccionados'
-  }
-};
-
-/* OCULTAR MENSAJES AUTOMÁTICAMENTE */
-
-var AUTOHIDE = Boolean(1);
-
-/* ================= VALIDACION EXTRA ================= */
-
-document.addEventListener("DOMContentLoaded", function(){
-
-const form = document.querySelector("#sib-form");
-
-if(!form) return;
-
-form.addEventListener("submit", function(e){
-
-const email = form.querySelector("input[name='EMAIL']").value;
-
-if(!email.includes("@") || !email.includes(".")){
-
-e.preventDefault();
-
-alert("⚠️ Debes ingresar un correo válido.");
-
-}
-
-});
-
-});
 
 
