@@ -964,21 +964,21 @@ body{
     outline: none;
 }
 
-/* Animación de carga para el botón de suscripción */
-#sib-form button[type="submit"]:disabled {
-    cursor: not-allowed;
-    opacity: 0.8;
-    background: #1a1a1a;
-    color: #00ff88;
-    border: 1px solid #00ff88;
+#sib-form button {
+    background: #00ff88;
+    color: #000;
+    font-weight: 800;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+    transition: 0.3s;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-.fa-spin {
-    animation: spin 1s linear infinite;
-    margin-right: 8px;
+#sib-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
 }
 
 /* --- REDES SOCIALES --- */
@@ -1049,5 +1049,74 @@ body{
     .footer-bottom {
         flex-direction: column;
         gap: 20px;
+    }
+}
+
+/* ================= BOTÓN WHATSAPP FLOTANTE ================= */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Lo ponemos a la izquierda para no chocar con el botón de subir */
+    background: rgba(37, 211, 102, 0.15); /* Color oficial WA con transparencia */
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    border: 1px solid rgba(37, 211, 102, 0.5);
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float i {
+    color: #25d366; /* Verde oficial de WhatsApp */
+    font-size: 24px;
+    filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5));
+}
+
+.whatsapp-float span {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Efectos de Interacción */
+.whatsapp-float:hover {
+    background: #25d366;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    border-color: #ffffff;
+}
+
+.whatsapp-float:hover i, 
+.whatsapp-float:hover span {
+    color: #000;
+    filter: none;
+}
+
+/* Animación de Pulso Suave */
+@keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+    animation: pulse-wa 2s infinite;
+}
+
+/* Ocultar texto en móviles muy pequeños para que no estorbe */
+@media (max-width: 480px) {
+    .whatsapp-float span {
+        display: none;
+    }
+    .whatsapp-float {
+        padding: 15px;
+        border-radius: 50%;
     }
 }
