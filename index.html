@@ -35,7 +35,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     
 </head>
 <body>
@@ -463,48 +463,50 @@ dentro del ecosistema Web3.
 
 </div>
 
-<!-- ================= NEWSLETTER ULTRA PRO ================= -->
-
+<!-- NEWSLETTER MOVVE -->
 <div class="footer-newsletter">
 
 <h4>Suscríbete a MOVVE PLANETA</h4>
 
 <p>Recibe noticias, tutoriales y actualizaciones del ecosistema Movve Wallet.</p>
 
+<div class="sib-form">
+<div id="sib-form-container">
+
+<div id="success-message" style="display:none;">
+<p>🚀 ¡Bienvenido a MOVVE PLANETA!</p>
+<p>Tu suscripción fue exitosa.</p>
+</div>
+
+<div id="error-message" style="display:none;">
+<p>❌ No se pudo guardar tu suscripción.</p>
+</div>
+
 <form id="sib-form"
 method="POST"
-action="https://b9a61580.sibforms.com/serve/MUIFAOzOV1By5m9dFRb5bhuzZUx3hPprmjrfWVLPHRgiQrY2AV60x5xFHardyv1h3AvW6ZTo_YSFN-vE3M6MKbEc0erkyrJK-Z7wf8bM9nl0emft2cYJ_i1xFqPTCz1lh7O7JfMuqLiOYVnLYOEs20oasPwX-JZS48Rpz7NoZjK4kVmKRbx30LpbpdPUvEmx1uHV2SRWilbw0iO_3A==">
-
-<div class="newsletter-box">
+action="https://b9a61580.sibforms.com/serve/MUIFAOzOV1By5m9dFRb5bhuzZUx3hPprmjrfWVLPHRgiQrY2AV60x5xFHardyv1h3AvW6ZTo_YSFN-vE3M6MKbEc0erkyrJK-Z7wf8bM9nl0emft2cYJ_i1xFqPTCz1lh7O7JfMuqLiOYVnLYOEs20oasPwX-JZS48Rpz7NoZjK4kVmKRbx30LpbpdPUvEmx1uHV2SRWilbw0iO_3A=="
+data-type="subscription">
 
 <input
 type="email"
+id="EMAIL"
 name="EMAIL"
-placeholder="Ingresa tu correo"
+placeholder="Tu correo electrónico"
 required
->
-
-<button type="submit">
-<i class="fas fa-paper-plane"></i>
-</button>
-
-</div>
-
-<!-- Campos obligatorios Brevo -->
+/>
 
 <input type="hidden" name="locale" value="es">
-<input type="hidden" name="html_type" value="simple">
+
 <input type="text" name="email_address_check" value="" style="display:none">
+
+<button type="submit">
+Suscribirme
+</button>
 
 </form>
 
-<div id="newsletter-success">
-🚀 Bienvenido al ecosistema MOVVE
 </div>
-
-<p class="newsletter-counter">
-+4,200 personas ya están creciendo con MOVVE
-</p>
+</div>
 
 </div>
     
@@ -553,8 +555,6 @@ required
 <script src="script.js"></script>
 <script src="jsbrevo-newsletter.js"></script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
-<script src="script.js"></script>
 
 <a href="https://chat.whatsapp.com/CPnnPPINjQF12QwJta0eqx?mode=gi_t" 
    class="wa-floating-pro" 
