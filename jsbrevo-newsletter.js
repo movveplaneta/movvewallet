@@ -1,25 +1,14 @@
-document.addEventListener("DOMContentLoaded", function(){
+window.REQUIRED_ERROR_MESSAGE = "Debes ingresar tu correo.";
+window.EMAIL_INVALID_MESSAGE = "Correo inválido.";
+window.GENERIC_INVALID_MESSAGE = "Correo inválido.";
 
-const form = document.getElementById("sib-form");
-const success = document.getElementById("newsletter-success");
+window.translation = {
+  common: {
+    selectedList: '{quantity} lista seleccionada',
+    selectedLists: '{quantity} listas seleccionadas',
+    selectedOption: '{quantity} seleccionada',
+    selectedOptions: '{quantity} seleccionadas'
+  }
+};
 
-if(!form) return;
-
-form.addEventListener("submit", function(){
-
-const button = form.querySelector("button");
-
-button.innerHTML = "⏳";
-button.disabled = true;
-
-setTimeout(function(){
-
-success.style.display = "block";
-
-button.innerHTML = "✔";
-
-},2000);
-
-});
-
-});
+var AUTOHIDE = Boolean(1);
