@@ -474,3 +474,23 @@ alert("⚠️ Debes ingresar un correo válido.");
 });
 
 });
+
+window.addEventListener('scroll', function() {
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    const footer = document.querySelector('.footer-pro');
+    
+    // Obtenemos la posición del footer
+    const footerPosition = footer.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    // Si el tope del footer es menor a la altura de la pantalla, ocultamos
+    if (footerPosition < screenHeight) {
+        whatsappBtn.style.opacity = '0';
+        whatsappBtn.style.pointerEvents = 'none';
+        whatsappBtn.style.transform = 'scale(0.8) translateY(20px)';
+    } else {
+        whatsappBtn.style.opacity = '1';
+        whatsappBtn.style.pointerEvents = 'auto';
+        whatsappBtn.style.transform = 'scale(1) translateY(0)';
+    }
+});
