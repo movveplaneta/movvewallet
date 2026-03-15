@@ -941,44 +941,84 @@ body{
     text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
-/* --- NEWSLETTER ESTILO MOVVE --- */
-.footer-newsletter {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 136, 0.1);
+/* ================= NEWSLETTER ULTRA PRO ================= */
+
+.footer-newsletter{
+max-width:400px;
 }
 
-#sib-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.newsletter-box{
+
+display:flex;
+align-items:center;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:40px;
+padding:6px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+
 }
 
-#sib-form input {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    padding: 12px;
-    border-radius: 10px;
-    color: white;
-    outline: none;
+.newsletter-box:focus-within{
+
+border-color:#00ffa6;
+box-shadow:0 0 15px rgba(0,255,166,0.4);
+
 }
 
-#sib-form button {
-    background: #00ff88;
-    color: #000;
-    font-weight: 800;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-    transition: 0.3s;
+.newsletter-box input{
+
+flex:1;
+border:none;
+background:transparent;
+color:white;
+padding:12px 15px;
+font-size:14px;
+outline:none;
+
 }
 
-#sib-form button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
+.newsletter-box button{
+
+background:#00ffa6;
+border:none;
+width:42px;
+height:42px;
+border-radius:50%;
+cursor:pointer;
+color:black;
+font-size:16px;
+transition:0.3s;
+
+}
+
+.newsletter-box button:hover{
+
+transform:scale(1.1);
+
+}
+
+/* MENSAJE EXITO */
+
+#newsletter-success{
+
+display:none;
+margin-top:10px;
+color:#00ffa6;
+font-weight:600;
+font-size:14px;
+
+}
+
+/* CONTADOR */
+
+.newsletter-counter{
+
+margin-top:8px;
+font-size:12px;
+opacity:0.7;
+
 }
 
 /* --- REDES SOCIALES --- */
