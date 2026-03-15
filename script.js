@@ -421,29 +421,22 @@ document.querySelectorAll('.nav-menu li a').forEach(n => n.addEventListener('cli
     navLinks.classList.remove('active');
 }));
 
-document.addEventListener("DOMContentLoaded", function() {
-    const sibForm = document.getElementById('sib-form');
-    const subscribeBtn = sibForm.querySelector('button[type="submit"]');
+window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+window.LOCALE = 'en';
 
-    sibForm.addEventListener('submit', function(e) {
-        // Cambiamos el estado del botón para dar feedback visual
-        subscribeBtn.disabled = true;
-        subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
-        subscribeBtn.style.boxShadow = "0 0 20px #00ff88";
+window.EMAIL_INVALID_MESSAGE = "El correo ingresado no es válido. Por favor revisa e inténtalo nuevamente.";
 
-        // Dejamos que el formulario se envíe a la URL de Brevo
-        // Nota: Si quieres manejarlo 100% por AJAX sin salir de la web, 
-        // se requiere configuración de API, pero este método es el más seguro y rápido.
-        
-        console.log("Enviando suscripción a MOVVE PLANETA...");
-        
-        // Mensaje de éxito visual antes de redirección (opcional según el servicio)
-        setTimeout(() => {
-            if (!subscribeBtn.classList.contains('error')) {
-                subscribeBtn.style.background = "#ffffff";
-                subscribeBtn.style.color = "#000";
-                subscribeBtn.innerHTML = '<i class="fas fa-check"></i> ¡Casi listo!';
-            }
-        }, 1000);
-    });
-});
+window.REQUIRED_ERROR_MESSAGE = "Debes ingresar tu correo electrónico para continuar.";
+
+window.GENERIC_INVALID_MESSAGE = "El correo ingresado no es válido. Por favor revisa e inténtalo nuevamente.";
+
+window.translation = {
+  common: {
+    selectedList: '{quantity} list selected',
+    selectedLists: '{quantity} lists selected',
+    selectedOption: '{quantity} selected',
+    selectedOptions: '{quantity} selected'
+  }
+};
+
+var AUTOHIDE = Boolean(0);
