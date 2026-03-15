@@ -964,21 +964,21 @@ body{
     outline: none;
 }
 
-#sib-form button {
-    background: #00ff88;
-    color: #000;
-    font-weight: 800;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-    transition: 0.3s;
+/* Animación de carga para el botón de suscripción */
+#sib-form button[type="submit"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    background: #1a1a1a;
+    color: #00ff88;
+    border: 1px solid #00ff88;
 }
 
-#sib-form button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+.fa-spin {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
 }
 
 /* --- REDES SOCIALES --- */
