@@ -421,3 +421,29 @@ document.querySelectorAll('.nav-menu li a').forEach(n => n.addEventListener('cli
     navLinks.classList.remove('active');
 }));
 
+document.addEventListener("DOMContentLoaded", function() {
+    const sibForm = document.getElementById('sib-form');
+    const subscribeBtn = sibForm.querySelector('button[type="submit"]');
+
+    sibForm.addEventListener('submit', function(e) {
+        // Cambiamos el estado del botón para dar feedback visual
+        subscribeBtn.disabled = true;
+        subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+        subscribeBtn.style.boxShadow = "0 0 20px #00ff88";
+
+        // Dejamos que el formulario se envíe a la URL de Brevo
+        // Nota: Si quieres manejarlo 100% por AJAX sin salir de la web, 
+        // se requiere configuración de API, pero este método es el más seguro y rápido.
+        
+        console.log("Enviando suscripción a MOVVE PLANETA...");
+        
+        // Mensaje de éxito visual antes de redirección (opcional según el servicio)
+        setTimeout(() => {
+            if (!subscribeBtn.classList.contains('error')) {
+                subscribeBtn.style.background = "#ffffff";
+                subscribeBtn.style.color = "#000";
+                subscribeBtn.innerHTML = '<i class="fas fa-check"></i> ¡Casi listo!';
+            }
+        }, 1000);
+    });
+});
