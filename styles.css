@@ -542,76 +542,69 @@ body{
     }
 }
 
-/* ================= NEWSLETTER MOVVE ELITE ================= */
+/* ================= NEWSLETTER MOVVE ULTRA PRO ================= */
 .newsletter-movve {
     background: #050505;
-    background-image: 
-        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    padding: 80px 20px;
+    padding: 100px 20px;
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(0, 255, 136, 0.1);
-    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-}
-
-.newsletter-container {
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    padding: 50px 40px;
-    border-radius: 30px;
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.05);
     position: relative;
 }
 
-/* Glow animado */
-.newsletter-container::after {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 30px;
-    background: linear-gradient(120deg, transparent, rgba(0,255,136,0.3), transparent);
-    opacity: 0;
-    transition: 0.5s;
+.newsletter-container {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    padding: 60px 40px;
+    border-radius: 40px;
+    max-width: 850px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 
-.newsletter-container:hover::after {
-    opacity: 1;
+/* Efecto de borde animado superior */
+.newsletter-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 150px; height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 20px #00ff88;
 }
 
 .newsletter-container h2 {
     color: #fff;
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
 .newsletter-container p {
-    color: #888;
-    font-size: 1.1rem;
-    margin-bottom: 35px;
+    color: #a0a0a0;
+    font-size: 1.2rem;
+    margin-bottom: 45px;
+    max-width: 600px;
+    margin: 0 auto 45px auto;
 }
 
-/* FORM */
+/* --- FORMULARIO TIPO CÁPSULA TECH --- */
 #movve-newsletter {
     display: flex;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 8px;
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: 0.3s;
 }
 
 #movve-newsletter:focus-within {
-    border: 1px solid rgba(0, 255, 136, 0.5);
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
 }
 
 #movve-newsletter input[type="tel"] {
@@ -620,81 +613,50 @@ body{
     border: none;
     padding: 15px 25px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem;
     outline: none;
-    letter-spacing: 1px;
 }
 
-#movve-newsletter input::placeholder {
-    color: rgba(255,255,255,0.4);
-}
-
-/* BOTÓN PRO */
 #movve-newsletter button {
-    background: linear-gradient(135deg, #00ff88, #00ccff);
+    background: #00ff88;
     color: #000;
-    padding: 15px 35px;
-    border-radius: 15px;
+    padding: 15px 40px;
+    border-radius: 18px;
     border: none;
-    font-weight: 900;
-    text-transform: uppercase;
+    font-weight: 800;
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-#movve-newsletter button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-    transition: 0.5s;
-}
-
-#movve-newsletter button:hover::before {
-    left: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
 }
 
 #movve-newsletter button:hover {
-    transform: scale(1.07);
+    transform: scale(1.05) translateY(-3px);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
 }
 
-/* TEXTO LEGAL */
 .newsletter-container small {
     display: block;
-    margin-top: 15px;
-    color: rgba(255,255,255,0.4);
-    font-size: 0.8rem;
+    margin-top: 20px;
+    color: #555;
+    font-size: 0.85rem;
 }
 
-/* RESPONSIVO */
+/* --- RESPONSIVO --- */
 @media (max-width: 768px) {
     #movve-newsletter {
         flex-direction: column;
         background: transparent;
         border: none;
         padding: 0;
+        gap: 15px;
     }
-
     #movve-newsletter input[type="tel"] {
         background: rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        margin-bottom: 10px;
     }
-
-    #movve-newsletter button {
-        width: 100%;
-    }
-
-    .newsletter-container h2 {
-        font-size: 1.8rem;
-    }
+    #movve-newsletter button { width: 100%; }
 }
 /* ================= DASHBOARD CONTAINER ================= */
 .dashboard-container {
