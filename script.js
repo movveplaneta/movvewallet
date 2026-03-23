@@ -450,7 +450,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+<script>
+const form = document.getElementById("movve-newsletter");
+const msgBox = document.getElementById("movve-msg");
 
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const phoneInput = form.querySelector('input[name="SMS"]');
+    const phone = phoneInput.value.trim();
+
+    // Validación básica (mínimo 8 números)
+    if (!/^[0-9+ ]{8,15}$/.test(phone)) {
+        showMessage("⚠️ Ingresa un número válido", "error");
+        return;
+    }
+
+    // Estado loading
+    showMessage("⏳ Enviando...", "loading");
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+        });
+
+        if (response.ok) {
+            showMessage("✅ ¡Listo! Revisa tu WhatsApp pronto 🚀", "success");
+            form.reset();
+        } else {
+            throw new Error("Error en envío");
+        }
+    } catch (error) {
+        showMessage("❌ Error al enviar. Intenta de nuevo.", "error");
+    }
+});
+
+// Función para mostrar mensajes
+function showMessage(text, type) {
+    msgBox.innerText = text;
+    msgBox.className = "";
+
+    if (type === "success") msgBox.style.color = "#00ff88";
+    if (type === "error") msgBox.style.color = "#ff4d4d";
+    if (type === "loading") msgBox.style.color = "#ccc";
+}
+</script>
 
 
 
