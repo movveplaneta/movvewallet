@@ -450,7 +450,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-<script>
 const form = document.getElementById("movve-newsletter");
 const msgBox = document.getElementById("movve-msg");
 
@@ -495,7 +494,6 @@ function showMessage(text, type) {
     if (type === "error") msgBox.style.color = "#ff4d4d";
     if (type === "loading") msgBox.style.color = "#ccc";
 }
-</script>
 
 
 
