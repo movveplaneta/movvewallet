@@ -548,7 +548,7 @@ body{
     background-image: 
         linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px; /* Efecto cuadrícula tech */
+    background-size: 30px 30px;
     padding: 80px 20px;
     display: flex;
     justify-content: center;
@@ -566,6 +566,22 @@ body{
     width: 100%;
     text-align: center;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.05);
+    position: relative;
+}
+
+/* Glow animado */
+.newsletter-container::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 30px;
+    background: linear-gradient(120deg, transparent, rgba(0,255,136,0.3), transparent);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.newsletter-container:hover::after {
+    opacity: 1;
 }
 
 .newsletter-container h2 {
@@ -582,7 +598,7 @@ body{
     margin-bottom: 35px;
 }
 
-/* --- ESTILO DEL FORMULARIO --- */
+/* FORM */
 #movve-newsletter {
     display: flex;
     gap: 15px;
@@ -590,9 +606,15 @@ body{
     padding: 8px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
 }
 
-#movve-newsletter input[type="email"] {
+#movve-newsletter:focus-within {
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+#movve-newsletter input[type="tel"] {
     flex: 1;
     background: transparent;
     border: none;
@@ -600,28 +622,57 @@ body{
     color: #fff;
     font-size: 1rem;
     outline: none;
+    letter-spacing: 1px;
 }
 
+#movve-newsletter input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+/* BOTÓN PRO */
 #movve-newsletter button {
-    background: #00ff88;
+    background: linear-gradient(135deg, #00ff88, #00ccff);
     color: #000;
     padding: 15px 35px;
     border-radius: 15px;
     border: none;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+#movve-newsletter button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+#movve-newsletter button:hover::before {
+    left: 100%;
 }
 
 #movve-newsletter button:hover {
-    background: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    transform: scale(1.07);
 }
 
-/* --- RESPONSIVO --- */
+/* TEXTO LEGAL */
+.newsletter-container small {
+    display: block;
+    margin-top: 15px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+}
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
     #movve-newsletter {
         flex-direction: column;
@@ -630,7 +681,7 @@ body{
         padding: 0;
     }
 
-    #movve-newsletter input[type="email"] {
+    #movve-newsletter input[type="tel"] {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 15px;
@@ -645,7 +696,6 @@ body{
         font-size: 1.8rem;
     }
 }
-
 /* ================= DASHBOARD CONTAINER ================= */
 .dashboard-container {
     max-width: 1200px;
