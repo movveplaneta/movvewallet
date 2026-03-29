@@ -450,54 +450,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/* ============================================================
-   SISTEMA DE MONETIZACIÓN MULTIVENTANA - MOVVE
-   Control de frecuencia para no saturar al usuario entre páginas.
-   ============================================================ */
+function toggleMovveMenu() {
+    const menu = document.getElementById('movveMenu');
+    // Usamos clases para controlar la animación CSS
+    menu.classList.toggle('active');
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    let interacciones = 0;
-    const clicsParaDisparar = 2;
-
-    // 1. Verificamos si ya se disparó el anuncio en esta sesión
-    // Esto evita que salte en cada ventana nueva que abra el usuario.
-    const anuncioYaMostrado = sessionStorage.getItem('monetag_active');
-
-    const activarAnuncioPop = () => {
-        // Si ya se mostró en otra ventana de esta sesión, no hacemos nada
-        if (anuncioYaMostrado) return;
-
-        const s = document.createElement('script');
-        s.dataset.zone = '10800521';
-        s.src = 'https://al5sm.com/tag.min.js';
-        
-        (document.body || document.documentElement).appendChild(s);
-        
-        // Marcamos como "Mostrado" para toda la sesión actual
-        sessionStorage.setItem('monetag_active', 'true');
-        
-        console.log("🚀 Monetag: Popunder ejecutado y registrado en sesión.");
-    };
-
-    // 2. Escuchador de clics inteligente
-    document.addEventListener('click', (e) => {
-        // Si ya se mostró, dejamos de contar clics para ahorrar recursos
-        if (sessionStorage.getItem('monetag_active')) return;
-
-        // FILTRO DE EXCLUSIÓN (Botones que NO deben disparar el anuncio)
-        const esBotonCritico = e.target.closest('.wa-floating-pro') || 
-                               e.target.closest('.btn-principal') || 
-                               e.target.closest('.btn-verde') ||
-                               e.target.closest('#movve-newsletter') ||
-                               e.target.closest('nav a'); // Evitamos que salte al hacer clic en el menú
-
-        if (esBotonCritico) return;
-
-        interacciones++;
-
-        if (interacciones === clicsParaDisparar) {
-            activarAnuncioPop();
-        }
-    });
+// Cierra el menú si el usuario hace clic en cualquier otro lado de la pantalla
+document.addEventListener('click', (e) => {
+    const container = document.querySelector('.movve-floating-container');
+    const menu = document.getElementById('movveMenu');
+    
+    // Si el menú está activo y el clic fue fuera del contenedor, lo cerramos
+    if (menu.classList.contains('active') && !container.contains(e.target)) {
+        menu.classList.remove('active');
+    }
 });
+
 
