@@ -524,6 +524,54 @@ dentro del ecosistema Web3.
     </div>
 </a>
 
+<script src="script.js"></script>
+
+<script>
+/* Encapsulamos el código de Monetag para que solo se ejecute 
+   tras la segunda interacción del usuario. 
+*/
+document.addEventListener("DOMContentLoaded", function() {
+    let interacciones = 0;
+    const clicsMeta = 2; // El anuncio salta al SEGUNDO clic
+
+    // Función de inyección original de Monetag
+    const activarMonetizacion = () => {
+        // Verificamos si ya se mostró en esta sesión para no saturar
+        if (sessionStorage.getItem('movve_pop_active')) return;
+
+        (function(s){
+            s.dataset.zone='10800521';
+            s.src='https://al5sm.com/tag.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+        
+        // Guardamos que ya se mostró para que no salte en cada ventana nueva
+        sessionStorage.setItem('movve_pop_active', 'true');
+        console.log("💰 Monetización MOVVE: Sistema Popunder activado.");
+    };
+
+    // Escuchador global de clics
+    document.addEventListener('click', function(e) {
+        // Si el usuario hace clic en botones de conversión, NO disparamos el anuncio
+        const esBotonVenta = e.target.closest('.wa-floating-pro') || 
+                             e.target.closest('.btn-principal') || 
+                             e.target.closest('#movve-newsletter');
+        
+        if (esBotonVenta) return;
+
+        interacciones++;
+
+        if (interacciones === clicsMeta) {
+            activarAnuncioPop(); // Usamos la función de activación
+        }
+    });
+
+    // Función puente para activar el script original
+    function activarAnuncioPop() {
+        activarMonetizacion();
+    }
+});
+</script>
+    
 </body>
 </html>
 
