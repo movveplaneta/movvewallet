@@ -475,3 +475,15 @@ function activarPush(){
 
     document.body.appendChild(script);
 }
+
+// Mostrar automáticamente al cargar
+window.onload = function(){
+    document.getElementById("popup").style.display = "flex";
+}
+
+// Función del botón
+function continuar(){
+    activarPush(); // 🔥 tu monetag
+
+    document.getElementById("popup").style.display = "none";
+}
