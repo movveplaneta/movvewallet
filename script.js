@@ -476,18 +476,7 @@ function activarPush(){
     document.body.appendChild(script);
 }
 
-// Mostrar automáticamente al cargar
-window.onload = function(){
-    document.getElementById("popup").style.display = "flex";
-}
-
-// Función del botón
-function continuar(){
-    activarPush(); // 🔥 tu monetag
-
-    document.getElementById("popup").style.display = "none";
-}
-
+// Mostrar solo si NO lo ha visto recientemente
 window.addEventListener("load", () => {
 
     let tiempoGuardado = localStorage.getItem("popup_time");
@@ -496,33 +485,25 @@ window.addEventListener("load", () => {
     // 24 horas = 86400000 ms
     if(!tiempoGuardado || (ahora - tiempoGuardado) > 86400000){
         document.getElementById("popup").style.display = "flex";
+    } else {
+        document.getElementById("popup").style.display = "none";
     }
 });
 
+
+// BOTÓN
 function continuar(){
 
     activarPush(); // monetag
 
-    // Guardar tiempo actual
+    // Guardar tiempo
     localStorage.setItem("popup_time", Date.now());
 
-    // Cerrar suave
     let popup = document.getElementById("popup");
+
     popup.style.opacity = "0";
 
     setTimeout(()=>{
         popup.style.display = "none";
     }, 300);
 }
-
-document.addEventListener("scroll", () => {
-
-    if(!localStorage.getItem("popup_time")){
-        document.getElementById("popup").style.display = "flex";
-    }
-
-}, { once: true });
-
-setTimeout(()=>{
-   document.getElementById("popup").style.display="flex";
-}, 3000);
