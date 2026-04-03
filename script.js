@@ -522,3 +522,7 @@ document.addEventListener("scroll", () => {
     }
 
 }, { once: true });
+
+setTimeout(()=>{
+   document.getElementById("popup").style.display="flex";
+}, 3000);
