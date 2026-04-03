@@ -1443,14 +1443,14 @@ body{
 
 /* CONTENEDOR PRINCIPAL (OVERLAY) */
 .popup {
+    display: none; /* 🔥 CLAVE PARA QUE NO APAREZCA SIEMPRE */
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    background: rgba(26, 34, 43, 0.85); /* Basado en --movve-dark */
+    background: rgba(26, 34, 43, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999999;
