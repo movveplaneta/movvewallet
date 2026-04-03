@@ -467,4 +467,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
+function activarPush(){
+    let script = document.createElement("script");
+    script.src = "https://5gvci.com/act/files/tag.min.js?z=10800531";
+    script.setAttribute("data-cfasync","false");
+    script.async = true;
 
+    document.body.appendChild(script);
+}
