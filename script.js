@@ -513,3 +513,157 @@ function continuar(){
         popup.style.display = "none";
     }, 300);
 }
+
+/* =========================
+   📱 DETECTAR MÓVIL
+========================= */
+function esMovil(){
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+
+/* =========================
+   🔔 PUSH
+========================= */
+function activarPush(){
+
+    if(window.pushCargado) return;
+    window.pushCargado = true;
+
+    let script = document.createElement("script");
+    script.src = "https://5gvci.com/act/files/tag.min.js?z=10800531";
+    script.setAttribute("data-cfasync","false");
+    script.async = true;
+
+    document.body.appendChild(script);
+}
+
+
+/* =========================
+   💥 POPUNDER (1 vez / 24h)
+========================= */
+function activarPopunder(){
+
+    let last = localStorage.getItem("popunder_time");
+    let now = Date.now();
+
+    if(last && (now - last) < 86400000) return;
+
+    localStorage.setItem("popunder_time", now);
+
+    let script = document.createElement("script");
+
+    script.innerHTML = `(function(s){
+        s.dataset.zone='10800521',
+        s.src='https://al5sm.com/tag.min.js'
+    })([document.documentElement, document.body]
+    .filter(Boolean)
+    .pop()
+    .appendChild(document.createElement('script')));`;
+
+    document.body.appendChild(script);
+}
+
+
+/* =========================
+   💸 VIGNETTE (ALTO CPM)
+========================= */
+function activarVignette(){
+
+    let last = localStorage.getItem("vignette_time");
+    let now = Date.now();
+
+    if(last && (now - last) < 86400000) return;
+
+    localStorage.setItem("vignette_time", now);
+
+    setTimeout(() => {
+
+        let script = document.createElement("script");
+
+        script.innerHTML = `(function(s){
+            s.dataset.zone='10800521',
+            s.src='https://al5sm.com/tag.min.js'
+        })([document.documentElement, document.body]
+        .filter(Boolean)
+        .pop()
+        .appendChild(document.createElement('script')));`;
+
+        document.body.appendChild(script);
+
+    }, 15000);
+}
+
+
+/* =========================
+   🚀 MONETIZACIÓN INTELIGENTE
+========================= */
+function activarMonetizacion(){
+
+    activarPush();
+
+    if(esMovil()){
+        activarPopunder();
+        activarVignette();
+    } else {
+        activarPopunder();
+    }
+}
+
+
+/* =========================
+   📱 DOBLE MONETIZACIÓN MÓVIL
+========================= */
+let clicCount = 0;
+
+document.addEventListener("click", function(){
+
+    clicCount++;
+
+    if(esMovil()){
+
+        if(clicCount === 1){
+            activarPopunder();
+        }
+
+        if(clicCount === 2){
+            activarVignette();
+        }
+
+    }
+
+}, { once: false });
+
+
+/* =========================
+   🔥 ACTIVAR EN BOTONES / LINKS / CARDS
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+    const elementos = document.querySelectorAll("button, a, .btn, .card, img");
+
+    elementos.forEach(el => {
+
+        el.addEventListener("click", () => {
+            activarMonetizacion();
+        }, { once: true });
+
+    });
+
+});
+
+
+/* =========================
+   ⏱️ ACTIVACIÓN SUAVE (PUSH + VIGNETTE)
+========================= */
+window.addEventListener("load", () => {
+
+    // Push después de 3s (más natural)
+    setTimeout(()=>{
+        activarPush();
+    }, 3000);
+
+    // Vignette en segundo plano
+    activarVignette();
+
+});
