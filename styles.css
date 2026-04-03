@@ -1441,70 +1441,105 @@ body{
 .placeholder-mobile { width: 100%; height: 100px; background: rgba(255,255,255,0.02); border: 1px solid #1a1a1a; border-radius: 12px; }
 .label-ad { font-size: 9px; color: #444; margin-bottom: 8px; letter-spacing: 2px; font-weight: 700; }
 
-/* POPUP OVERLAY */
-.popup{
+/* CONTENEDOR PRINCIPAL (OVERLAY) */
+.popup {
     position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(15,23,42,0.6); /* tono acorde */
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    backdrop-filter: blur(6px);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 34, 43, 0.85); /* Basado en --movve-dark */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    padding: 20px;
+    animation: fadeIn 0.4s ease-out;
 }
 
-/* CAJA */
-.popup-box{
+/* CAJA DEL POPUP (CARD) */
+.popup-box {
     background: var(--movve-card-bg);
-    padding:30px;
+    max-width: 420px;
+    width: 100%;
+    padding: 50px 35px;
     border-radius: var(--radius);
-    text-align:center;
-    max-width:320px;
-    width:90%;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow-lg);
-    animation: popupFade 0.4s ease;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* TEXTO */
-.popup-box h2{
+/* TÍTULO */
+.popup-box h2 {
+    color: var(--movve-dark);
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+/* TEXTO DESCRIPTIVO */
+.popup-box p {
     color: var(--text-dark);
-    margin-bottom:10px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 35px;
 }
 
-.popup-box p{
-    color: var(--text-light);
-    font-size:14px;
-    margin-bottom:20px;
-}
-
-/* BOTÓN */
-.popup-box button{
+/* BOTÓN PREMIUM MOVVE */
+.popup-box button {
     background: var(--movve-green);
-    color:#fff;
-    border:none;
-    padding:12px 20px;
-    border-radius: 10px;
-    cursor:pointer;
-    font-weight:600;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 18px;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
 }
 
-.popup-box button:hover{
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+.popup-box button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 230, 118, 0.45);
+    filter: brightness(1.05);
 }
 
-/* ANIMACIÓN */
-@keyframes popupFade{
-    from{
-        opacity:0;
-        transform: scale(0.9);
+.popup-box button:active {
+    transform: translateY(0);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
     }
-    to{
-        opacity:1;
-        transform: scale(1);
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+/* RESPONSIVO MÓVIL */
+@media (max-width: 480px) {
+    .popup-box {
+        padding: 40px 25px;
+        border-radius: 25px;
+    }
+    .popup-box h2 {
+        font-size: 22px;
     }
 }
