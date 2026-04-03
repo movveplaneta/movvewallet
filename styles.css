@@ -1432,14 +1432,65 @@ body{
     }
 }
 
-/* BANNERS PC */
-.ads-side { width: 160px; text-align: center; }
-.placeholder-sidebar { width: 160px; height: 600px; background: rgba(255,255,255,0.02); border: 1px solid #1a1a1a; border-radius: 15px; }
+/* CONTENEDOR GENERAL */
+.ad{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:35px 0;
+}
 
-/* BANNERS MÓVIL */
-.ads-mobile { width: 100%; text-align: center; }
-.placeholder-mobile { width: 100%; height: 100px; background: rgba(255,255,255,0.02); border: 1px solid #1a1a1a; border-radius: 12px; }
-.label-ad { font-size: 9px; color: #444; margin-bottom: 8px; letter-spacing: 2px; font-weight: 700; }
+/* CAJA DEL BANNER (ESTILO PREMIUM) */
+.ad-box{
+    background: var(--movve-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding:15px;
+    transition: var(--transition);
+    text-align:center;
+}
+
+.ad-box:hover{
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* ETIQUETA PUBLICIDAD */
+.ad-label{
+    font-size:12px;
+    color: var(--text-light);
+    margin-bottom:8px;
+    display:block;
+}
+
+/* TAMAÑOS PC */
+.ad-top,
+.ad-bottom{
+    max-width:728px;
+    min-height:90px;
+}
+
+.ad-middle{
+    max-width:320px;
+    min-height:250px;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+    .ad-top,
+    .ad-bottom{
+        max-width:320px;
+        min-height:50px;
+    }
+
+    .ad-middle{
+        max-width:300px;
+        min-height:250px;
+    }
+}
 
 /* CONTENEDOR PRINCIPAL (OVERLAY) */
 .popup {
