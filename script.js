@@ -479,14 +479,20 @@ function activarPush(){
 // Mostrar solo si NO lo ha visto recientemente
 window.addEventListener("load", () => {
 
+    const popup = document.getElementById("popup");
+    if(!popup) return;
+
     let tiempoGuardado = localStorage.getItem("popup_time");
     let ahora = Date.now();
 
+    // 🔥 convertir a número correctamente
+    tiempoGuardado = tiempoGuardado ? parseInt(tiempoGuardado) : null;
+
     // 24 horas = 86400000 ms
     if(!tiempoGuardado || (ahora - tiempoGuardado) > 86400000){
-        document.getElementById("popup").style.display = "flex";
+        popup.style.display = "flex";
     } else {
-        document.getElementById("popup").style.display = "none";
+        popup.style.display = "none";
     }
 });
 
@@ -496,10 +502,10 @@ function continuar(){
 
     activarPush(); // monetag
 
-    // Guardar tiempo
-    localStorage.setItem("popup_time", Date.now());
+    // 🔥 guardar como string seguro
+    localStorage.setItem("popup_time", Date.now().toString());
 
-    let popup = document.getElementById("popup");
+    const popup = document.getElementById("popup");
 
     popup.style.opacity = "0";
 
