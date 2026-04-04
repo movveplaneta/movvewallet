@@ -542,132 +542,102 @@ body{
     }
 }
 
-/* ================= CARTERA MOVVE ================= */
+<!-- ================= MOVVE FINTECH PRO ================= -->
 
-.dashboard-container {
-    padding: 40px 20px;
-    background: var(--movve-bg);
-}
+<section class="fintech">
 
-/* GRID */
-.widgets-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
+<div class="fintech-header">
+<h2>Cartera MOVVE</h2>
 
-/* TARJETAS */
-.card-glass {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-md);
-    padding: 20px;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
+<a href="https://www.myfxbook.com/members/movvewallet" target="_blank" class="btn-fintech">
+📊 Ver Mercado en Vivo
+</a>
+</div>
 
-/* EFECTO HOVER PRO */
-.card-glass:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: var(--shadow-lg);
-}
+<!-- STATS -->
+<div class="fintech-stats">
 
-/* BORDE LUMINOSO */
-.card-glass::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
-    padding: 1px;
-    background: linear-gradient(120deg, transparent, var(--movve-green), transparent);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: var(--transition);
-}
+<div class="stat">
+<span>Balance Total</span>
+<h3 id="balance">$0</h3>
+</div>
 
-.card-glass:hover::before {
-    opacity: 1;
-}
+<div class="stat">
+<span>Rentabilidad</span>
+<h3 id="profit">0%</h3>
+</div>
 
-/* HEADER */
-.widget-header {
-    margin-bottom: 15px;
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 14px;
-    letter-spacing: 1px;
-}
+<div class="stat">
+<span>Usuarios</span>
+<h3 id="users">0</h3>
+</div>
 
-/* LABEL */
-.widget-label {
-    font-size: 14px;
-    color: var(--text-light);
-}
+</div>
 
-/* BODY */
-.widget-body p {
-    font-size: 14px;
-    color: var(--text-dark);
-    margin: 6px 0;
-}
+<!-- TABLA -->
+<div class="fintech-table">
 
-/* DESTACADOS */
-.widget-body strong {
-    color: var(--text-dark);
-    font-weight: 700;
-}
+<div class="row head">
+<span>Mercado</span>
+<span>Balance</span>
+<span>Ganancia</span>
+<span>Diario</span>
+<span>Mensual</span>
+<span>Riesgo</span>
+<span>Estado</span>
+</div>
 
-/* LINEAS */
-.widget-body hr {
-    border: none;
-    height: 1px;
-    background: var(--border-color);
-    margin: 10px 0;
-}
+<div class="row">
+<span>Crypto</span>
+<span>$8.7M</span>
+<span class="up">+124%</span>
+<span>0.71%</span>
+<span>24.6%</span>
 
-/* COLORES GANANCIA */
-.positive {
-    color: var(--movve-green);
-    font-weight: 600;
-}
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:28%"></div>
+</div>
+</span>
 
-.negative {
-    color: #ef4444;
-    font-weight: 600;
-}
+<span class="status up">Activo</span>
+</div>
 
-/* TITULO */
-.section-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--movve-green);
-}
+<div class="row">
+<span>Forex</span>
+<span>$17M</span>
+<span class="up">+83%</span>
+<span>0.53%</span>
+<span>17.7%</span>
 
-/* BOTON VER MERCADO */
-.dashboard-container a {
-    transition: var(--transition);
-}
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:20%"></div>
+</div>
+</span>
 
-.dashboard-container a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
-}
+<span class="status up">Activo</span>
+</div>
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 22px;
-    }
+<div class="row">
+<span>Oro</span>
+<span>$16.9M</span>
+<span class="up">+78%</span>
+<span>0.50%</span>
+<span>17%</span>
 
-    .widget-body p {
-        font-size: 13px;
-    }
-}
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:15%"></div>
+</div>
+</span>
+
+<span class="status up">Activo</span>
+</div>
+
+</div>
+
+</section>
 
 /* ================= CTA SUPER PRO ================= */
 .cta-super-pro {
