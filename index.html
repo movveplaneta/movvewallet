@@ -271,89 +271,97 @@ Una red global de personas conectadas por innovación y crecimiento.
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
-<!-- ================= CARTERA MOVVE ================= -->
+<!-- ================= MOVVE FINTECH PRO ================= -->
 
-<section class="dashboard-container">
+<section class="fintech">
 
-<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; flex-wrap:wrap; gap:10px;">
+<div class="fintech-header">
+<h2>Cartera MOVVE</h2>
 
-<h2 class="section-title" style="color:#7ed957;">
-Cartera MOVVE
-</h2>
-
-<a href="https://www.myfxbook.com/members/movvewallet" target="_blank"
-style="background:linear-gradient(45deg,#00ff88,#00c853); color:#000; padding:12px 25px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow:0 0 15px rgba(0,255,136,0.5);">
-🚀 Ver Mercado en Vivo
+<a href="https://www.myfxbook.com/members/movvewallet" target="_blank" class="btn-fintech">
+📊 Ver Mercado en Vivo
 </a>
+</div>
+
+<!-- STATS -->
+<div class="fintech-stats">
+
+<div class="stat">
+<span>Balance Total</span>
+<h3 id="balance">$0</h3>
+</div>
+
+<div class="stat">
+<span>Rentabilidad</span>
+<h3 id="profit">0%</h3>
+</div>
+
+<div class="stat">
+<span>Usuarios</span>
+<h3 id="users">0</h3>
+</div>
 
 </div>
 
-<div class="widgets-grid">
+<!-- TABLA -->
+<div class="fintech-table">
 
-<!-- CARD 1 -->
-<div class="widget card-glass">
-<div class="widget-header">
-<span class="widget-label">CRYPTO</span>
-</div>
-
-<div class="widget-body">
-<p>Ganancia: <span style="color:#00ff88;">+124.99%</span></p>
-<p>Abs. Ganancia: <span style="color:#00ff88;">+110.88%</span></p>
-<hr>
-<p>Diario: 0.71%</p>
-<p>Mensual: 24.68%</p>
-<p>Disminución: 28.47%</p>
-<hr>
-<p><strong>Saldo:</strong> $8,723,439.71</p>
-<p>Equidad: $8,432,882.08</p>
-<hr>
-<p>Beneficio: <span style="color:#00ff88;">$4,827,024.22</span></p>
-<p>Interés: <span style="color:red;">-162,404.87</span></p>
-</div>
+<div class="row head">
+<span>Mercado</span>
+<span>Balance</span>
+<span>Ganancia</span>
+<span>Diario</span>
+<span>Mensual</span>
+<span>Riesgo</span>
+<span>Estado</span>
 </div>
 
-<!-- CARD 2 -->
-<div class="widget card-glass">
-<div class="widget-header">
-<span class="widget-label">FOREX</span>
+<div class="row">
+<span>Crypto</span>
+<span>$8.7M</span>
+<span class="up">+124%</span>
+<span>0.71%</span>
+<span>24.6%</span>
+
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:28%"></div>
+</div>
+</span>
+
+<span class="status up">Activo</span>
 </div>
 
-<div class="widget-body">
-<p>Ganancia: <span style="color:#00ff88;">+83.66%</span></p>
-<p>Abs. Ganancia: <span style="color:#00ff88;">+76.95%</span></p>
-<hr>
-<p>Diario: 0.53%</p>
-<p>Mensual: 17.75%</p>
-<p>Disminución: 19.83%</p>
-<hr>
-<p><strong>Saldo:</strong> $17,016,823.51</p>
-<p>Equidad: $16,666,547.91</p>
-<hr>
-<p>Beneficio: <span style="color:#00ff88;">$7,789,152.56</span></p>
-<p>Interés: <span style="color:red;">-94,616.95</span></p>
+<div class="row">
+<span>Forex</span>
+<span>$17M</span>
+<span class="up">+83%</span>
+<span>0.53%</span>
+<span>17.7%</span>
+
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:20%"></div>
 </div>
+</span>
+
+<span class="status up">Activo</span>
 </div>
 
-<!-- CARD 3 -->
-<div class="widget card-glass">
-<div class="widget-header">
-<span class="widget-label">ORO</span>
-</div>
+<div class="row">
+<span>Oro</span>
+<span>$16.9M</span>
+<span class="up">+78%</span>
+<span>0.50%</span>
+<span>17%</span>
 
-<div class="widget-body">
-<p>Ganancia: <span style="color:#00ff88;">+78.03%</span></p>
-<p>Abs. Ganancia: <span style="color:#00ff88;">+61.76%</span></p>
-<hr>
-<p>Diario: 0.50%</p>
-<p>Mensual: 17.07%</p>
-<p>Disminución: 14.46%</p>
-<hr>
-<p><strong>Saldo:</strong> $16,967,567.18</p>
-<p>Equidad: $16,967,567.18</p>
-<hr>
-<p>Beneficio: <span style="color:#00ff88;">$7,069,864.75</span></p>
-<p>Interés: <span style="color:red;">-110,152.74</span></p>
+<span>
+<div class="risk-bar">
+<div class="risk-fill" style="width:15%"></div>
 </div>
+</span>
+
+<span class="status up">Activo</span>
 </div>
 
 </div>
