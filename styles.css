@@ -658,167 +658,126 @@ body{
     }
     #movve-newsletter button { width: 100%; }
 }
-/* ================= DASHBOARD CONTAINER ================= */
+
+/* ================= DASHBOARD MOVVE PRO ================= */
 .dashboard-container {
+    padding: 60px 20px;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* EFECTO GLASS PRO */
-.card-glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
+.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0;
 }
 
 /* GRID DE WIDGETS */
 .widgets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
-    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
-.widget {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.widget:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-lg);
-}
-
-/* HEADER DEL WIDGET */
-.widget-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.widget-icon {
-    width: 45px;
-    height: 45px;
-    background: var(--movve-dark);
-    color: var(--movve-green);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-.widget-label {
-    font-weight: 600;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* CUERPO DEL WIDGET */
-.widget-number {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--movve-dark);
-    margin-bottom: 10px;
-    letter-spacing: -1px;
-}
-
-.widget-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: var(--movve-bg);
-    color: var(--text-dark);
-}
-
-.widget-badge.positive {
-    background: rgba(0, 230, 118, 0.15);
-    color: #00a856;
-}
-
-/* BARRA DE PROGRESO */
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: var(--border-color);
-    border-radius: 10px;
-    margin-top: 15px;
+/* CARD ESTILO FINTECH */
+.card-glass {
+    background: var(--movve-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
     overflow: hidden;
 }
 
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(to right, var(--movve-green), #3b82f6);
-    border-radius: 10px;
-    transition: width 1.5s ease-in-out;
+.card-glass:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--movve-green);
 }
 
-/* SECCIÓN DE LA GRÁFICA */
-.chart-container {
-    padding: 35px;
-}
-
-.chart-header {
+/* ETIQUETA SUPERIOR (BADGE) */
+.widget-header {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 15px;
 }
 
-.chart-header .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 0;
+.widget-label {
+    background: var(--movve-sidebar);
+    color: var(--movve-dark);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border: 1px solid var(--border-color);
 }
 
-.chart-legend {
+/* CUERPO DE LA CARD */
+.widget-body p {
     display: flex;
-    align-items: center;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 14px;
     color: var(--text-dark);
+    font-weight: 500;
 }
 
-.legend-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+.widget-body span {
+    font-family: 'JetBrains Mono', monospace; /* Opcional para números */
+    font-weight: 700;
 }
 
-.legend-dot.active {
-    background: var(--movve-green);
-    box-shadow: 0 0 10px var(--movve-green);
+.widget-body hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 15px 0;
+    opacity: 0.6;
 }
 
-.chart-body {
-    height: 400px;
-    width: 100%;
+/* VALORES DESTACADOS */
+.widget-body strong {
+    color: var(--movve-dark);
+    font-weight: 800;
 }
 
-/* RESPONSIVE */
+/* COLORES DINÁMICOS */
+.text-success { color: var(--movve-green) !important; }
+.text-danger { color: #ff5252 !important; }
+
+/* BOTÓN DE MERCADO (OVERRIDE) */
+.dashboard-container a[href*="myfxbook"] {
+    background: var(--movve-green) !important;
+    color: white !important;
+    padding: 14px 28px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.2) !important;
+    transition: var(--transition) !important;
+    border: none !important;
+}
+
+.dashboard-container a[href*="myfxbook"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 230, 118, 0.4) !important;
+}
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
-    .widget-number { font-size: 1.8rem; }
-    .chart-body { height: 300px; }
+    .section-title {
+        font-size: 22px;
+        text-align: center;
+        width: 100%;
+    }
+    .dashboard-container div[style*="display:flex"] {
+        justify-content: center !important;
+        text-align: center;
+    }
 }
 
 /* ================= CTA SUPER PRO ================= */
