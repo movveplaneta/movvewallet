@@ -646,6 +646,8 @@ window.addEventListener("load", () => {
 
 document.addEventListener("DOMContentLoaded", function(){
 
+/* ================= CONTADORES ================= */
+
 function counter(id, start, end, speed, prefix="", suffix=""){
     let obj = document.getElementById(id);
     if(!obj) return;
@@ -663,20 +665,80 @@ function counter(id, start, end, speed, prefix="", suffix=""){
     }, speed);
 }
 
-// INICIAR
-counter("balance", 0, 42637892364, 20, "$");
+counter("balance", 0, 4378923, 20, "$");
 counter("profit", 0, 124, 20, "", "%");
 counter("users", 0, 20540, 20);
 
-// SIMULACIÓN EN VIVO
+
+/* ================= MINI CHARTS EN VIVO ================= */
+
+const charts = document.querySelectorAll(".mini-chart");
+
+charts.forEach(canvas => {
+
+    const ctx = canvas.getContext("2d");
+
+    let data = Array.from({length: 20}, () => Math.random() * 20 + 10);
+
+    const colorType = canvas.dataset.color;
+    const color = colorType === "red" ? "#ef4444" : "#00e676";
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = color;
+
+        data.forEach((value, i) => {
+            let x = (i / (data.length - 1)) * canvas.width;
+            let y = canvas.height - value;
+
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+
+        ctx.stroke();
+    }
+
+    function update() {
+        data.shift();
+
+        let last = data[data.length - 1];
+        let change = (Math.random() - 0.5) * 5;
+
+        if(colorType === "green") change += 1;
+        if(colorType === "red") change -= 1;
+
+        data.push(Math.max(5, Math.min(25, last + change)));
+
+        draw();
+    }
+
+    function resizeCanvas(){
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    resizeCanvas();
+    draw();
+
+    setInterval(update, 1000);
+    window.addEventListener("resize", resizeCanvas);
+
+});
+
+
+/* ================= EFECTO MERCADO ================= */
+
 setInterval(()=>{
     let profit = document.getElementById("profit");
     if(!profit) return;
 
     let value = parseInt(profit.innerText);
-    let change = Math.floor(Math.random()*3);
+    let change = Math.floor(Math.random()*2);
 
     profit.innerText = (value + change) + "%";
-}, 5000);
+}, 4000);
 
 });
