@@ -667,3 +667,33 @@ window.addEventListener("load", () => {
     activarVignette();
 
 });
+
+// ANIMACIÓN CONTADORES
+function counter(id, start, end, speed, prefix="", suffix=""){
+    let obj = document.getElementById(id);
+    let current = start;
+    let step = Math.ceil((end-start)/100);
+
+    let interval = setInterval(()=>{
+        current += step;
+        if(current >= end){
+            current = end;
+            clearInterval(interval);
+        }
+        obj.innerHTML = prefix + current.toLocaleString() + suffix;
+    }, speed);
+}
+
+// INICIAR
+counter("balance", 0, 4378923, 20, "$");
+counter("profit", 0, 124, 20, "", "%");
+counter("users", 0, 20540, 20);
+
+// SIMULACIÓN EN VIVO
+setInterval(()=>{
+    let profit = document.getElementById("profit");
+    let value = parseInt(profit.innerText);
+    let change = Math.floor(Math.random()*3);
+
+    profit.innerText = (value + change) + "%";
+}, 5000);
