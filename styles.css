@@ -542,242 +542,125 @@ body{
     }
 }
 
-/* ================= NEWSLETTER MOVVE ULTRA PRO ================= */
-.newsletter-movve {
-    background: #050505;
-    padding: 100px 20px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.newsletter-container {
-    background: rgba(15, 15, 15, 0.7);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    padding: 60px 40px;
-    border-radius: 40px;
-    max-width: 850px;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
-}
-
-/* Efecto de borde animado superior */
-.newsletter-container::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 150px; height: 2px;
-    background: #00ff88;
-    box-shadow: 0 0 20px #00ff88;
-}
-
-.newsletter-container h2 {
-    color: #fff;
-    font-size: 2.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
-}
-
-.newsletter-container p {
-    color: #a0a0a0;
-    font-size: 1.2rem;
-    margin-bottom: 45px;
-    max-width: 600px;
-    margin: 0 auto 45px auto;
-}
-
-/* --- FORMULARIO TIPO CÁPSULA TECH --- */
-#movve-newsletter {
-    display: flex;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.3s;
-}
-
-#movve-newsletter:focus-within {
-    border-color: #00ff88;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
-}
-
-#movve-newsletter input[type="tel"] {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 15px 25px;
-    color: #fff;
-    font-size: 1.1rem;
-    outline: none;
-}
-
-#movve-newsletter button {
-    background: #00ff88;
-    color: #000;
-    padding: 15px 40px;
-    border-radius: 18px;
-    border: none;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
-}
-
-#movve-newsletter button:hover {
-    transform: scale(1.05) translateY(-3px);
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
-}
-
-.newsletter-container small {
-    display: block;
-    margin-top: 20px;
-    color: #555;
-    font-size: 0.85rem;
-}
-
-/* --- RESPONSIVO --- */
-@media (max-width: 768px) {
-    #movve-newsletter {
-        flex-direction: column;
-        background: transparent;
-        border: none;
-        padding: 0;
-        gap: 15px;
-    }
-    #movve-newsletter input[type="tel"] {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    #movve-newsletter button { width: 100%; }
-}
-
-/* ================= DASHBOARD MOVVE PRO ================= */
+/* ================= DASHBOARD MOVVE FINTECH ================= */
 .dashboard-container {
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    width: 100%;
+    font-family: 'Inter', sans-serif; /* Asegúrate de tener cargada esta fuente */
+    background-color: var(--movve-bg);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
 }
 
 .section-title {
-    font-size: 28px;
+    color: var(--movve-dark);
+    font-size: 32px;
     font-weight: 800;
-    letter-spacing: -1px;
     margin: 0;
+    letter-spacing: -1px;
+}
+
+/* BOTÓN DE MERCADO NIVEL PRO */
+.btn-market {
+    background: var(--movve-green);
+    color: white !important;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-market:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.3);
+    filter: brightness(1.05);
 }
 
 /* GRID DE WIDGETS */
 .widgets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
 }
 
-/* CARD ESTILO FINTECH */
+/* CARD ESTILO BANKING */
 .card-glass {
     background: var(--movve-card-bg);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    padding: 30px;
-    box-shadow: var(--shadow-md);
+    padding: 35px;
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-glass:hover {
-    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     border-color: var(--movve-green);
+    transform: translateY(-5px);
 }
 
-/* ETIQUETA SUPERIOR (BADGE) */
-.widget-header {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* ETIQUETA DE CATEGORÍA */
 .widget-label {
     background: var(--movve-sidebar);
-    color: var(--movve-dark);
+    color: var(--text-dark);
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     border: 1px solid var(--border-color);
+    display: inline-block;
+    margin-bottom: 25px;
 }
 
-/* CUERPO DE LA CARD */
+/* FILAS DE DATOS (ESTILO APP BANCARIA) */
 .widget-body p {
     display: flex;
-    justify-content: space-between;
-    margin: 12px 0;
-    font-size: 14px;
+    justify-content: space-between; /* Alinea texto a izquierda y números a derecha */
+    align-items: center;
+    margin: 14px 0;
+    font-size: 15px;
     color: var(--text-dark);
     font-weight: 500;
 }
 
 .widget-body span {
-    font-family: 'JetBrains Mono', monospace; /* Opcional para números */
+    font-family: 'JetBrains Mono', monospace; /* Tipografía técnica para números */
     font-weight: 700;
+    color: var(--movve-dark);
 }
 
 .widget-body hr {
     border: 0;
     border-top: 1px solid var(--border-color);
-    margin: 15px 0;
-    opacity: 0.6;
+    margin: 20px 0;
+    opacity: 0.5;
 }
 
-/* VALORES DESTACADOS */
-.widget-body strong {
-    color: var(--movve-dark);
-    font-weight: 800;
-}
-
-/* COLORES DINÁMICOS */
-.text-success { color: var(--movve-green) !important; }
-.text-danger { color: #ff5252 !important; }
-
-/* BOTÓN DE MERCADO (OVERRIDE) */
-.dashboard-container a[href*="myfxbook"] {
-    background: var(--movve-green) !important;
-    color: white !important;
-    padding: 14px 28px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.2) !important;
-    transition: var(--transition) !important;
-    border: none !important;
-}
-
-.dashboard-container a[href*="myfxbook"]:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 230, 118, 0.4) !important;
-}
+/* MODIFICADORES DE COLOR */
+.profit-text { color: var(--movve-green) !important; font-weight: 800; }
+.loss-text { color: #ff5252 !important; font-weight: 800; }
+.bold-row { color: var(--movve-dark) !important; font-weight: 800 !important; }
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
-    .section-title {
-        font-size: 22px;
-        text-align: center;
-        width: 100%;
-    }
-    .dashboard-container div[style*="display:flex"] {
-        justify-content: center !important;
-        text-align: center;
-    }
+    .dashboard-header { flex-direction: column; text-align: center; }
+    .btn-market { width: 100%; justify-content: center; }
+    .section-title { font-size: 26px; }
 }
 
 /* ================= CTA SUPER PRO ================= */
