@@ -665,7 +665,7 @@ function counter(id, start, end, speed, prefix="", suffix=""){
     }, speed);
 }
 
-counter("balance", 0, 4378923, 20, "$");
+counter("balance", 0, 42637892364, 20, "$");
 counter("profit", 0, 124, 20, "", "%");
 counter("users", 0, 20540, 20);
 
