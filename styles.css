@@ -862,134 +862,220 @@ body{
 }
 
 /* ================= CTA SUPER PRO ================= */
+
 .cta-super-pro {
-    padding: 120px 20px;
-    background: var(--movve-dark); /* Fondo oscuro profundo */
     position: relative;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #0f172a, #020617);
+    color: #fff;
+    text-align: center;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: var(--radius);
 }
 
-/* Fondo animado sutil para dar vida */
-.cta-super-pro::before {
-    content: '';
+/* FONDO GLOW ANIMADO */
+.cta-bg-glow {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
-    animation: rotateGradient 15s linear infinite;
-    z-index: 1;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,230,118,0.25), transparent 70%);
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(80px);
+    animation: pulseGlow 6s infinite alternate;
 }
 
-@keyframes rotateGradient {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+@keyframes pulseGlow {
+    from { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    to { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
 }
 
+/* CONTENEDOR */
 .cta-container {
     position: relative;
+    max-width: 750px;
+    margin: auto;
     z-index: 2;
-    max-width: 800px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 60px 40px;
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
 }
 
+/* TITULO */
 .cta-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: #ffffff;
+    font-size: 36px;
     font-weight: 800;
-    margin-bottom: 20px;
-    line-height: 1.1;
+    margin-bottom: 15px;
 }
 
 .cta-title span {
-    display: block;
     color: var(--movve-green);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0,230,118,0.6);
 }
 
+/* SUBTITULO */
 .cta-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 16px;
+    color: #cbd5f5;
+    margin-bottom: 30px;
     line-height: 1.6;
 }
 
-/* BOTÓN REGISTRO PRINCIPAL */
-.btn-cta {
-    display: inline-flex;
+/* BENEFICIOS */
+.cta-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.benefit {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    background-color: var(--movve-green);
-    color: white;
-    padding: 20px 50px;
-    border-radius: var(--radius);
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: var(--transition);
-    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.25);
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
 }
 
-.btn-cta:hover {
-    background-color: var(--movve-dark);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+.benefit i {
+    color: var(--movve-green);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .cta-card { padding: 40px 20px; }
-    .cta-title { font-size: 1.8rem; }
-    .wallet-download { flex-direction: column; }
-    .btn-wallet, .btn-cta { width: 100%; justify-content: center; }
+.benefit:hover {
+    background: rgba(0,230,118,0.1);
 }
 
-/* CONTENEDOR DE DESCARGA TRONLINK */
+/* WALLET BOTONES */
 .wallet-download {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
 }
 
 .btn-wallet {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    border-radius: 12px;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
     transition: var(--transition);
-    border: 1px solid var(--border-color);
-    background: var(--movve-sidebar);
-    color: var(--movve-dark);
-}
-
-.btn-wallet i {
-    font-size: 1.4rem;
 }
 
 .btn-wallet:hover {
-    background: var(--movve-dark);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    background: var(--movve-green);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-cta-pro {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 35px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #0f172a;
+    background: linear-gradient(135deg, var(--movve-green), #00c853);
+    box-shadow: 0 15px 40px rgba(0,230,118,0.35);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+/* BRILLO */
+.btn-cta-pro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-20deg);
+}
+
+.btn-cta-pro:hover::before {
+    left: 120%;
+    transition: 0.8s;
+}
+
+/* HOVER */
+.btn-cta-pro:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 25px 60px rgba(0,230,118,0.5);
+}
+
+/* BOTÓN TUTORIAL */
+.btn-tutorial {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: var(--transition);
+}
+
+/* HOVER */
+.btn-tutorial:hover {
+    background: rgba(0,230,118,0.15);
+    color: var(--movve-green);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,230,118,0.3);
+}
+
+/* ICONOS */
+.btn-tutorial i,
+.btn-cta-pro i,
+.btn-wallet i {
+    font-size: 14px;
+}
+
+/* TEXTO FINAL */
+.cta-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px){
+
+    .cta-title {
+        font-size: 28px;
+    }
+
+    .cta-subtitle {
+        font-size: 14px;
+    }
+
+    .btn-cta-pro {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-tutorial {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* ================= FOOTER ESTILO NEÓN ORIGINAL ================= */
