@@ -542,125 +542,131 @@ body{
     }
 }
 
-/* ================= DASHBOARD MOVVE FINTECH ================= */
+/* ================= CARTERA MOVVE ================= */
+
 .dashboard-container {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: 'Inter', sans-serif; /* Asegúrate de tener cargada esta fuente */
-    background-color: var(--movve-bg);
+    padding: 40px 20px;
+    background: var(--movve-bg);
 }
 
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    gap: 20px;
-}
-
-.section-title {
-    color: var(--movve-dark);
-    font-size: 32px;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: -1px;
-}
-
-/* BOTÓN DE MERCADO NIVEL PRO */
-.btn-market {
-    background: var(--movve-green);
-    color: white !important;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn-market:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.3);
-    filter: brightness(1.05);
-}
-
-/* GRID DE WIDGETS */
+/* GRID */
 .widgets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
-/* CARD ESTILO BANKING */
+/* TARJETAS */
 .card-glass {
-    background: var(--movve-card-bg);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    padding: 35px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-}
-
-.card-glass:hover {
-    box-shadow: var(--shadow-lg);
-    border-color: var(--movve-green);
-    transform: translateY(-5px);
-}
-
-/* ETIQUETA DE CATEGORÍA */
-.widget-label {
-    background: var(--movve-sidebar);
-    color: var(--text-dark);
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
     border: 1px solid var(--border-color);
-    display: inline-block;
-    margin-bottom: 25px;
+    box-shadow: var(--shadow-md);
+    padding: 20px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
-/* FILAS DE DATOS (ESTILO APP BANCARIA) */
-.widget-body p {
-    display: flex;
-    justify-content: space-between; /* Alinea texto a izquierda y números a derecha */
-    align-items: center;
-    margin: 14px 0;
-    font-size: 15px;
+/* EFECTO HOVER PRO */
+.card-glass:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+}
+
+/* BORDE LUMINOSO */
+.card-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(120deg, transparent, var(--movve-green), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.card-glass:hover::before {
+    opacity: 1;
+}
+
+/* HEADER */
+.widget-header {
+    margin-bottom: 15px;
+    font-weight: 600;
     color: var(--text-dark);
-    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
-.widget-body span {
-    font-family: 'JetBrains Mono', monospace; /* Tipografía técnica para números */
+/* LABEL */
+.widget-label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+/* BODY */
+.widget-body p {
+    font-size: 14px;
+    color: var(--text-dark);
+    margin: 6px 0;
+}
+
+/* DESTACADOS */
+.widget-body strong {
+    color: var(--text-dark);
     font-weight: 700;
-    color: var(--movve-dark);
 }
 
+/* LINEAS */
 .widget-body hr {
-    border: 0;
-    border-top: 1px solid var(--border-color);
-    margin: 20px 0;
-    opacity: 0.5;
+    border: none;
+    height: 1px;
+    background: var(--border-color);
+    margin: 10px 0;
 }
 
-/* MODIFICADORES DE COLOR */
-.profit-text { color: var(--movve-green) !important; font-weight: 800; }
-.loss-text { color: #ff5252 !important; font-weight: 800; }
-.bold-row { color: var(--movve-dark) !important; font-weight: 800 !important; }
+/* COLORES GANANCIA */
+.positive {
+    color: var(--movve-green);
+    font-weight: 600;
+}
 
-/* RESPONSIVO */
+.negative {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* TITULO */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--movve-green);
+}
+
+/* BOTON VER MERCADO */
+.dashboard-container a {
+    transition: var(--transition);
+}
+
+.dashboard-container a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .dashboard-header { flex-direction: column; text-align: center; }
-    .btn-market { width: 100%; justify-content: center; }
-    .section-title { font-size: 26px; }
+    .section-title {
+        font-size: 22px;
+    }
+
+    .widget-body p {
+        font-size: 13px;
+    }
 }
 
 /* ================= CTA SUPER PRO ================= */
