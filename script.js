@@ -69,30 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. ANIMACIÓN DE CONTADORES ---
-    const counters = document.querySelectorAll('.counter');
-    
-    const animateCounters = () => {
-        counters.forEach(el => {
-            const target = +el.getAttribute('data-target');
-            const prefix = el.getAttribute('data-prefix') || '';
-            const suffix = el.getAttribute('data-suffix') || '';
-            let current = 0;
-            const increment = target / 50; // Velocidad de subida
-
-            const updateCount = () => {
-                current += increment;
-                if (current < target) {
-                    el.innerText = prefix + Math.floor(current).toLocaleString() + suffix;
-                    setTimeout(updateCount, 20);
-                } else {
-                    el.innerText = prefix + target.toLocaleString() + suffix;
-                }
-            };
-            updateCount();
-        });
-    };
 
     // --- 2. CONFIGURACIÓN DE LA GRÁFICA (Chart.js) ---
     const ctx = document.getElementById('movveChart');
@@ -668,9 +644,12 @@ window.addEventListener("load", () => {
 
 });
 
-// ANIMACIÓN CONTADORES
+document.addEventListener("DOMContentLoaded", function(){
+
 function counter(id, start, end, speed, prefix="", suffix=""){
     let obj = document.getElementById(id);
+    if(!obj) return;
+
     let current = start;
     let step = Math.ceil((end-start)/100);
 
@@ -692,8 +671,12 @@ counter("users", 0, 20540, 20);
 // SIMULACIÓN EN VIVO
 setInterval(()=>{
     let profit = document.getElementById("profit");
+    if(!profit) return;
+
     let value = parseInt(profit.innerText);
     let change = Math.floor(Math.random()*3);
 
     profit.innerText = (value + change) + "%";
 }, 5000);
+
+});
