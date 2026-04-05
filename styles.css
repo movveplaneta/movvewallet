@@ -675,13 +675,38 @@ body{
     opacity: 1;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* TABLET */
+@media (max-width: 1024px){
+
+    .ecosistema-pro {
+        padding: 80px 20px;
+    }
+
+    .ecosistema-grid {
+        gap: 20px;
+    }
+
+    .eco-card {
+        padding: 30px 25px;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .ecosistema-pro {
+        padding: 60px 15px;
+    }
+
     .ecosistema-grid {
         grid-template-columns: 1fr;
-        padding: 0 10px;
+        gap: 18px;
     }
-}
+
+    .eco-card {
+        padding: 25px 20px;
+        border-radius: 18px
 
 /* ================= FINTECH NIVEL DIOS ================= */
 
