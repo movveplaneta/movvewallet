@@ -354,3 +354,34 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ejecutar una vez al inicio
     toggleFloatingButtons();
 });
+
+// 6. SISTEMA DE GALERÍAS (CRECIMIENTO, INVERSIÓN, COMUNIDAD)
+    function initGallery(selector, captionId, intervalTime) {
+        const section = document.querySelector(selector);
+        if (!section) return;
+        const slides = section.querySelectorAll('.gallery-image');
+        const dots = section.querySelectorAll('.dot');
+        const caption = document.getElementById(captionId);
+        let index = 0;
+        let timer;
+
+        function update(newIdx) {
+            slides.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[newIdx].classList.add('active');
+            dots[newIdx].classList.add('active');
+            if (caption) caption.innerText = slides[newIdx].alt;
+            index = newIdx;
+        }
+
+        section.querySelector('.next-btn')?.addEventListener('click', () => { update((index + 1) % slides.length); startAuto(); });
+        section.querySelector('.prev-btn')?.addEventListener('click', () => { update((index - 1 + slides.length) % slides.length); startAuto(); });
+        dots.forEach((dot, idx) => dot.addEventListener('click', () => { update(idx); startAuto(); }));
+
+        function startAuto() { clearInterval(timer); timer = setInterval(() => update((index + 1) % slides.length), intervalTime); }
+        startAuto();
+    }
+
+    initGallery('.galeria-crecimiento', 'imageCaption', 4000);
+    initGallery('.galeria-inversion', 'galleryCaption', 5000);
+    initGallery('.galeria-comunidad', 'communityCaption', 4500);
