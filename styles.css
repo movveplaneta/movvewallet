@@ -179,78 +179,76 @@ body{
     }
 }
 
-/* ================= HERO SECTION ================= */
+/* ================= HERO NIVEL DIOS+ COMPLETO ================= */
+
 .hero {
     position: relative;
     height: 100vh;
-    width: 100%;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    color: white;
 }
 
-/* VIDEO DE FONDO */
+/* VIDEO */
 .hero-bg-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     object-fit: cover;
-    transform: translate(-50%, -50%); /* Centra el video perfectamente desde el medio */
+    transform: translate(-50%, -50%);
     z-index: 1;
+    filter: brightness(0.6);
 }
 
-/* OVERLAY (CAPA OSCURA PARA LECTURA) */
+/* OVERLAY */
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: linear-gradient(
-        to bottom, 
-        rgba(26, 34, 43, 0.7), 
+        to bottom,
+        rgba(26, 34, 43, 0.7),
         rgba(26, 34, 43, 0.9)
     );
     z-index: 2;
 }
 
+/* CONTENIDO */
 .hero-content {
     position: relative;
     z-index: 3;
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
     padding: 0 20px;
 }
 
-/* TÍTULO CON GLOW */
+/* TITULO */
 .hero-title {
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 7vw, 5rem);
     font-weight: 900;
-    letter-spacing: -2px;
+    line-height: 1.1;
     margin-bottom: 20px;
-    line-height: 1;
+    color: #fff;
 }
 
+/* LOGO */
 .logo-glow {
     color: var(--movve-green);
-    text-shadow: 0 0 30px rgba(0, 230, 118, 0.5);
+    text-shadow: 0 0 25px rgba(0, 230, 118, 0.6);
 }
 
-/* SUBTÍTULO Y EFECTO TYPING */
+/* SUBTITULO */
 .hero-subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    font-weight: 500;
-    margin-bottom: 40px;
-    color: var(--text-gray);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    margin-bottom: 20px;
+    color: var(--text-light);
 }
 
+/* TYPING */
 #typing {
-    color: white;
-    font-weight: 700;
     border-right: 3px solid var(--movve-green);
     padding-right: 5px;
     animation: blink 0.8s infinite;
@@ -260,87 +258,215 @@ body{
     50% { border-color: transparent; }
 }
 
-/* BOTONES HERO */
+/* ================= PRUEBA SOCIAL ================= */
+
+.hero-proof {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* ================= BOTONES ================= */
+
 .hero-buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 25px;
 }
 
 .btn-principal {
+    position: relative;
     background: var(--movve-green);
     color: var(--movve-dark);
-    padding: 18px 40px;
+    padding: 16px 35px;
     border-radius: 50px;
     font-weight: 800;
     text-decoration: none;
-    font-size: 1.1rem;
     transition: var(--transition);
-    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.3);
+    box-shadow: 0 10px 30px rgba(0,230,118,0.25);
+    overflow: hidden;
 }
 
 .btn-principal:hover {
     transform: translateY(-5px) scale(1.05);
-    background: white;
+    background: #ffffff;
+}
+
+.btn-principal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.2);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.btn-principal:hover::after {
+    opacity: 1;
 }
 
 .btn-secundario {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
-    color: white;
-    padding: 18px 40px;
+    color: #fff;
+    padding: 16px 35px;
     border-radius: 50px;
-    font-weight: 700;
     text-decoration: none;
-    font-size: 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-color);
     transition: var(--transition);
 }
 
 .btn-secundario:hover {
-    background: rgba(255, 255, 255, 0.2);
     border-color: var(--movve-green);
+    color: var(--movve-green);
 }
 
-/* ================= HERO MOBILE PRO ================= */
+/* ================= TEXTO CONFIANZA ================= */
 
-@media (max-width: 768px){
+.hero-trust {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* ================= STATS ================= */
+
+.hero-stats-live {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.hero-stats-live div {
+    text-align: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-stats-live div:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.hero-stats-live div:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.hero-stats-live strong {
+    font-size: 1.8rem;
+    color: #fff;
+    display: block;
+}
+
+.hero-stats-live span {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ================= SEGURIDAD ================= */
+
+.hero-security {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* ================= USUARIOS EN VIVO ================= */
+
+.live-users {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(0, 230, 118, 0.1);
+    color: var(--movve-green);
+    font-size: 0.85rem;
+    animation: pulse 2s infinite;
+    border: 1px solid rgba(0,230,118,0.2);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 rgba(0,230,118,0.4); }
+    70% { box-shadow: 0 0 15px rgba(0,230,118,0.6); }
+    100% { box-shadow: 0 0 0 rgba(0,230,118,0.4); }
+}
+
+/* ================= SCROLL ANIMATIONS ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
 
     .hero {
         height: auto;
-        min-height: 100vh;
-        padding: 80px 15px 40px;
+        padding: 120px 20px 80px;
     }
 
-    /* VIDEO AJUSTE */
-    .hero-bg-video {
-        object-position: center;
-    }
-
-    /* CONTENIDO */
-    .hero-content {
-        padding: 0 10px;
-        max-width: 100%;
-    }
-
-    /* TITULO */
     .hero-title {
-        font-size: clamp(2.2rem, 8vw, 3rem);
-        letter-spacing: -1px;
+        font-size: 2.8rem;
     }
 
-    /* SUBTITULO */
+    .hero-stats-live {
+        gap: 25px;
+    }
+}
+
+/* ================= MOVIL ================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 100px 15px 70px;
+    }
+
+    .hero-bg-video {
+        width: 140%;
+        height: 140%;
+        filter: brightness(0.5);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
     .hero-subtitle {
         font-size: 1rem;
-        margin-bottom: 25px;
-        line-height: 1.4;
     }
 
-    /* BOTONES */
+    .hero-proof {
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+
     .hero-buttons {
         flex-direction: column;
-        width: 100%;
         gap: 12px;
     }
 
@@ -349,25 +475,34 @@ body{
         width: 100%;
         padding: 14px;
         font-size: 0.95rem;
-        border-radius: 40px;
     }
 
+    .hero-trust {
+        font-size: 0.8rem;
+    }
+
+    .hero-stats-live {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-security {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.75rem;
+    }
+
+    .live-users {
+        font-size: 0.75rem;
+    }
 }
 
+/* ================= MOVIL PEQUEÑO ================= */
 
-/* 📱 MÓVILES PEQUEÑOS */
-@media (max-width: 480px){
-
-    .hero {
-        padding: 70px 10px 30px;
-    }
+@media (max-width: 480px) {
 
     .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.9rem;
+        font-size: 1.7rem;
     }
 
     .btn-principal,
@@ -376,6 +511,9 @@ body{
         padding: 12px;
     }
 
+    .hero-proof {
+        font-size: 0.7rem;
+    }
 }
 
 /* ================= SECCIÓN PRESENTACIÓN ================= */
