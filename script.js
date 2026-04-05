@@ -416,3 +416,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ejecutar al inicio
     toggleMovveButton();
 });
+
+// =================== WA FLOATING BUTTON: OCULTAR AL FOOTER ===================
+document.addEventListener("DOMContentLoaded", () => {
+    const waBtn = document.getElementById("wa-radar");
+    const footer = document.querySelector("footer");
+
+    if (!waBtn || !footer) return;
+
+    function toggleWaButton() {
+        const scrollPos = window.scrollY + window.innerHeight;
+        const footerTop = footer.offsetTop;
+
+        if (scrollPos >= footerTop) {
+            // Ocultar el botón
+            waBtn.style.opacity = "0";
+            waBtn.style.transform = "translateY(20px)";
+            waBtn.style.pointerEvents = "none"; // para que no se pueda clicar
+        } else {
+            // Mostrar el botón
+            waBtn.style.opacity = "1";
+            waBtn.style.transform = "translateY(0)";
+            waBtn.style.pointerEvents = "auto";
+        }
+    }
+
+    // Escuchar scroll y resize
+    window.addEventListener("scroll", toggleWaButton);
+    window.addEventListener("resize", toggleWaButton);
+
+    // Ejecutar al inicio
+    toggleWaButton();
+});
