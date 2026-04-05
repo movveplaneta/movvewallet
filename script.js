@@ -148,102 +148,94 @@ popup.addEventListener("click", (e) => {
     }
 });
 
-// ================= ANIMACIÓN DE NÚMEROS HERO =================
-function animateValue(element, start, end, duration = 2000, suffix = '') {
-    let startTime = null;
+// ================= HERO NIVEL DIOS =================
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Función de easing tipo "easeOutQuad" para efecto más natural
-    function easeOutQuad(t) {
-        return t * (2 - t);
-    }
+    // ===== MÁQUINA DE ESCRIBIR =====
+    const typingEl = document.getElementById('typing');
+    const typingWords = ["constante", "inteligente", "rentable", "automática"];
+    let typingIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-    function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        let progress = (timestamp - startTime) / duration;
-        progress = Math.min(progress, 1);
-        let easedProgress = easeOutQuad(progress);
-        let value = Math.floor(start + (end - start) * easedProgress);
-
-        // Formato correcto según tipo
-        if (suffix === '%') {
-            element.textContent = `${value}%`;
-        } else if (suffix === '$') {
-            element.textContent = `$${value.toLocaleString()}`;
+    function typeLoop() {
+        if (!typingEl) return;
+        const currentWord = typingWords[typingIndex];
+        if (!deleting) {
+            typingEl.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === currentWord.length) {
+                deleting = true;
+                setTimeout(typeLoop, 800);
+            } else {
+                setTimeout(typeLoop, 120);
+            }
         } else {
-            element.textContent = value.toLocaleString();
+            typingEl.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                deleting = false;
+                typingIndex = (typingIndex + 1) % typingWords.length;
+                setTimeout(typeLoop, 200);
+            } else {
+                setTimeout(typeLoop, 60);
+            }
         }
+    }
+    typeLoop();
 
-        if (progress < 1) {
-            requestAnimationFrame(step);
-        } else {
-            // Asegurar valor final exacto
-            if (suffix === '%') element.textContent = `${end}%`;
-            else if (suffix === '$') element.textContent = `$${end.toLocaleString()}`;
-            else element.textContent = end.toLocaleString();
+    // ===== ANIMACIÓN DE NÚMEROS =====
+    function animateValue(element, start, end, duration = 2000, suffix = '') {
+        if (!element) return;
+        let startTime = null;
+
+        function easeOutQuad(t) { return t * (2 - t); }
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const value = Math.floor(start + (end - start) * easeOutQuad(progress));
+
+            if (suffix === '%') element.textContent = `${value}%`;
+            else if (suffix === '$') element.textContent = `$${value.toLocaleString()}`;
+            else element.textContent = value.toLocaleString();
+
+            if (progress < 1) requestAnimationFrame(step);
+            else {
+                // asegurar valor final exacto
+                if (suffix === '%') element.textContent = `${end}%`;
+                else if (suffix === '$') element.textContent = `$${end.toLocaleString()}`;
+                else element.textContent = end.toLocaleString();
+            }
         }
+        requestAnimationFrame(step);
     }
 
-    requestAnimationFrame(step);
-}
-
-// ================= ELEMENTOS HERO =================
-const balanceEl = document.querySelector('.hero-stats-live div:nth-child(1) strong');
-const profitEl = document.querySelector('.hero-stats-live div:nth-child(2) strong');
-const usersEl = document.querySelector('.hero-stats-live div:nth-child(3) strong');
-
-// Lanzar animación al cargar
-animateValue(balanceEl, 0, 42000000, 2500, '$');
-animateValue(profitEl, 0, 124, 2500, '%');
-usersEl.textContent = "24/7"; // Actividad 24/7
-
-// ================= MÁQUINA DE ESCRIBIR =================
-const typingEl = document.getElementById('typing');
-const typingWords = ["constante", "inteligente", "rentable", "automática"];
-let typingIndex = 0;
-let charIndex = 0;
-
-function typeWord() {
-    if (charIndex < typingWords[typingIndex].length) {
-        typingEl.textContent += typingWords[typingIndex][charIndex];
-        charIndex++;
-        setTimeout(typeWord, 120);
-    } else {
-        setTimeout(eraseWord, 1000);
+    const statsEls = document.querySelectorAll('.hero-stats-live strong');
+    if (statsEls.length >= 3) {
+        animateValue(statsEls[0], 0, 42000000, 2500, '$');  // Balance
+        animateValue(statsEls[1], 0, 124, 2500, '%');       // Rentabilidad
+        statsEls[2].textContent = "24/7";                   // Actividad fija
     }
-}
 
-function eraseWord() {
-    if (charIndex > 0) {
-        typingEl.textContent = typingWords[typingIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(eraseWord, 60);
-    } else {
-        typingIndex = (typingIndex + 1) % typingWords.length;
-        setTimeout(typeWord, 200);
+    // ===== USUARIOS EN VIVO =====
+    const liveUsersEl = document.querySelector('.live-users');
+    let liveUsers = 128;
+    function updateLiveUsers() {
+        if (!liveUsersEl) return;
+        let delta = Math.floor(Math.random() * 5) - 2; // -2 a +2
+        liveUsers = Math.max(50, liveUsers + delta);
+        liveUsersEl.textContent = `🟢 ${liveUsers} personas activas ahora mismo`;
     }
-}
+    setInterval(updateLiveUsers, 4000);
 
-document.addEventListener('DOMContentLoaded', typeWord);
+    // ===== SCROLL HERO =====
+    const heroOverlay = document.querySelector('.hero-overlay');
+    window.addEventListener('scroll', () => {
+        if (!heroOverlay) return;
+        heroOverlay.style.opacity = Math.min(0.6, window.scrollY / 800);
+    });
 
-// ================= USUARIOS EN VIVO =================
-const liveUsersEl = document.querySelector('.live-users');
-let liveUsers = 128;
-
-function updateLiveUsers() {
-    // Sumar o restar usuarios aleatoriamente para dar sensación de actividad
-    let delta = Math.floor(Math.random() * 5) - 2; // -2 a +2
-    liveUsers = Math.max(50, liveUsers + delta);
-    liveUsersEl.textContent = `🟢 ${liveUsers} personas activas ahora mismo`;
-}
-
-setInterval(updateLiveUsers, 4000); // Cada 4 segundos
-
-// ================= SCROLL HERO (opcional efecto) =================
-const hero = document.getElementById('hero');
-window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY;
-    const overlay = document.querySelector('.hero-overlay');
-    overlay.style.opacity = Math.min(0.6, scrollPos / 800);
 });
 
 // JS: Animación secuencial al scroll
