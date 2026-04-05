@@ -1368,26 +1368,26 @@ body{
     }
 }
 
-/* ================= FOOTER PRO MOVVE ================= */
+/* ================= FOOTER BLANCO PRO ================= */
 
 .footer-pro {
     position: relative;
-    background: var(--movve-dark);
-    color: #fff;
+    background: var(--movve-bg);
+    color: var(--text-dark);
     padding: 80px 20px 30px;
-    overflow: hidden;
+    border-top: 1px solid var(--border-color);
 }
 
-/* GLOW */
+/* GLOW SUAVE */
 .footer-glow {
     position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0,230,118,0.2), transparent 70%);
-    top: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,230,118,0.08), transparent 70%);
+    top: -120px;
     left: 50%;
     transform: translateX(-50%);
-    filter: blur(80px);
+    filter: blur(60px);
 }
 
 /* CONTENEDOR */
@@ -1433,20 +1433,22 @@ body{
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
-    border-radius: 8px;
+    padding: 9px 14px;
+    border-radius: 10px;
     font-size: 13px;
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.05);
+    color: var(--text-dark);
+    background: #fff;
     border: 1px solid var(--border-color);
     transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .wallet-btn:hover {
     background: var(--movve-green);
     color: #000;
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 /* LINKS */
@@ -1454,7 +1456,7 @@ body{
 .footer-social h4 {
     margin-bottom: 15px;
     font-size: 16px;
-    color: #fff;
+    color: var(--text-dark);
 }
 
 .footer-links a {
@@ -1468,7 +1470,7 @@ body{
 
 .footer-links a:hover {
     color: var(--movve-green);
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
 /* REDES */
@@ -1480,23 +1482,25 @@ body{
 .social-icons a {
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.05);
+    background: #fff;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    transition: var(--transition);
+    color: var(--text-dark);
     border: 1px solid var(--border-color);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .social-icons a:hover {
     background: var(--movve-green);
     color: #000;
     transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 
-/* BOTTOM */
+/* FOOTER BOTTOM */
 .footer-bottom {
     margin-top: 50px;
     border-top: 1px solid var(--border-color);
@@ -1515,14 +1519,15 @@ body{
 
 /* BOTÓN SCROLL */
 #scrollTop {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     border: none;
     background: var(--movve-green);
     color: #000;
     cursor: pointer;
     transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 #scrollTop:hover {
@@ -1532,16 +1537,6 @@ body{
 
 /* ================= RESPONSIVE ================= */
 
-/* TABLET */
-@media (max-width: 1024px){
-
-    .footer-container {
-        gap: 30px;
-    }
-
-}
-
-/* MÓVIL */
 @media (max-width: 768px){
 
     .footer-pro {
@@ -1565,19 +1560,6 @@ body{
     .footer-bottom {
         flex-direction: column;
         text-align: center;
-    }
-
-}
-
-/* MÓVIL PEQUEÑO */
-@media (max-width: 480px){
-
-    .footer-logo {
-        width: 120px;
-    }
-
-    .footer-brand p {
-        font-size: 13px;
     }
 
 }
