@@ -148,85 +148,102 @@ popup.addEventListener("click", (e) => {
     }
 });
 
-// ================= HERO DINÁMICO =================
+// ================= ANIMACIÓN DE NÚMEROS HERO =================
+function animateValue(element, start, end, duration = 2000, suffix = '') {
+    let startTime = null;
 
-// ===== TYPING EFECTO =====
-const typingElement = document.getElementById("typing");
-const typingWords = ["ganancias", "libertad financiera", "ingresos pasivos", "experiencia automática"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+    // Función de easing tipo "easeOutQuad" para efecto más natural
+    function easeOutQuad(t) {
+        return t * (2 - t);
+    }
 
-function type() {
-    const current = typingWords[wordIndex];
-    let displayed = current.substring(0, charIndex);
+    function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        let progress = (timestamp - startTime) / duration;
+        progress = Math.min(progress, 1);
+        let easedProgress = easeOutQuad(progress);
+        let value = Math.floor(start + (end - start) * easedProgress);
 
-    typingElement.textContent = displayed;
-
-    if (!isDeleting && charIndex < current.length) {
-        charIndex++;
-        setTimeout(type, 120);
-    } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(type, 60);
-    } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            wordIndex = (wordIndex + 1) % typingWords.length;
+        // Formato correcto según tipo
+        if (suffix === '%') {
+            element.textContent = `${value}%`;
+        } else if (suffix === '$') {
+            element.textContent = `$${value.toLocaleString()}`;
+        } else {
+            element.textContent = value.toLocaleString();
         }
-        setTimeout(type, 800);
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            // Asegurar valor final exacto
+            if (suffix === '%') element.textContent = `${end}%`;
+            else if (suffix === '$') element.textContent = `$${end.toLocaleString()}`;
+            else element.textContent = end.toLocaleString();
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
+// ================= ELEMENTOS HERO =================
+const balanceEl = document.querySelector('.hero-stats-live div:nth-child(1) strong');
+const profitEl = document.querySelector('.hero-stats-live div:nth-child(2) strong');
+const usersEl = document.querySelector('.hero-stats-live div:nth-child(3) strong');
+
+// Lanzar animación al cargar
+animateValue(balanceEl, 0, 42000000, 2500, '$');
+animateValue(profitEl, 0, 124, 2500, '%');
+usersEl.textContent = "24/7"; // Actividad 24/7
+
+// ================= MÁQUINA DE ESCRIBIR =================
+const typingEl = document.getElementById('typing');
+const typingWords = ["constante", "inteligente", "rentable", "automática"];
+let typingIndex = 0;
+let charIndex = 0;
+
+function typeWord() {
+    if (charIndex < typingWords[typingIndex].length) {
+        typingEl.textContent += typingWords[typingIndex][charIndex];
+        charIndex++;
+        setTimeout(typeWord, 120);
+    } else {
+        setTimeout(eraseWord, 1000);
     }
 }
 
-type();
+function eraseWord() {
+    if (charIndex > 0) {
+        typingEl.textContent = typingWords[typingIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseWord, 60);
+    } else {
+        typingIndex = (typingIndex + 1) % typingWords.length;
+        setTimeout(typeWord, 200);
+    }
+}
 
-// ===== USUARIOS EN VIVO =====
-const liveUsers = document.querySelector(".live-users");
+document.addEventListener('DOMContentLoaded', typeWord);
+
+// ================= USUARIOS EN VIVO =================
+const liveUsersEl = document.querySelector('.live-users');
+let liveUsers = 128;
 
 function updateLiveUsers() {
-    const randomUsers = Math.floor(100 + Math.random() * 50);
-    liveUsers.textContent = `🟢 ${randomUsers} personas activas ahora mismo`;
-}
-setInterval(updateLiveUsers, 5000);
-
-// ===== STATS ANIMADOS AL SCROLL =====
-const stats = document.querySelectorAll(".hero-stats-live strong");
-
-function animateStats() {
-    stats.forEach(stat => {
-        const target = parseInt(stat.textContent.replace(/\D/g, "")) || 0;
-        let count = 0;
-        const increment = Math.ceil(target / 100);
-        const interval = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-                count = target;
-                clearInterval(interval);
-            }
-            stat.textContent = stat.textContent.includes("%") ? `${count}%` : `$${count.toLocaleString()}`;
-        }, 20);
-    });
+    // Sumar o restar usuarios aleatoriamente para dar sensación de actividad
+    let delta = Math.floor(Math.random() * 5) - 2; // -2 a +2
+    liveUsers = Math.max(50, liveUsers + delta);
+    liveUsersEl.textContent = `🟢 ${liveUsers} personas activas ahora mismo`;
 }
 
-let statsAnimated = false;
-window.addEventListener("scroll", () => {
-    const heroStats = document.querySelector(".hero-stats-live");
-    const rect = heroStats.getBoundingClientRect();
-    if (!statsAnimated && rect.top < window.innerHeight) {
-        animateStats();
-        statsAnimated = true;
-    }
-});
+setInterval(updateLiveUsers, 4000); // Cada 4 segundos
 
-// ===== BOTONES MICROINTERACCION =====
-const heroBtns = document.querySelectorAll(".hero-buttons a");
-heroBtns.forEach(btn => {
-    btn.addEventListener("mouseenter", () => {
-        btn.style.transform = "scale(1.05)";
-    });
-    btn.addEventListener("mouseleave", () => {
-        btn.style.transform = "scale(1)";
-    });
+// ================= SCROLL HERO (opcional efecto) =================
+const hero = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY;
+    const overlay = document.querySelector('.hero-overlay');
+    overlay.style.opacity = Math.min(0.6, scrollPos / 800);
 });
 
 // JS: Animación secuencial al scroll
