@@ -813,19 +813,3 @@ window.addEventListener("load", () => {
         content.style.transform = "translateY(0)";
     }, 200);
 });
-
-const toggle = document.querySelector(".menu-toggle");
-const navMenu = document.getElementById("nav-links");
-
-toggle.addEventListener("click", () => {
-    toggle.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
-
-// cerrar al hacer click
-document.querySelectorAll(".nav-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-        toggle.classList.remove("active");
-        navMenu.classList.remove("active");
-    });
-});
