@@ -417,7 +417,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleMovveButton();
 });
 
-// =================== WA FLOATING BUTTON: OCULTAR AL FOOTER ===================
 document.addEventListener("DOMContentLoaded", () => {
     const waBtn = document.getElementById("wa-radar");
     const footer = document.querySelector("footer");
@@ -429,15 +428,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const footerTop = footer.offsetTop;
 
         if (scrollPos >= footerTop) {
-            // Ocultar el botón
-            waBtn.style.opacity = "0";
-            waBtn.style.transform = "translateY(20px)";
-            waBtn.style.pointerEvents = "none"; // para que no se pueda clicar
+            waBtn.classList.add("hide-floating");
+            waBtn.classList.remove("show-floating");
         } else {
-            // Mostrar el botón
-            waBtn.style.opacity = "1";
-            waBtn.style.transform = "translateY(0)";
-            waBtn.style.pointerEvents = "auto";
+            waBtn.classList.add("show-floating");
+            waBtn.classList.remove("hide-floating");
         }
     }
 
