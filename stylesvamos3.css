@@ -206,13 +206,109 @@ body{
     box-shadow: var(--shadow-lg);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .inversion-pro .titulo { font-size: 2.2rem; }
-    .inversion-pro .info-list { grid-template-columns: 1fr; }
-    .inversion-pro .acciones { flex-direction: column-reverse; align-items: stretch; }
-    .inversion-pro .btn-explorar { justify-content: center; }
-    .inversion-pro .btn-back { justify-content: center; }
+/* TABLET */
+@media (max-width: 1024px){
+
+    .inversion-pro {
+        padding: 80px 20px;
+    }
+
+    .inversion-pro .titulo {
+        font-size: 2.8rem;
+    }
+
+    .inversion-pro .descripcion {
+        font-size: 1.05rem;
+    }
+
+    .inversion-pro .info-list {
+        gap: 20px;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .inversion-pro {
+        padding: 60px 15px;
+        align-items: flex-start;
+    }
+
+    .inversion-pro .titulo {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .inversion-pro .descripcion {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* GRID MÁS COMPACTO */
+    .inversion-pro .info-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* CARDS MÁS LIGERAS */
+    .inversion-pro .info-list li {
+        padding: 18px;
+        gap: 12px;
+    }
+
+    .inversion-pro .icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .inversion-pro .info strong {
+        font-size: 1rem;
+    }
+
+    .inversion-pro .info span {
+        font-size: 0.85rem;
+    }
+
+    /* BOTONES TIPO APP */
+    .inversion-pro .acciones {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .inversion-pro .btn-explorar {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    .inversion-pro .btn-back {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .inversion-pro .titulo {
+        font-size: 1.6rem;
+    }
+
+    .inversion-pro .descripcion {
+        font-size: 0.85rem;
+    }
+
+    .inversion-pro .btn-explorar {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
 }
 
 /* ================= GALERÍA DE INVERSIÓN ================= */
@@ -347,8 +443,102 @@ body{
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-    .galeria-inversion .gallery { aspect-ratio: 4 / 3; }
+/* TABLET */
+@media (max-width: 1024px){
+
+    .galeria-inversion {
+        padding: 70px 20px;
+    }
+
+    .galeria-inversion .gallery-title {
+        font-size: 2.3rem;
+    }
+
+    .galeria-inversion .gallery-sub {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .galeria-inversion .controls {
+        gap: 15px;
+    }
+
+}
+
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .galeria-inversion {
+        padding: 60px 15px;
+    }
+
+    .galeria-inversion .gallery-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .galeria-inversion .gallery-sub {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+
+    /* GALERÍA MÁS COMPACTA */
+    .galeria-inversion .gallery {
+        aspect-ratio: 4 / 3;
+        border-width: 2px;
+    }
+
+    /* CAPTION MÁS LIMPIO */
+    .galeria-inversion .gallery-caption {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 0.75rem;
+    }
+
+    /* BOTONES MÁS PEQUEÑOS */
+    .galeria-inversion .prev-btn,
+    .galeria-inversion .next-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* DOTS MÁS PRO */
+    .galeria-inversion .dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .galeria-inversion .dot.active {
+        width: 18px;
+    }
+
+}
+
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .galeria-inversion .gallery-title {
+        font-size: 1.5rem;
+    }
+
+    .galeria-inversion .gallery-sub {
+        font-size: 0.8rem;
+    }
+
+    .galeria-inversion .gallery-caption {
+        font-size: 0.65rem;
+        padding: 6px 12px;
+    }
+
+    .galeria-inversion .prev-btn,
+    .galeria-inversion .next-btn {
+        width: 35px;
+        height: 35px;
+    }
+
 }
 
 /* ESTILOS DEL FOOTER MOVVE */
