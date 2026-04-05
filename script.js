@@ -762,3 +762,96 @@ window.addEventListener('scroll', () => {
     }
 
 });
+
+/* ================= HERO MOVVE JS NIVEL DIOS+ ================= */
+
+/* TYPING */
+const words = ["Digital", "Financiero", "Inteligente", "Web3", "Global"];
+let i = 0, j = 0;
+let currentWord = "";
+let isDeleting = false;
+
+const typing = document.getElementById("typing");
+
+function type() {
+    currentWord = words[i];
+
+    if (isDeleting) {
+        typing.textContent = currentWord.substring(0, j--);
+    } else {
+        typing.textContent = currentWord.substring(0, j++);
+    }
+
+    if (!isDeleting && j === currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 1200);
+        return;
+    }
+
+    if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 90);
+}
+
+document.addEventListener("DOMContentLoaded", type);
+
+/* VIDEO AUTO CONTROL */
+const video = document.querySelector(".hero-bg-video");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            video.play().catch(()=>{});
+        } else {
+            video.pause();
+        }
+    });
+}, { threshold: 0.3 });
+
+if (video) observer.observe(video);
+
+/* PARALLAX */
+const heroContent = document.querySelector(".hero-content");
+
+window.addEventListener("scroll", () => {
+    let scroll = window.scrollY;
+
+    if (heroContent) {
+        heroContent.style.transform = `translateY(${scroll * 0.2}px)`;
+        heroContent.style.opacity = 1 - scroll / 600;
+    }
+});
+
+/* RIPPLE */
+document.querySelectorAll(".btn-principal, .btn-secundario")
+.forEach(btn => {
+    btn.addEventListener("click", e => {
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+
+        const rect = btn.getBoundingClientRect();
+        ripple.style.left = `${e.clientX - rect.left}px`;
+        ripple.style.top = `${e.clientY - rect.top}px`;
+
+        btn.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+/* ENTRADA ANIMADA */
+window.addEventListener("load", () => {
+    const content = document.querySelector(".hero-content");
+
+    content.style.opacity = "0";
+    content.style.transform = "translateY(40px)";
+
+    setTimeout(() => {
+        content.style.transition = "all 1s ease";
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+    }, 200);
+});
