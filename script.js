@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. NAVEGACIÓN Y MENÚ MÓVIL
     const nav = document.querySelector('.navbar');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenu = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     let lastScrollY = window.scrollY;
 
