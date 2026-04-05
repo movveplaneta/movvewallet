@@ -271,9 +271,9 @@ function animateValue(el, start, end, duration, suffix = '') {
     }, stepTime);
 }
 
-animateValue(balanceEl, 0, 42000000, 1500, '$');
-animateValue(profitEl, 0, 124, 1500, '%');
-animateValue(usersEl, 0, 20000, 1500);
+animateValue(balanceEl, 0, 42000000, 2000, '$');
+animateValue(profitEl, 0, 124, 2000, '%');
+animateValue(usersEl, 0, 20000, 2000);
 
 // ================= MINI CHARTS DINÁMICOS =================
 document.querySelectorAll('.mini-chart').forEach((canvas) => {
