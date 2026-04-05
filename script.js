@@ -228,3 +228,97 @@ heroBtns.forEach(btn => {
         btn.style.transform = "scale(1)";
     });
 });
+
+// JS: Animación secuencial al scroll
+const presentCards = document.querySelectorAll(".cards-pro .card-pro");
+
+function animatePresentCards() {
+    presentCards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            setTimeout(() => card.classList.add("active"), i * 150);
+        }
+    });
+}
+
+window.addEventListener("scroll", animatePresentCards);
+
+const ecoCards = document.querySelectorAll(".eco-card");
+
+function animateEcoCards() {
+    ecoCards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            setTimeout(() => card.classList.add("active"), i * 150);
+        }
+    });
+}
+
+window.addEventListener("scroll", animateEcoCards);
+
+// ================= STATS ANIMADOS =================
+const balanceEl = document.getElementById('balance');
+const profitEl = document.getElementById('profit');
+const usersEl = document.getElementById('users');
+
+function animateValue(el, start, end, duration, suffix = '') {
+    let current = start;
+    const stepTime = Math.max(Math.floor(duration / (end - start)), 20);
+    const timer = setInterval(() => {
+        current += 1;
+        el.textContent = current.toLocaleString() + suffix;
+        if (current >= end) clearInterval(timer);
+    }, stepTime);
+}
+
+animateValue(balanceEl, 0, 42000000, 1500, '$');
+animateValue(profitEl, 0, 124, 1500, '%');
+animateValue(usersEl, 0, 128, 1500);
+
+// ================= MINI CHARTS DINÁMICOS =================
+document.querySelectorAll('.mini-chart').forEach((canvas) => {
+    const ctx = canvas.getContext('2d');
+    const color = canvas.dataset.color === 'green' ? 'rgba(0,230,118,1)' : 'rgba(255,0,85,1)';
+    
+    const data = Array.from({length: 10}, () => Math.random() * 10 + 50);
+    
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: 10}, (_, i) => i + 1),
+            datasets: [{
+                data: data,
+                borderColor: color,
+                backgroundColor: color.replace('1', '0.2'),
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { display: false }, y: { display: false } }
+        }
+    });
+
+    // ANIMACION DE MERCADO EN VIVO
+    setInterval(() => {
+        data.shift();
+        data.push(Math.random() * 10 + 50);
+        chart.update();
+    }, 2000);
+});
+
+// ================= CAMBIO DINÁMICO DE STATUS =================
+const rows = document.querySelectorAll('.fintech-table .row:not(.head)');
+rows.forEach(row => {
+    setInterval(() => {
+        const status = row.querySelector('.status');
+        const change = Math.random() > 0.5;
+        status.textContent = change ? 'Activo' : 'Bajo';
+        status.className = change ? 'status up' : 'status down';
+    }, 4000);
+});
