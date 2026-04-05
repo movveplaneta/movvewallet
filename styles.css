@@ -505,8 +505,6 @@ body{
     transform: scale(1.5);
 }
 
-/* ================= RESPONSIVE NIVEL DIOS ================= */
-
 /* TABLET */
 @media (max-width: 1024px){
 
@@ -527,7 +525,6 @@ body{
     }
 
 }
-
 
 /* 📱 MÓVIL PRO */
 @media (max-width: 768px){
@@ -569,7 +566,6 @@ body{
     }
 
 }
-
 
 /* 📱 MÓVIL PEQUEÑO */
 @media (max-width: 480px){
