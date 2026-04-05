@@ -195,11 +195,108 @@ body{
     box-shadow: var(--shadow-lg);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .crecimiento-pro .titulo { font-size: 2.5rem; }
-    .acciones { flex-direction: column-reverse; align-items: flex-start; }
-    .btn-explorar { width: 100%; justify-content: center; }
+/* TABLET */
+@media (max-width: 1024px){
+
+    .crecimiento-pro {
+        padding: 80px 20px;
+    }
+
+    .crecimiento-pro .titulo {
+        font-size: 2.8rem;
+    }
+
+    .descripcion {
+        font-size: 1.05rem;
+    }
+
+    .info-list {
+        gap: 20px;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .crecimiento-pro {
+        padding: 60px 15px;
+        align-items: flex-start;
+    }
+
+    .crecimiento-pro .titulo {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .descripcion {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* LISTA MÁS COMPACTA */
+    .info-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .info-list li {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .info-list .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .info-list .info strong {
+        font-size: 1rem;
+    }
+
+    .info-list .info span {
+        font-size: 0.85rem;
+    }
+
+    /* BOTONES APP STYLE */
+    .acciones {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .btn-explorar {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    .btn-back {
+        justify-content: center;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .crecimiento-pro .titulo {
+        font-size: 1.6rem;
+    }
+
+    .descripcion {
+        font-size: 0.85rem;
+    }
+
+    .btn-explorar {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
 }
 
 /* ================= GALERÍA DE CRECIMIENTO (ROOT LIGHT) ================= */
@@ -337,10 +434,98 @@ body{
     border-radius: 10px;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .gallery-title { font-size: 2rem; }
-    .gallery { aspect-ratio: 4 / 3; }
+/* TABLET */
+@media (max-width: 1024px){
+
+    .galeria-crecimiento {
+        padding: 70px 20px;
+    }
+
+    .gallery-title {
+        font-size: 2.3rem;
+    }
+
+    .gallery-sub {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .controls {
+        gap: 15px;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .galeria-crecimiento {
+        padding: 60px 15px;
+    }
+
+    .gallery-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .gallery-sub {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+
+    /* GALERÍA MÁS APP STYLE */
+    .gallery {
+        aspect-ratio: 4 / 3;
+        border-width: 2px;
+    }
+
+    /* CAPTION MÁS COMPACTO */
+    .gallery-caption {
+        top: 10px;
+        left: 10px;
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    /* BOTONES MÁS PEQUEÑOS */
+    .prev-btn, .next-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* DOTS MÁS LIMPIOS */
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dot.active {
+        width: 20px;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .gallery-title {
+        font-size: 1.5rem;
+    }
+
+    .gallery-sub {
+        font-size: 0.8rem;
+    }
+
+    .gallery-caption {
+        font-size: 0.65rem;
+    }
+
+    .prev-btn, .next-btn {
+        width: 35px;
+        height: 35px;
+    }
+
 }
 
 /* ESTILOS DEL FOOTER MOVVE */
