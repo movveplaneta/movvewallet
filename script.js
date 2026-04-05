@@ -385,3 +385,29 @@ document.addEventListener("DOMContentLoaded", () => {
     initGallery('.galeria-crecimiento', 'imageCaption', 4000);
     initGallery('.galeria-inversion', 'galleryCaption', 5000);
     initGallery('.galeria-comunidad', 'communityCaption', 4500);
+
+// 3. GRÁFICA (Chart.js)
+    const ctx = document.getElementById('movveChart');
+    if (ctx && typeof Chart !== 'undefined') {
+        const chartCtx = ctx.getContext('2d');
+        const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(0, 255, 136, 0.3)');
+        gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+
+        new Chart(chartCtx, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Rendimiento',
+                    data: [12000, 19000, 15000, 25000, 22000, 30000],
+                    borderColor: '#00ff88',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: gradient
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+    }
