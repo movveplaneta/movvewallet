@@ -215,6 +215,15 @@ body{
     }
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
+/* LINK ACTIVO */
+.active-link {
+    color: var(--movve-green) !important;
+}
+
 /* ================= HERO NIVEL DIOS+ COMPLETO ================= */
 
 .hero {
