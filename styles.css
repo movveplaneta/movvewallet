@@ -747,14 +747,6 @@ body{
     background: var(--movve-green);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-    .row {
-        grid-template-columns: 1fr 1fr;
-        row-gap: 10px;
-    }
-}
-
 /* ================= APP LAYOUT ================= */
 
 .app-container {
@@ -861,6 +853,135 @@ body{
     height: 35px;
 }
 
+/* -------- TABLET -------- */
+@media (max-width: 1024px){
+
+    .main {
+        padding: 20px;
+    }
+
+    .fintech-header h2 {
+        font-size: 24px;
+    }
+
+    .stat h3 {
+        font-size: 20px;
+    }
+
+}
+
+/* -------- MÓVIL PRO -------- */
+@media (max-width: 768px){
+
+    /* APP EN COLUMNA */
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* SIDEBAR → ARRIBA */
+    .sidebar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+    }
+
+    .sidebar nav a {
+        font-size: 12px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    /* MAIN */
+    .main {
+        padding: 15px;
+    }
+
+    /* HEADER */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .btn-fintech {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* STATS → 1 COLUMNA */
+    .fintech-stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* TABLA → FORMATO CARD */
+    .fintech-table {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .row {
+        display: block;
+        background: #fff;
+        margin-bottom: 15px;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .row.head {
+        display: none;
+    }
+
+    .row span {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .row span::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-light);
+    }
+
+    .mini-chart {
+        height: 40px;
+        margin-top: 8px;
+    }
+
+}
+
+/* -------- MÓVIL PEQUEÑO -------- */
+@media (max-width: 480px){
+
+    .fintech {
+        padding: 30px 15px;
+    }
+
+    .fintech-header h2 {
+        font-size: 20px;
+    }
+
+    .btn-fintech {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .stat {
+        padding: 15px;
+    }
+
+}
 /* ================= CTA SUPER PRO ================= */
 
 .cta-super-pro {
