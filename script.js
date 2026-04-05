@@ -323,3 +323,34 @@ rows.forEach(row => {
     }, 4000);
 });
 
+// =================== BOTONES FLOTANTES OCULTAR/mostrar ===================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const movveBtn = document.querySelector(".movve-floating-container");
+    const waBtn = document.querySelector("#wa-radar");
+    const footer = document.querySelector("footer"); // Asegúrate que tu footer tenga etiqueta <footer>
+
+    if (!footer) return; // Si no hay footer, no hacer nada
+
+    function toggleFloatingButtons() {
+        const scrollPos = window.scrollY + window.innerHeight;
+        const footerTop = footer.offsetTop;
+
+        if (scrollPos >= footerTop) {
+            // Ocultar botones
+            movveBtn.classList.add("hide-floating");
+            waBtn.classList.add("hide-floating");
+        } else {
+            // Mostrar botones
+            movveBtn.classList.remove("hide-floating");
+            waBtn.classList.remove("hide-floating");
+        }
+    }
+
+    // Escuchar scroll y resize
+    window.addEventListener("scroll", toggleFloatingButtons);
+    window.addEventListener("resize", toggleFloatingButtons);
+
+    // Ejecutar una vez al inicio
+    toggleFloatingButtons();
+});
