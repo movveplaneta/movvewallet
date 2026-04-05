@@ -202,11 +202,111 @@ body{
     box-shadow: var(--shadow-lg);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .comunidad-pro .titulo { font-size: 2.5rem; }
-    .comunidad-pro .acciones { flex-direction: column-reverse; width: 100%; }
-    .comunidad-pro .btn-explorar, .comunidad-pro .btn-back { width: 100%; justify-content: center; }
+
+/* TABLET */
+@media (max-width: 1024px){
+
+    .comunidad-pro {
+        padding: 80px 20px;
+    }
+
+    .comunidad-pro .titulo {
+        font-size: 2.8rem;
+    }
+
+    .comunidad-pro .descripcion {
+        font-size: 1.05rem;
+    }
+
+    .comunidad-pro .info-list {
+        gap: 20px;
+    }
+
+}
+
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .comunidad-pro {
+        padding: 60px 15px;
+        align-items: flex-start;
+    }
+
+    .comunidad-pro .titulo {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .comunidad-pro .descripcion {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* CARDS MÁS COMPACTAS */
+    .comunidad-pro .info-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .comunidad-pro .info-list li {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .comunidad-pro .icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .comunidad-pro .info strong {
+        font-size: 1rem;
+    }
+
+    .comunidad-pro .info span {
+        font-size: 0.85rem;
+    }
+
+    /* BOTONES TIPO APP */
+    .comunidad-pro .acciones {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .comunidad-pro .btn-explorar {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    .comunidad-pro .btn-back {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+}
+
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .comunidad-pro .titulo {
+        font-size: 1.6rem;
+    }
+
+    .comunidad-pro .descripcion {
+        font-size: 0.85rem;
+    }
+
+    .comunidad-pro .btn-explorar {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
 }
 
 /* ================= GALERÍA DE COMUNIDAD ================= */
@@ -339,8 +439,96 @@ body{
     transform: scale(1.3);
 }
 
-@media (max-width: 768px) {
-    .galeria-comunidad .gallery { aspect-ratio: 1 / 1; } /* Cuadrado en móvil para fotos de personas */
+
+/* TABLET */
+@media (max-width: 1024px){
+
+    .galeria-comunidad {
+        padding: 70px 20px;
+    }
+
+    .galeria-comunidad .gallery-title {
+        font-size: 2.3rem;
+    }
+
+    .galeria-comunidad .gallery-sub {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+}
+
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .galeria-comunidad {
+        padding: 60px 15px;
+    }
+
+    .galeria-comunidad .gallery-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .galeria-comunidad .gallery-sub {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+
+    /* FORMATO MÁS SOCIAL (tipo app) */
+    .galeria-comunidad .gallery {
+        aspect-ratio: 1 / 1;
+        border-width: 2px;
+    }
+
+    /* BURBUJA MÁS COMPACTA */
+    .galeria-comunidad .gallery-caption {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+
+    /* BOTONES MÁS PEQUEÑOS */
+    .galeria-comunidad .prev-btn,
+    .galeria-comunidad .next-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* DOTS MÁS FINOS */
+    .galeria-comunidad .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+}
+
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .galeria-comunidad .gallery-title {
+        font-size: 1.5rem;
+    }
+
+    .galeria-comunidad .gallery-sub {
+        font-size: 0.8rem;
+    }
+
+    .galeria-comunidad .gallery-caption {
+        font-size: 0.6rem;
+        padding: 5px 10px;
+    }
+
+    .galeria-comunidad .prev-btn,
+    .galeria-comunidad .next-btn {
+        width: 35px;
+        height: 35px;
+    }
+
 }
 
 /* ESTILOS DEL FOOTER MOVVE */
