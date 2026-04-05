@@ -189,14 +189,91 @@ body{
     color: var(--movve-green);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
+/* TABLET */
+@media (max-width: 1024px){
+
+    .tutoriales-pro {
+        padding: 60px 20px 80px;
+    }
+
+    .tutoriales-pro .section-title {
+        font-size: 2.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .video-gallery {
+        gap: 20px;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .tutoriales-pro {
+        padding: 50px 15px 70px;
+    }
+
+    .tutoriales-pro .section-title {
+        font-size: 1.9rem;
+        line-height: 1.2;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
+    /* GRID MÁS COMPACTO */
     .video-gallery {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
+
+    /* TARJETAS MÁS LIGERAS */
+    .video-card {
+        border-radius: 14px;
+    }
+
+    /* ICONO PLAY MÁS PEQUEÑO */
+    .play-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    /* TEXTO MÁS AJUSTADO */
+    .video-card h3 {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
     .tutoriales-pro .section-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
+
+    .section-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .play-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .video-card h3 {
+        font-size: 0.85rem;
+    }
+
 }
 
 /* ESTILOS DEL FOOTER MOVVE */
