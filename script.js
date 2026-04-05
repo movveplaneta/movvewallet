@@ -273,7 +273,7 @@ function animateValue(el, start, end, duration, suffix = '') {
 
 animateValue(balanceEl, 0, 42000000, 1500, '$');
 animateValue(profitEl, 0, 124, 1500, '%');
-animateValue(usersEl, 0, 128, 1500);
+animateValue(usersEl, 0, 20000, 1500);
 
 // ================= MINI CHARTS DINÁMICOS =================
 document.querySelectorAll('.mini-chart').forEach((canvas) => {
