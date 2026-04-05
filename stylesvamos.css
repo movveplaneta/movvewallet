@@ -199,25 +199,99 @@ body{
     box-shadow: var(--shadow-lg);
 }
 
-/* RESPONSIVO */
-@media (max-width: 992px) {
+/* TABLET */
+@media (max-width: 1024px){
+
+    .presentacion-pro {
+        padding: 60px 20px 80px;
+    }
+
     .presentacion-container {
         grid-template-columns: 1fr;
+        gap: 50px;
         text-align: center;
-        gap: 40px;
     }
 
-    .presentacion-desc { 
-        margin: 0 auto 30px auto; 
+    .presentacion-text .section-title {
+        font-size: 2.6rem;
     }
 
-    .presentacion-actions { 
-        justify-content: center; 
+    .presentacion-desc {
+        font-size: 1.05rem;
+        margin: 0 auto 30px;
     }
 
-    .presentacion-card { 
-        justify-content: flex-start; 
+    .presentacion-actions {
+        justify-content: center;
+        flex-wrap: wrap;
     }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .presentacion-pro {
+        padding: 50px 15px 70px;
+    }
+
+    .presentacion-text .section-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .presentacion-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* BOTONES FULL WIDTH */
+    .presentacion-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-principal,
+    .btn-secundario {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    /* CARDS MÁS COMPACTAS */
+    .presentacion-visual {
+        gap: 10px;
+    }
+
+    .presentacion-card {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .presentacion-card span {
+        font-size: 0.9rem;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .presentacion-text .section-title {
+        font-size: 1.6rem;
+    }
+
+    .presentacion-desc {
+        font-size: 0.85rem;
+    }
+
+    .btn-principal,
+    .btn-secundario {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
 }
 
 /* ================= SECCIÓN INFORMACIÓN (ROOT LIGHT) ================= */
@@ -322,17 +396,89 @@ body{
     transform: scale(1.05);
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
+/* TABLET */
+@media (max-width: 1024px){
+
+    .info-movve-pro {
+        padding: 70px 20px;
+        margin-top: -60px;
+    }
+
+    .info-movve-card {
+        padding: 40px;
+        gap: 30px;
+    }
+
+    .info-content h3 {
+        font-size: 1.6rem;
+    }
+
+    .info-content p {
+        font-size: 1rem;
+    }
+
+}
+
+/* 📱 MÓVIL PRO */
+@media (max-width: 768px){
+
+    .info-movve-pro {
+        padding: 60px 15px;
+        margin-top: -40px;
+    }
+
     .info-movve-card {
         flex-direction: column;
         text-align: center;
-        padding: 40px 20px;
-        gap: 25px;
+        padding: 30px 20px;
+        gap: 20px;
     }
-    
-    .info-content h3 { font-size: 1.5rem; }
-    .btn-info { width: 100%; justify-content: center; }
+
+    /* ICONO MÁS PROPORCIONADO */
+    .info-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .info-icon i {
+        font-size: 2rem;
+    }
+
+    .info-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .info-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* BOTÓN FULL WIDTH */
+    .btn-info {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px){
+
+    .info-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .info-content p {
+        font-size: 0.85rem;
+    }
+
+    .btn-info {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
 }
 
 /* ESTILOS DEL FOOTER MOVVE */
