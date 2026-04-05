@@ -147,3 +147,84 @@ popup.addEventListener("click", (e) => {
         cerrarPopup();
     }
 });
+
+// ================= HERO DINÁMICO =================
+
+// ===== TYPING EFECTO =====
+const typingElement = document.getElementById("typing");
+const typingWords = ["ganancias", "libertad financiera", "ingresos pasivos", "experiencia automática"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+    const current = typingWords[wordIndex];
+    let displayed = current.substring(0, charIndex);
+
+    typingElement.textContent = displayed;
+
+    if (!isDeleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(type, 120);
+    } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, 60);
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+            wordIndex = (wordIndex + 1) % typingWords.length;
+        }
+        setTimeout(type, 800);
+    }
+}
+
+type();
+
+// ===== USUARIOS EN VIVO =====
+const liveUsers = document.querySelector(".live-users");
+
+function updateLiveUsers() {
+    const randomUsers = Math.floor(100 + Math.random() * 50);
+    liveUsers.textContent = `🟢 ${randomUsers} personas activas ahora mismo`;
+}
+setInterval(updateLiveUsers, 5000);
+
+// ===== STATS ANIMADOS AL SCROLL =====
+const stats = document.querySelectorAll(".hero-stats-live strong");
+
+function animateStats() {
+    stats.forEach(stat => {
+        const target = parseInt(stat.textContent.replace(/\D/g, "")) || 0;
+        let count = 0;
+        const increment = Math.ceil(target / 100);
+        const interval = setInterval(() => {
+            count += increment;
+            if (count >= target) {
+                count = target;
+                clearInterval(interval);
+            }
+            stat.textContent = stat.textContent.includes("%") ? `${count}%` : `$${count.toLocaleString()}`;
+        }, 20);
+    });
+}
+
+let statsAnimated = false;
+window.addEventListener("scroll", () => {
+    const heroStats = document.querySelector(".hero-stats-live");
+    const rect = heroStats.getBoundingClientRect();
+    if (!statsAnimated && rect.top < window.innerHeight) {
+        animateStats();
+        statsAnimated = true;
+    }
+});
+
+// ===== BOTONES MICROINTERACCION =====
+const heroBtns = document.querySelectorAll(".hero-buttons a");
+heroBtns.forEach(btn => {
+    btn.addEventListener("mouseenter", () => {
+        btn.style.transform = "scale(1.05)";
+    });
+    btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "scale(1)";
+    });
+});
