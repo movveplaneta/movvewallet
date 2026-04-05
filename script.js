@@ -103,3 +103,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ================= POPUP MOVVE NIVEL DIOS =================
+
+const popup = document.getElementById("popup");
+
+// ===== MOSTRAR POPUP DESPUÉS DE TIEMPO =====
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        if (!localStorage.getItem("popupVisto")) {
+            popup.classList.add("show");
+        }
+    }, 6000); // 6 segundos
+});
+
+// ===== DETECTAR INTENCIÓN DE SALIDA (PC) =====
+document.addEventListener("mouseout", (e) => {
+    if (
+        e.clientY < 10 &&
+        !localStorage.getItem("popupVisto")
+    ) {
+        popup.classList.add("show");
+    }
+});
+
+// ===== FUNCIÓN BOTÓN =====
+function continuar() {
+    localStorage.setItem("popupVisto", "true");
+
+    // 🔥 REDIRECCIÓN (CAMBIA ESTO A TU LINK)
+    window.open("https://wa.me/18495942190?text=Hola%20quiero%20activar%20Movve", "_blank");
+
+    cerrarPopup();
+}
+
+// ===== CERRAR POPUP =====
+function cerrarPopup() {
+    popup.classList.remove("show");
+}
+
+// ===== CERRAR AL HACER CLICK FUERA =====
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        cerrarPopup();
+    }
+});
