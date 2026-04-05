@@ -322,3 +322,4 @@ rows.forEach(row => {
         status.className = change ? 'status up' : 'status down';
     }, 4000);
 });
+
