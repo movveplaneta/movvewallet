@@ -323,38 +323,6 @@ rows.forEach(row => {
     }, 4000);
 });
 
-// =================== BOTONES FLOTANTES OCULTAR/mostrar ===================
-
-document.addEventListener("DOMContentLoaded", () => {
-    const movveBtn = document.querySelector(".movve-floating-container");
-    const waBtn = document.querySelector("#wa-radar");
-    const footer = document.querySelector("footer"); // Asegúrate que tu footer tenga etiqueta <footer>
-
-    if (!footer) return; // Si no hay footer, no hacer nada
-
-    function toggleFloatingButtons() {
-        const scrollPos = window.scrollY + window.innerHeight;
-        const footerTop = footer.offsetTop;
-
-        if (scrollPos >= footerTop) {
-            // Ocultar botones
-            movveBtn.classList.add("hide-floating");
-            waBtn.classList.add("hide-floating");
-        } else {
-            // Mostrar botones
-            movveBtn.classList.remove("hide-floating");
-            waBtn.classList.remove("hide-floating");
-        }
-    }
-
-    // Escuchar scroll y resize
-    window.addEventListener("scroll", toggleFloatingButtons);
-    window.addEventListener("resize", toggleFloatingButtons);
-
-    // Ejecutar una vez al inicio
-    toggleFloatingButtons();
-});
-
 // 6. SISTEMA DE GALERÍAS (CRECIMIENTO, INVERSIÓN, COMUNIDAD)
     function initGallery(selector, captionId, intervalTime) {
         const section = document.querySelector(selector);
@@ -411,3 +379,40 @@ document.addEventListener("DOMContentLoaded", () => {
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
     }
+
+// =================== MOVVE FLOATING BUTTON: ABRIR Y OCULTAR ===================
+document.addEventListener("DOMContentLoaded", () => {
+    const movveBtn = document.querySelector(".movve-floating-container");
+    const movveMenu = document.getElementById("movveMenu");
+    const footer = document.querySelector("footer");
+
+    if (!movveBtn || !movveMenu || !footer) return;
+
+    // Función para abrir/cerrar menú
+    window.toggleMovveMenu = function() {
+        movveMenu.classList.toggle("active");
+        movveBtn.classList.toggle("menu-open"); // opcional para animaciones del botón
+    };
+
+    // Función para ocultar botón al llegar al footer
+    function toggleMovveButton() {
+        const scrollPos = window.scrollY + window.innerHeight;
+        const footerTop = footer.offsetTop;
+
+        if (scrollPos >= footerTop) {
+            // Ocultar botón y cerrar menú si estaba abierto
+            movveBtn.classList.add("hide-floating");
+            movveMenu.classList.remove("active");
+        } else {
+            // Mostrar botón
+            movveBtn.classList.remove("hide-floating");
+        }
+    }
+
+    // Escuchar scroll y resize
+    window.addEventListener("scroll", toggleMovveButton);
+    window.addEventListener("resize", toggleMovveButton);
+
+    // Ejecutar al inicio
+    toggleMovveButton();
+});
