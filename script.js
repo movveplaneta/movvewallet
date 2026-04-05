@@ -742,3 +742,23 @@ setInterval(()=>{
 }, 4000);
 
 });
+
+// ================= OCULTAR FLOATING EN FOOTER =================
+
+const floating = document.querySelector('.movve-floating-container');
+const footer = document.querySelector('.footer-pro');
+
+window.addEventListener('scroll', () => {
+
+    if (!floating || !footer) return;
+
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (footerTop < windowHeight - 100) {
+        floating.classList.add('hide-floating');
+    } else {
+        floating.classList.remove('hide-floating');
+    }
+
+});
