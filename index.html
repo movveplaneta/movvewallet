@@ -71,6 +71,47 @@
     </div>
 </nav>
 
+<!-- ================= POPUP TRADING MOVVE ================= -->
+<div id="trading-popup" class="trading-popup">
+
+    <div class="trading-content">
+
+        <span class="close-popup" onclick="closeTrading()">✖</span>
+
+        <!-- CEO -->
+        <div class="ceo-box">
+            <img src="ceo.png" alt="CEO Movve">
+            <span class="live-dot"></span>
+        </div>
+
+        <h3>Trading <span>En Vivo</span></h3>
+
+        <p class="ceo-text" id="ceoText">
+            El CEO está operando en tiempo real
+        </p>
+
+        <!-- TEXTO -->
+        <p class="event-time" id="eventText">
+            ⏳ Cargando evento...
+        </p>
+
+        <!-- CONTADOR -->
+        <div class="countdown">
+            <div><strong id="days">0</strong><span>DÍAS</span></div>
+            <div><strong id="hours">0</strong><span>HORAS</span></div>
+            <div><strong id="minutes">0</strong><span>MIN</span></div>
+            <div><strong id="seconds">0</strong><span>SEG</span></div>
+        </div>
+
+        <!-- BOTÓN BLOQUEADO -->
+        <a href="#" class="btn-urgente locked" id="btnUrgente">
+            🔒 Disponible pronto
+        </a>
+
+    </div>
+
+</div>
+    
 <!-- POPUP PRO -->
 <div id="popup" class="popup">
   <div class="popup-box">
