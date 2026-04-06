@@ -2028,3 +2028,170 @@ body{
     pointer-events: none;
 }
 
+/* ================= POPUP MOVVE ================= */
+.trading-popup {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    width: 320px;
+    background: var(--movve-card-bg);
+    color: var(--text-dark);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 999999;
+}
+
+.trading-popup.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.trading-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* ================= CEO ================= */
+.ceo-box {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+}
+
+.ceo-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--movve-green);
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+}
+
+/* glow sutil premium */
+.ceo-box::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,230,118,0.25), transparent 70%);
+    animation: pulseCEO 2s infinite;
+    z-index: -1;
+}
+
+@keyframes pulseCEO {
+    0% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 0.2; }
+    100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* online */
+.live-dot {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--movve-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--movve-green);
+}
+
+/* ================= TEXTOS ================= */
+.ceo-text {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.event-time {
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* ================= CONTADOR ================= */
+.countdown {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.countdown div {
+    flex: 1;
+    background: var(--movve-bg);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.countdown strong {
+    display: block;
+    font-size: 16px;
+    color: var(--movve-green);
+}
+
+.countdown span {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+/* ================= BOTÓN ================= */
+.btn-urgente {
+    display: block;
+    margin-top: 15px;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* 🔒 BLOQUEADO */
+.btn-urgente.locked {
+    background: var(--movve-bg);
+    color: var(--text-light);
+    cursor: not-allowed;
+    pointer-events: none;
+    border: 1px dashed var(--border-color);
+}
+
+/* 🚀 ACTIVO */
+.btn-urgente.active {
+    background: var(--movve-green);
+    color: var(--movve-dark);
+    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
+    animation: pulse 1s infinite;
+}
+
+.btn-urgente.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 230, 118, 0.4);
+}
+
+/* animación suave */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* ================= CERRAR ================= */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.close-popup:hover {
+    color: var(--movve-green);
+}
