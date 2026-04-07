@@ -426,134 +426,124 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleMovveButton();
 });
 
+// 🔒 ENVOLVER TODO PARA QUE NO ROMPA NADA
 document.addEventListener("DOMContentLoaded", () => {
-    const waBtn = document.getElementById("wa-radar");
-    const footer = document.querySelector("footer");
 
-    if (!waBtn || !footer) return;
+    const LINK_MOVVE = "https://TU-LINK-AQUI.com";
 
-    function toggleWaButton() {
-        const scrollPos = window.scrollY + window.innerHeight;
-        const footerTop = footer.offsetTop;
+    const popup = document.getElementById("trading-popup");
+    const btn = document.getElementById("btnUrgente");
+    const ceoText = document.getElementById("ceoText");
+    const eventText = document.getElementById("eventText");
 
-        if (scrollPos >= footerTop) {
-            waBtn.classList.add("hide-floating");
-            waBtn.classList.remove("show-floating");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    // ===== POPUP INTELIGENTE =====
+    setTimeout(() => popup?.classList.add("show"), 6000);
+
+    setInterval(() => {
+        popup?.classList.add("show");
+
+        setTimeout(() => {
+            popup?.classList.remove("show");
+        }, 15000);
+
+    }, 30000);
+
+    window.closeTrading = () => popup?.classList.remove("show");
+
+    // ===== MENSAJES DINÁMICOS =====
+    const messages = [
+        "El CEO está operando en tiempo real",
+        "Nueva operación cerrada +3.2%",
+        "+12 personas se unieron hace 5 min",
+        "Sistema generando ingresos ahora mismo"
+    ];
+
+    let msgIndex = 0;
+
+    setInterval(() => {
+        if (ceoText) {
+            msgIndex = (msgIndex + 1) % messages.length;
+            ceoText.textContent = messages[msgIndex];
+        }
+    }, 4000);
+
+    // ===== EVENTO DUBAI =====
+    function getNextDubaiEvent() {
+        const now = new Date();
+        const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
+
+        let target = new Date(dubai);
+        let day = dubai.getDay();
+
+        let diff = 4 - day;
+        if (diff < 0) diff += 7;
+
+        if (diff === 0 && dubai.getHours() >= 13) diff = 7;
+
+        target.setDate(dubai.getDate() + diff);
+        target.setHours(13, 0, 0, 0);
+
+        return target;
+    }
+
+    // ===== UPDATE GENERAL =====
+    function updateAll() {
+
+        const now = new Date();
+        const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
+        const target = getNextDubaiEvent();
+        const diff = target - dubai;
+
+        // reloj
+        const clockEl = document.getElementById("dubaiTime");
+        if (clockEl) {
+            clockEl.textContent = dubai.toLocaleTimeString();
+        }
+
+        if (diff > 0) {
+
+            const d = Math.floor(diff / (1000*60*60*24));
+            const h = Math.floor((diff / (1000*60*60)) % 24);
+            const m = Math.floor((diff / (1000*60)) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+
+            daysEl && (daysEl.textContent = d);
+            hoursEl && (hoursEl.textContent = h);
+            minutesEl && (minutesEl.textContent = m);
+            secondsEl && (secondsEl.textContent = s);
+
+            if (eventText) {
+                if (d === 0 && h === 0 && m < 10) {
+                    eventText.textContent = `🔥 Empieza en ${m}m ${s}s`;
+                } else {
+                    eventText.textContent = `⏳ En ${d}d ${h}h ${m}m`;
+                }
+            }
+
+            btn?.classList.add("locked");
+            btn?.classList.remove("active");
+            if (btn) btn.textContent = "🔒 Disponible pronto";
+
         } else {
-            waBtn.classList.add("show-floating");
-            waBtn.classList.remove("hide-floating");
+
+            if (eventText) eventText.textContent = "🚀 EN VIVO AHORA";
+
+            btn?.classList.remove("locked");
+            btn?.classList.add("active");
+
+            if (btn) {
+                btn.textContent = "🚀 Entrar ahora";
+                btn.onclick = () => window.open(LINK_MOVVE, "_blank");
+            }
         }
     }
 
-    // Escuchar scroll y resize
-    window.addEventListener("scroll", toggleWaButton);
-    window.addEventListener("resize", toggleWaButton);
+    setInterval(updateAll, 1000);
+    updateAll();
 
-    // Ejecutar al inicio
-    toggleWaButton();
 });
-
-// ===== CONFIG =====
-const LINK_MOVVE = "https://TU-LINK-AQUI.com";
-
-// ===== ELEMENTOS =====
-const popup = document.getElementById("trading-popup");
-const btn = document.getElementById("btnUrgente");
-
-// ===== MOSTRAR POPUP =====
-setInterval(() => {
-    popup.classList.add("show");
-
-    setTimeout(() => {
-        popup.classList.remove("show");
-    }, 10000);
-
-}, 20000);
-
-function closeTrading() {
-    popup.classList.remove("show");
-}
-
-// ===== MENSAJES =====
-const messages = [
-    "El CEO está operando en tiempo real",
-    "Nueva operación cerrada +3.2%",
-    "+12 personas se unieron hace 5 min",
-    "Sistema generando ingresos ahora mismo"
-];
-
-let msgIndex = 0;
-const ceoText = document.getElementById("ceoText");
-
-setInterval(() => {
-    msgIndex = (msgIndex + 1) % messages.length;
-    ceoText.textContent = messages[msgIndex];
-}, 4000);
-
-// ===== EVENTO DUBAI =====
-function getNextDubaiEvent() {
-    const now = new Date();
-    const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
-
-    let target = new Date(dubai);
-    let day = dubai.getDay();
-
-    let diff = 4 - day;
-    if (diff < 0) diff += 7;
-
-    if (diff === 0 && dubai.getHours() >= 13) diff = 7;
-
-    target.setDate(dubai.getDate() + diff);
-    target.setHours(13, 0, 0, 0);
-
-    return target;
-}
-
-// ===== CONTADOR + CONTROL =====
-function updateAll() {
-
-    const now = new Date();
-    const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
-    const target = getNextDubaiEvent();
-
-    const diff = target - dubai;
-
-    const eventText = document.getElementById("eventText");
-
-    if (diff > 0) {
-
-        const d = Math.floor(diff / (1000*60*60*24));
-        const h = Math.floor((diff / (1000*60*60)) % 24);
-        const m = Math.floor((diff / (1000*60)) % 60);
-        const s = Math.floor((diff / 1000) % 60);
-
-        document.getElementById("days").textContent = d;
-        document.getElementById("hours").textContent = h;
-        document.getElementById("minutes").textContent = m;
-        document.getElementById("seconds").textContent = s;
-
-        eventText.textContent = `⏳ Disponible en ${h}h ${m}m ${s}s`;
-
-        // 🔒 BLOQUEADO
-        btn.classList.add("locked");
-        btn.classList.remove("active");
-        btn.textContent = "🔒 Disponible pronto";
-
-    } else {
-
-        // 🚀 DESBLOQUEADO
-        eventText.textContent = "🚀 Acceso desbloqueado";
-
-        btn.classList.remove("locked");
-        btn.classList.add("active");
-        btn.textContent = "🚀 Entrar ahora";
-
-        btn.onclick = () => {
-            window.open(LINK_MOVVE, "_blank");
-        };
-    }
-}
-
-setInterval(updateAll, 1000);
-updateAll();
-
