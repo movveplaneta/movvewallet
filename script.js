@@ -476,9 +476,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             popup?.classList.remove("show");
-        }, 10000);
+        }, 20000);
 
-    }, 50000);
+    }, 20000);
     
     window.closeTrading = () => popup?.classList.remove("show");
 
