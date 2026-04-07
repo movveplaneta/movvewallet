@@ -2028,21 +2028,21 @@ body{
     pointer-events: none;
 }
 
-/* ================= POPUP MOVVE ================= */
+/* ================= POPUP TRADING ================= */
 .trading-popup {
     position: fixed;
     right: 20px;
     bottom: 100px;
-    width: 320px;
+    width: 410px;
     background: var(--movve-card-bg);
-    color: var(--text-dark);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-lg);
     transform: translateX(120%);
     opacity: 0;
-    transition: var(--transition);
+    transition: all 0.5s ease;
     z-index: 999999;
+    overflow: hidden;
 }
 
 .trading-popup.show {
@@ -2050,69 +2050,107 @@ body{
     opacity: 1;
 }
 
+/* ================= CONTENIDO ================= */
 .trading-content {
-    padding: 20px;
-    text-align: center;
-}
-
-/* ================= CEO ================= */
-.ceo-box {
     position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 15px;
+    padding: 20px;
+    padding-left: 170px; /* espacio para CEO */
 }
 
+/* ================= CEO NIVEL DIOS ================= */
+.ceo-box {
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    width: 175px;
+    height: 255px;
+    z-index: 2;
+}
+
+/* IMAGEN */
 .ceo-box img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    border: 3px solid var(--movve-green);
     object-fit: cover;
-    box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+
+    /* recorte tipo figura */
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    /* glow pro */
+    filter: drop-shadow(0 0 25px rgba(0, 230, 118, 0.7));
+    transition: 0.4s ease;
 }
 
-/* glow sutil premium */
-.ceo-box::before {
+/* HOVER */
+.ceo-box img:hover {
+    transform: scale(1.05);
+}
+
+/* CAPAS DETRÁS (EFECTO PRO) */
+.ceo-box::before,
+.ceo-box::after {
     content: "";
     position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,230,118,0.25), transparent 70%);
-    animation: pulseCEO 2s infinite;
+    inset: 0;
+    border-radius: 20px;
     z-index: -1;
 }
 
-@keyframes pulseCEO {
-    0% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(1.15); opacity: 0.2; }
-    100% { transform: scale(1); opacity: 0.6; }
+.ceo-box::before {
+    background: rgba(0, 230, 118, 0.15);
+    transform: translate(15px, -15px);
 }
 
-/* online */
+.ceo-box::after {
+    background: rgba(0, 230, 118, 0.08);
+    transform: translate(30px, -30px);
+}
+
+/* DOT EN VIVO */
 .live-dot {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 10px;
-    height: 10px;
-    background: var(--movve-green);
+    bottom: 10px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: #00ff00;
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--movve-green);
+    box-shadow: 0 0 10px #00ff00;
 }
 
-/* ================= TEXTOS ================= */
+/* ================= TEXTO ================= */
+.trading-content h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.trading-content h3 span {
+    color: var(--movve-green);
+}
+
 .ceo-text {
     font-size: 13px;
     color: var(--text-light);
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .event-time {
     font-size: 13px;
-    color: var(--text-dark);
-    margin-bottom: 10px;
     font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* RELOJ DUBAI */
+.dubai-clock {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.dubai-clock span {
+    color: var(--movve-green);
+    font-weight: bold;
 }
 
 /* ================= CONTADOR ================= */
@@ -2125,9 +2163,9 @@ body{
 .countdown div {
     flex: 1;
     background: var(--movve-bg);
-    padding: 10px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: center;
 }
 
 .countdown strong {
@@ -2137,7 +2175,7 @@ body{
 }
 
 .countdown span {
-    font-size: 10px;
+    font-size: 11px;
     color: var(--text-light);
 }
 
@@ -2145,39 +2183,32 @@ body{
 .btn-urgente {
     display: block;
     margin-top: 15px;
-    padding: 14px;
+    padding: 15px;
     border-radius: 14px;
-    font-weight: 800;
     text-decoration: none;
+    font-weight: bold;
+    text-align: center;
     transition: var(--transition);
 }
 
-/* 🔒 BLOQUEADO */
+/* BLOQUEADO */
 .btn-urgente.locked {
     background: var(--movve-bg);
     color: var(--text-light);
-    cursor: not-allowed;
     pointer-events: none;
-    border: 1px dashed var(--border-color);
 }
 
-/* 🚀 ACTIVO */
+/* ACTIVO */
 .btn-urgente.active {
     background: var(--movve-green);
     color: var(--movve-dark);
-    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
-    animation: pulse 1s infinite;
+    animation: pulseBtn 1s infinite;
 }
 
-.btn-urgente.active:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(0, 230, 118, 0.4);
-}
-
-/* animación suave */
-@keyframes pulse {
+/* ANIMACIÓN BOTÓN */
+@keyframes pulseBtn {
     0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
@@ -2186,12 +2217,34 @@ body{
     position: absolute;
     top: 10px;
     right: 12px;
-    font-size: 14px;
     cursor: pointer;
+    font-size: 14px;
     color: var(--text-light);
-    transition: var(--transition);
 }
 
-.close-popup:hover {
-    color: var(--movve-green);
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .trading-popup {
+        width: 95%;
+        right: 2.5%;
+        bottom: 80px;
+    }
+
+    .ceo-box {
+        position: relative;
+        left: 0;
+        width: 130px;
+        height: 180px;
+        margin: 0 auto 10px;
+    }
+
+    .trading-content {
+        padding-left: 20px;
+        text-align: center;
+    }
+
+    .countdown {
+        gap: 5px;
+    }
 }
