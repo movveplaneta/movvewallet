@@ -272,7 +272,7 @@ const usersEl = document.getElementById('users');
 
 function animateValue(el, start, end, duration, suffix = '') {
     let current = start;
-    const stepTime = Math.max(Math.floor(duration / (end - start)), 20);
+    const stepTime = Math.max(Math.floor(duration / (end - start)), 1);
     const timer = setInterval(() => {
         current += 1;
         el.textContent = current.toLocaleString() + suffix;
@@ -280,9 +280,9 @@ function animateValue(el, start, end, duration, suffix = '') {
     }, stepTime);
 }
 
-animateValue(balanceEl, 0, 42000000, 20000, '$');
-animateValue(profitEl, 0, 124, 20000, '%');
-animateValue(usersEl, 0, 20000, 20000);
+animateValue(balanceEl, 41999990, 42000000, 1000, '$');
+animateValue(profitEl, 0, 124, 1000, '%');
+animateValue(usersEl, 19988, 20000, 1000);
 
 // ================= MINI CHARTS DINÁMICOS =================
 document.querySelectorAll('.mini-chart').forEach((canvas) => {
@@ -426,6 +426,33 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleMovveButton();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const waBtn = document.getElementById("wa-radar");
+    const footer = document.querySelector("footer");
+
+    if (!waBtn || !footer) return;
+
+    function toggleWaButton() {
+        const scrollPos = window.scrollY + window.innerHeight;
+        const footerTop = footer.offsetTop;
+
+        if (scrollPos >= footerTop) {
+            waBtn.classList.add("hide-floating");
+            waBtn.classList.remove("show-floating");
+        } else {
+            waBtn.classList.add("show-floating");
+            waBtn.classList.remove("hide-floating");
+        }
+    }
+
+    // Escuchar scroll y resize
+    window.addEventListener("scroll", toggleWaButton);
+    window.addEventListener("resize", toggleWaButton);
+
+    // Ejecutar al inicio
+    toggleWaButton();
+});
+
 // 🔒 ENVOLVER TODO PARA QUE NO ROMPA NADA
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -452,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 10000);
 
     }, 50000);
-
+    
     window.closeTrading = () => popup?.classList.remove("show");
 
     // ===== MENSAJES DINÁMICOS =====
