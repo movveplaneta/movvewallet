@@ -250,144 +250,132 @@ function animatePresentCards() {
     });
 }
 
-window.addEventListener("scroll", animatePresentCards);
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", () => {
 
-const ecoCards = document.querySelectorAll(".eco-card");
+    document.querySelectorAll(".mini-chart").forEach(canvas => {
+        iniciarVelas(canvas);
+    });
 
-function animateEcoCards() {
-    ecoCards.forEach((card, i) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            setTimeout(() => card.classList.add("active"), i * 150);
-        }
+});
+
+
+// ================= GENERAR VELAS =================
+function generarVelas(cantidad = 30) {
+
+    let data = [];
+    let precio = 100;
+
+    for (let i = 0; i < cantidad; i++) {
+
+        let open = precio;
+        let close = open + (Math.random() - 0.5) * 4;
+        let high = Math.max(open, close) + Math.random() * 2;
+        let low = Math.min(open, close) - Math.random() * 2;
+
+        data.push({ open, high, low, close });
+
+        precio = close;
+    }
+
+    return data;
+}
+
+
+// ================= MOTOR PRINCIPAL =================
+function iniciarVelas(canvas) {
+
+    const ctx = canvas.getContext("2d");
+    let velas = generarVelas();
+
+    function render() {
+
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
+        dibujarVelas(ctx, canvas, velas);
+
+        actualizarMercado(velas);
+    }
+
+    render();
+    setInterval(render, 3000);
+}
+
+
+// ================= DIBUJAR VELAS =================
+function dibujarVelas(ctx, canvas, velas) {
+
+    const w = canvas.width;
+    const h = canvas.height;
+
+    const max = Math.max(...velas.map(v => v.high));
+    const min = Math.min(...velas.map(v => v.low));
+
+    const candleWidth = w / velas.length * 0.6;
+    const gap = w / velas.length;
+
+    ctx.clearRect(0, 0, w, h);
+
+    velas.forEach((v, i) => {
+
+        const x = i * gap + gap / 2;
+
+        // escalar precios a canvas
+        const yOpen = escalar(v.open, min, max, h);
+        const yClose = escalar(v.close, min, max, h);
+        const yHigh = escalar(v.high, min, max, h);
+        const yLow = escalar(v.low, min, max, h);
+
+        const isUp = v.close >= v.open;
+
+        const color = isUp ? "#00e676" : "#ff5252";
+
+        // MECHA
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(x, yHigh);
+        ctx.lineTo(x, yLow);
+        ctx.stroke();
+
+        // CUERPO
+        ctx.beginPath();
+        ctx.fillStyle = color;
+
+        const bodyTop = Math.min(yOpen, yClose);
+        const bodyHeight = Math.abs(yClose - yOpen);
+
+        ctx.fillRect(
+            x - candleWidth / 2,
+            bodyTop,
+            candleWidth,
+            bodyHeight || 1
+        );
+
     });
 }
 
-window.addEventListener("scroll", animateEcoCards);
 
-// ================= STATS ANIMADOS =================
-const balanceEl = document.getElementById('balance');
-const profitEl = document.getElementById('profit');
-const usersEl = document.getElementById('users');
-
-function animateValue(el, start, end, duration, suffix = '') {
-    let current = start;
-    const stepTime = Math.max(Math.floor(duration / (end - start)), 1);
-    const timer = setInterval(() => {
-        current += 1;
-        el.textContent = current.toLocaleString() + suffix;
-        if (current >= end) clearInterval(timer);
-    }, stepTime);
+// ================= ESCALA =================
+function escalar(valor, min, max, height) {
+    return height - ((valor - min) / (max - min)) * height;
 }
 
-animateValue(balanceEl, 41999990, 42000000, 1000, '$');
-animateValue(profitEl, 0, 124, 1000, '%');
-animateValue(usersEl, 19988, 20000, 1000);
 
-// ================= MINI CHARTS DINÁMICOS =================
-document.querySelectorAll('.mini-chart').forEach((canvas) => {
-    const ctx = canvas.getContext('2d');
-    const color = canvas.dataset.color === 'green' ? 'rgba(0,230,118,1)' : 'rgba(255,0,85,1)';
-    
-    const data = Array.from({length: 10}, () => Math.random() * 10 + 50);
-    
-    const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: Array.from({length: 10}, (_, i) => i + 1),
-            datasets: [{
-                data: data,
-                borderColor: color,
-                backgroundColor: color.replace('1', '0.2'),
-                borderWidth: 2,
-                tension: 0.4,
-                fill: true,
-                pointRadius: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: { x: { display: false }, y: { display: false } }
-        }
-    });
+// ================= MERCADO EN VIVO =================
+function actualizarMercado(velas) {
 
-    // ANIMACION DE MERCADO EN VIVO
-    setInterval(() => {
-        data.shift();
-        data.push(Math.random() * 10 + 50);
-        chart.update();
-    }, 2000);
-});
+    let ultima = velas[velas.length - 1];
 
-// ================= CAMBIO DINÁMICO DE STATUS =================
-const rows = document.querySelectorAll('.fintech-table .row:not(.head)');
-rows.forEach(row => {
-    setInterval(() => {
-        const status = row.querySelector('.status');
-        const change = Math.random() > 0.5;
-        status.textContent = change ? 'Activo' : 'Bajo';
-        status.className = change ? 'status up' : 'status down';
-    }, 4000);
-});
+    let open = ultima.close;
+    let close = open + (Math.random() - 0.5) * 3;
+    let high = Math.max(open, close) + Math.random() * 1.5;
+    let low = Math.min(open, close) - Math.random() * 1.5;
 
-// 6. SISTEMA DE GALERÍAS (CRECIMIENTO, INVERSIÓN, COMUNIDAD)
-    function initGallery(selector, captionId, intervalTime) {
-        const section = document.querySelector(selector);
-        if (!section) return;
-        const slides = section.querySelectorAll('.gallery-image');
-        const dots = section.querySelectorAll('.dot');
-        const caption = document.getElementById(captionId);
-        let index = 0;
-        let timer;
-
-        function update(newIdx) {
-            slides.forEach(img => img.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            slides[newIdx].classList.add('active');
-            dots[newIdx].classList.add('active');
-            if (caption) caption.innerText = slides[newIdx].alt;
-            index = newIdx;
-        }
-
-        section.querySelector('.next-btn')?.addEventListener('click', () => { update((index + 1) % slides.length); startAuto(); });
-        section.querySelector('.prev-btn')?.addEventListener('click', () => { update((index - 1 + slides.length) % slides.length); startAuto(); });
-        dots.forEach((dot, idx) => dot.addEventListener('click', () => { update(idx); startAuto(); }));
-
-        function startAuto() { clearInterval(timer); timer = setInterval(() => update((index + 1) % slides.length), intervalTime); }
-        startAuto();
-    }
-
-    initGallery('.galeria-crecimiento', 'imageCaption', 4000);
-    initGallery('.galeria-inversion', 'galleryCaption', 5000);
-    initGallery('.galeria-comunidad', 'communityCaption', 4500);
-
-// 3. GRÁFICA (Chart.js)
-    const ctx = document.getElementById('movveChart');
-    if (ctx && typeof Chart !== 'undefined') {
-        const chartCtx = ctx.getContext('2d');
-        const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, 'rgba(0, 255, 136, 0.3)');
-        gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
-
-        new Chart(chartCtx, {
-            type: 'line',
-            data: {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Rendimiento',
-                    data: [12000, 19000, 15000, 25000, 22000, 30000],
-                    borderColor: '#00ff88',
-                    borderWidth: 3,
-                    tension: 0.4,
-                    fill: true,
-                    backgroundColor: gradient
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-        });
-    }
+    velas.push({ open, high, low, close });
+    velas.shift(); // mantener tamaño
+}
 
 // =================== MOVVE FLOATING BUTTON: ABRIR Y OCULTAR ===================
 document.addEventListener("DOMContentLoaded", () => {
