@@ -894,242 +894,227 @@ body{
 
 }
 
-/* ================= FINTECH PRO NIVEL DIOS ================= */
+/* ================= FINTECH MOVVE IA ================= */
+
 .fintech {
-    padding: 80px 5%;
-    background: linear-gradient(135deg, rgba(26,34,43,0.95), rgba(26,34,43,1));
-    color: white;
+    background: var(--movve-bg);
+    padding: 60px 40px;
+    border-radius: var(--radius);
     font-family: 'Inter', sans-serif;
-    position: relative;
-    overflow: hidden;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
+
 .fintech-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .fintech-header h2 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--movve-green);
-}
-
-.btn-fintech {
-    background: var(--movve-green);
-    color: var(--movve-dark);
-    font-weight: 700;
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 8px 25px rgba(0,230,118,0.3);
-}
-
-.btn-fintech:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(0,230,118,0.5);
-}
-
-/* STATS */
-.fintech-stats {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
-    text-align: center;
-    gap: 20px;
-}
-
-.stat span {
-    display: block;
-    font-size: 1rem;
-    color: var(--text-light);
-}
-
-.stat h3 {
-    font-size: 2rem;
+    font-size: 28px;
     font-weight: 800;
+    color: var(--text-dark);
+}
+
+.fintech-header span {
+    display: block;
+    font-size: 14px;
     color: var(--movve-green);
+    margin-top: 5px;
+}
+
+
+/* ================= CABECERA TABLA ================= */
+
+.fintech-head-table {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    background: linear-gradient(90deg, #00e676, #00c853);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.fintech-head-table span {
+    opacity: 0.9;
+}
+
+
+/* ================= TABLA ================= */
+
+.fintech-table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    align-items: center;
+    background: var(--movve-card-bg);
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
     transition: var(--transition);
 }
 
-/* TABLA ESTILO MERCADO */
-.fintech-table {
+.row:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+
+/* ================= MARKET ================= */
+
+.market h4 {
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.tags span {
+    background: #ecfdf5;
+    color: #059669;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-right: 6px;
+}
+
+
+/* ================= DATOS ================= */
+
+.gain {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.gain.up {
+    color: #16a34a;
+}
+
+.drawdown {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+
+/* ================= CHART ================= */
+
+.chart {
     width: 100%;
-    border-collapse: collapse;
 }
 
-.fintech-table .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    align-items: center;
-    padding: 15px 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.fintech-table .row.head {
-    font-weight: 700;
-    color: var(--movve-green);
-    border-bottom: 2px solid var(--movve-green);
-}
-
-.fintech-table .row:hover {
-    background: rgba(0,230,118,0.05);
-    transform: scale(1.01);
-}
-
-.fintech-table .status.up {
-    color: var(--movve-green);
-    font-weight: 700;
-}
-
-.fintech-table .status.down {
-    color: #ff0055;
-    font-weight: 700;
-}
-
-/* MINI CHARTS */
 .mini-chart {
-    width: 100px !important;
-    height: 35px !important;
+    width: 100%;
+    height: 50px;
 }
 
-/* ANIMACIONES ADICIONALES */
-.stat h3.animate {
-    animation: popUp 0.6s ease forwards;
+
+/* ================= BOTÓN ================= */
+
+.btn-sub {
+    background: linear-gradient(135deg, #00e676, #00c853);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-@keyframes popUp {
-    0% { transform: translateY(20px) scale(0.9); opacity: 0; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
+.btn-sub:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,230,118,0.3);
 }
 
-/* ====================== RESPONSIVE ====================== */
 
-/* -------- TABLET -------- */
-@media (max-width: 1024px){
-    .main {
-        padding: 20px;
-    }
+/* ================= QR ================= */
 
-    .fintech-header h2 {
-        font-size: 24px;
-    }
-
-    .stat h3 {
-        font-size: 20px;
-    }
+.fintech-qr {
+    margin-top: 50px;
+    text-align: center;
+    background: var(--movve-card-bg);
+    padding: 40px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
 }
 
-/* -------- MÓVIL PRO -------- */
-@media (max-width: 768px){
-    .app-container {
-        flex-direction: column;
-    }
+.fintech-qr h3 {
+    font-size: 24px;
+    color: var(--movve-green);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
 
-    .sidebar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-    }
+.fintech-qr p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
 
-    .sidebar nav {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-    }
 
-    .sidebar nav a {
-        font-size: 12px;
-        padding: 8px 10px;
-        white-space: nowrap;
-    }
+/* QR IMAGE */
 
-    .main {
-        padding: 15px;
-    }
+.fintech-qr img {
+    width: 160px;
+    border-radius: 16px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
 
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+.fintech-qr img:hover {
+    transform: scale(1.05);
+}
 
-    .btn-fintech {
-        width: 100%;
-        justify-content: center;
-    }
 
-    .fintech-stats {
-        flex-direction: column;
-        gap: 20px;
-    }
+/* LINK */
 
-    .fintech-table {
-        border: none;
-        box-shadow: none;
-        background: transparent;
-    }
+.fintech-qr a {
+    display: block;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--movve-green);
+    text-decoration: none;
+}
 
-    .row {
-        display: block;
-        background: #fff;
-        margin-bottom: 15px;
-        border-radius: 12px;
-        padding: 15px;
-        box-shadow: var(--shadow-sm);
-    }
+.fintech-qr a:hover {
+    text-decoration: underline;
+}
 
-    .row.head {
+.mini-chart {
+    width: 100%;
+    height: 60px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .fintech-head-table {
         display: none;
     }
 
-    .row span {
-        display: flex;
-        justify-content: space-between;
-        font-size: 13px;
-        margin-bottom: 6px;
+    .row {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
-    .row span::before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: var(--text-light);
+    .btn-sub {
+        width: 100%;
     }
 
-    .mini-chart {
-        height: 40px;
-        margin-top: 8px;
-    }
-}
-
-/* -------- MÓVIL PEQUEÑO -------- */
-@media (max-width: 480px){
-    .fintech {
-        padding: 30px 15px;
-    }
-
-    .fintech-header h2 {
-        font-size: 20px;
-    }
-
-    .btn-fintech {
-        font-size: 13px;
-        padding: 10px;
-    }
-
-    .stat {
-        padding: 15px;
-    }
 }
 
 /* ================= CTA SUPER PRO ================= */
