@@ -250,6 +250,19 @@ function animatePresentCards() {
     });
 }
 
+window.addEventListener("scroll", animatePresentCards);
+
+const ecoCards = document.querySelectorAll(".eco-card");
+
+function animateEcoCards() {
+    ecoCards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            setTimeout(() => card.classList.add("active"), i * 150);
+        }
+    });
+}
+
 // ================= INIT =================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -620,5 +633,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(updateAll, 1000);
     updateAll();
+
+});
+
+// ================= PDF MODAL COMPLETO =================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("pdfModal");
+
+    // ===== ABRIR =====
+    window.openPdfSelector = function(e) {
+        e.preventDefault();
+        modal.classList.add("active");
+    };
+
+    // ===== CERRAR =====
+    window.closePdf = function() {
+        modal.classList.remove("active");
+    };
+
+    // ===== CLICK FUERA =====
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+        }
+    });
+
+    // ===== TECLA ESC =====
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            modal.classList.remove("active");
+        }
+    });
 
 });
