@@ -561,6 +561,117 @@ body{
     }
 }
 
+/* ================= SEO CONTENT PRO ================= */
+
+.seo-content {
+    max-width: 950px;
+    margin: 80px auto;
+    padding: 50px 35px;
+
+    background: var(--movve-card-bg);
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* GLOW FINTECH SUTIL */
+.seo-content::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(0,230,118,0.12) 0%, transparent 70%);
+}
+
+/* TITULO PRINCIPAL */
+.seo-content h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--movve-dark);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+/* LINEA VERDE PRO */
+.seo-content h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background: var(--movve-green);
+}
+
+/* SUBTITULOS */
+.seo-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    position: relative;
+    padding-left: 14px;
+}
+
+/* BARRA LATERAL */
+.seo-content h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 4px;
+    height: 16px;
+    background: var(--movve-green);
+    border-radius: 5px;
+}
+
+/* TEXTO */
+.seo-content p {
+    font-size: 15.5px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* EFECTO HOVER SUAVE */
+.seo-content:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .seo-content {
+        margin: 40px 15px;
+        padding: 30px 20px;
+    }
+
+    .seo-content h2 {
+        font-size: 24px;
+    }
+
+    .seo-content h3 {
+        font-size: 18px;
+    }
+
+    .seo-content p {
+        font-size: 14px;
+    }
+
+}
+
 /* ================= SECCIÓN PRESENTACIÓN ================= */
 .presentacion-pro {
     padding: 100px 20px;
