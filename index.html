@@ -55,7 +55,7 @@
             <li><a href="#ecosistema">Ecosistema</a></li>
             <li><a href="tutoriales.html">Tutoriales</a></li>
             <li>
-                <a href="https://wa.me/18495942190?text=Hola%20💡%20quiero%20unirme%20a%20MOVVE%20AHORA%20y%20no%20perder%20esta%20oportunidad%20de%20ganar%20dinero%20desde%20mi%20celular%20📲💸">
+                <a href="https://wa.me/18495942190?text=Hola%20quiero%20información%20MOVVE" class="nav-btn">
                     WhatsApp
                 </a>
             </li>
@@ -80,7 +80,7 @@
 
         <!-- CEO -->
         <div class="ceo-box">
-            <img src="ceo.png" alt="CEO Movve">
+            <img src="ceo.png" alt="Trading en vivo Movve Wallet">
             <span class="live-dot"></span>
         </div>
 
@@ -170,13 +170,38 @@ Crecimiento <span id="typing"></span>
 <!-- BOTONES -->
 <div class="hero-buttons">
 
-<a class="btn-principal" href="https://wa.me/18495942190?text=Hola%20💡%20quiero%20unirme%20a%20MOVVE%20AHORA%20y%20no%20perder%20esta%20oportunidad%20de%20ganar%20dinero%20desde%20mi%20celular%20📲💸">
+<a class="btn-principal" href="https://app.movvewallet.com/register/TBwPNoUJCphFFh52NaizpC8kAgy5xAmHi8">
 <i class="fas fa-rocket"></i> Unirse ahora
 </a>
 
-<a class="btn-secundario" href="https://youtu.be/WcYazU7YyeY">
-<i class="fas fa-play"></i> Ver cómo funciona
+<a class="btn-secundario" href="#" onclick="openPdfSelector(event)">
+    <i class="fas fa-file-alt"></i> Ver guía
 </a>
+
+<div id="pdfModal" class="pdf-modal">
+
+    <div class="pdf-box">
+
+        <span class="close-pdf" onclick="closePdf()">✖</span>
+
+        <h3>Selecciona una guía</h3>
+        <p>Elige qué documento quieres ver</p>
+
+        <div class="pdf-options">
+
+            <a href="guia-basica.pdf" target="_blank" class="pdf-btn">
+                📘 Guía Básica
+            </a>
+
+            <a href="guia-avanzada.pdf" target="_blank" class="pdf-btn pro">
+                🚀 Guía Avanzada
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -223,7 +248,7 @@ Crecimiento <span id="typing"></span>
 
 </header>
 
-    <section class="seo-content">
+<section class="seo-content">
 
 <h2>¿Qué es Movve Wallet?</h2>
 
@@ -248,7 +273,7 @@ funciona de forma automatizada y puedes monitorear todo en tiempo real.
 </p>
 
 </section>
-    
+
 <!-- ================= PRESENTACION ================= -->
 
 <section class="section presentacion-pro fade-up" id="presentacion">
@@ -708,7 +733,7 @@ Una red global de personas conectadas por innovación y crecimiento.
             <span>ECOSISTEMA MOVVE</span>
         </div>
         <a href="https://movveplaneta.site" class="movve-item">🌐 Visitar Plataforma</a>
-        <a href="https://wa.me/18495942190?text=Hola%20💡%20quiero%20unirme%20a%20MOVVE%20AHORA%20y%20no%20perder%20esta%20oportunidad%20de%20ganar%20dinero%20desde%20mi%20celular%20📲💸" class="movve-item">💬 Soporte WhatsApp</a>
+        <a href="https://wa.me/18495942190?text=Hola%20quiero%20información%20MOVVE" class="movve-item">💬 Soporte WhatsApp</a>
         <a href="https://app.movvewallet.com/register/TBwPNoUJCphFFh52NaizpC8kAgy5xAmHi8" class="movve-item">📈 Crear Cuenta</a>
         <a href="https://omg10.com/4/10800778" class="movve-item promo">🎁 Bono de Bienvenida</a>
     </div>
@@ -722,11 +747,13 @@ Una red global de personas conectadas por innovación y crecimiento.
 
 <!-- 🔊 AUDIO AQUÍ (IMPORTANTE) -->
     <audio id="liveSound" src="sonido.mp3" preload="auto"></audio>
-    
+
 </div>
     
 </body>
 </html>
+
+
 
 
 
