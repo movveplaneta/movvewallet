@@ -456,6 +456,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const minutesEl = document.getElementById("minutes");
     const secondsEl = document.getElementById("seconds");
 
+    // 🔊 SONIDO EN VIVO
+    const liveSound = document.getElementById("liveSound");
+    let wasLive = false;
+
     // ===== POPUP INTELIGENTE =====
     setTimeout(() => popup?.classList.add("show"), 6000);
 
@@ -464,10 +468,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             popup?.classList.remove("show");
-        }, 20000);
+        }, 10000);
 
-    }, 20000);
-    
+    }, 50000);
+
     window.closeTrading = () => popup?.classList.remove("show");
 
     // ===== MENSAJES DINÁMICOS =====
@@ -487,21 +491,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 4000);
 
-    // ===== EVENTO DUBAI =====
-    function getNextDubaiEvent() {
-        const now = new Date();
-        const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
+    // ===== TIEMPO COLOMBIA =====
+    function getColombiaTime() {
+        return new Date(new Date().toLocaleString("en-US", {
+            timeZone: "America/Bogota"
+        }));
+    }
 
-        let target = new Date(dubai);
-        let day = dubai.getDay();
+    function getNextThursday8AM() {
+        const now = getColombiaTime();
+        const target = new Date(now);
 
+        const day = now.getDay();
         let diff = 4 - day;
+
         if (diff < 0) diff += 7;
 
-        if (diff === 0 && dubai.getHours() >= 13) diff = 7;
+        // si ya pasó 9:15 AM → siguiente semana
+        if (diff === 0 && (now.getHours() > 9 || (now.getHours() === 9 && now.getMinutes() >= 15))) {
+            diff = 7;
+        }
 
-        target.setDate(dubai.getDate() + diff);
-        target.setHours(13, 0, 0, 0);
+        target.setDate(now.getDate() + diff);
+        target.setHours(8, 0, 0, 0);
 
         return target;
     }
@@ -509,44 +521,49 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== UPDATE GENERAL =====
     function updateAll() {
 
-        const now = new Date();
-        const dubai = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dubai" }));
-        const target = getNextDubaiEvent();
-        const diff = target - dubai;
+        const now = getColombiaTime();
+        const target = getNextThursday8AM();
+
+        const liveStart = new Date(target);
+        const liveEnd = new Date(target);
+        liveEnd.setMinutes(30); // 8:30 AM
+
+        const openEnd = new Date(target);
+        openEnd.setHours(9, 15, 0, 0);
+
+        const diff = target - now;
 
         // reloj
         const clockEl = document.getElementById("dubaiTime");
         if (clockEl) {
-            clockEl.textContent = dubai.toLocaleTimeString();
+            clockEl.textContent = now.toLocaleTimeString("es-CO");
         }
 
-        if (diff > 0) {
-
-            const d = Math.floor(diff / (1000*60*60*24));
-            const h = Math.floor((diff / (1000*60*60)) % 24);
-            const m = Math.floor((diff / (1000*60)) % 60);
-            const s = Math.floor((diff / 1000) % 60);
-
-            daysEl && (daysEl.textContent = d);
-            hoursEl && (hoursEl.textContent = h);
-            minutesEl && (minutesEl.textContent = m);
-            secondsEl && (secondsEl.textContent = s);
-
-            if (eventText) {
-                if (d === 0 && h === 0 && m < 10) {
-                    eventText.textContent = `🔥 Empieza en ${m}m ${s}s`;
-                } else {
-                    eventText.textContent = `⏳ En ${d}d ${h}h ${m}m`;
-                }
-            }
-
-            btn?.classList.add("locked");
-            btn?.classList.remove("active");
-            if (btn) btn.textContent = "🔒 Disponible pronto";
-
-        } else {
+        // ===== ESTADO 1: EN VIVO =====
+        if (now >= liveStart && now < liveEnd) {
 
             if (eventText) eventText.textContent = "🚀 EN VIVO AHORA";
+
+            // 🔊 SONIDO SOLO 1 VEZ
+            if (!wasLive) {
+                liveSound?.play().catch(() => {});
+                wasLive = true;
+            }
+
+            btn?.classList.remove("locked");
+            btn?.classList.add("active");
+
+            if (btn) {
+                btn.textContent = "🚀 Ver en vivo";
+                btn.onclick = () => window.open(LINK_MOVVE, "_blank");
+            }
+
+        } 
+
+        // ===== ESTADO 2: DISPONIBLE =====
+        else if (now >= liveEnd && now < openEnd) {
+
+            if (eventText) eventText.textContent = "🚀 Disponible ahora";
 
             btn?.classList.remove("locked");
             btn?.classList.add("active");
@@ -555,6 +572,49 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.textContent = "🚀 Entrar ahora";
                 btn.onclick = () => window.open(LINK_MOVVE, "_blank");
             }
+
+        } 
+
+        // ===== ESTADO 3: CUENTA REGRESIVA =====
+        else if (now < target) {
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / (1000 * 60)) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+
+            daysEl && (daysEl.textContent = d);
+            hoursEl && (hoursEl.textContent = h);
+            minutesEl && (minutesEl.textContent = m);
+            secondsEl && (secondsEl.textContent = s);
+
+            if (eventText) {
+                eventText.textContent =
+                    (d === 0 && h === 0 && m < 10)
+                        ? `🔥 Empieza en ${m}m ${s}s`
+                        : `⏳ En ${d}d ${h}h ${m}m`;
+            }
+
+            btn?.classList.add("locked");
+            btn?.classList.remove("active");
+
+            if (btn) btn.textContent = "🔒 Disponible pronto";
+        }
+
+        // ===== ESTADO 4: FINALIZADO =====
+        else {
+
+            if (eventText) eventText.textContent = "🔒 Evento finalizado";
+
+            btn?.classList.add("locked");
+            btn?.classList.remove("active");
+
+            if (btn) btn.textContent = "🔒 Disponible pronto";
+        }
+
+        // 🔁 RESET DEL SONIDO (IMPORTANTE)
+        if (!(now >= liveStart && now < liveEnd)) {
+            wasLive = false;
         }
     }
 
