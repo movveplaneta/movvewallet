@@ -1232,60 +1232,138 @@ body{
 }
 
 
-/* ================= QR ================= */
+/* ================= QR PRO (MEJORADO) ================= */
+
+.fintech-qr-box {
+    background: var(--movve-card-bg);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    margin-top: 60px;
+}
+
+.fintech-qr-box:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+}
 
 .fintech-qr {
-    margin-top: 50px;
-    text-align: center;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* CARD INDIVIDUAL */
+.fintech-qr .qr-card {
     background: var(--movve-card-bg);
-    padding: 40px 20px;
+    padding: 35px 25px;
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
+    transition: var(--transition);
+    text-align: left;
 }
 
-.fintech-qr h3 {
-    font-size: 24px;
+.fintech-qr .qr-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--movve-green);
+}
+
+/* TITULO */
+.qr-card h3 {
+    font-size: 20px;
     color: var(--movve-green);
-    margin-bottom: 10px;
-    font-weight: 700;
+    margin-bottom: 12px;
+    font-weight: 800;
 }
 
-.fintech-qr p {
-    color: var(--text-light);
+/* DESCRIPCION */
+.qr-card p {
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* LISTA */
+.qr-list {
+    list-style: none;
+    padding: 0;
     margin-bottom: 20px;
 }
 
+.qr-list li {
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
 /* QR IMAGE */
-
-.fintech-qr img {
-    width: 160px;
-    border-radius: 16px;
-    padding: 10px;
+.qr-card img {
+    width: 150px;
+    border-radius: 12px;
+    padding: 8px;
     background: #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: block;
+    margin: 15px auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     transition: var(--transition);
 }
 
-.fintech-qr img:hover {
+.qr-card:hover img {
     transform: scale(1.05);
 }
 
-
 /* LINK */
-
-.fintech-qr a {
+.qr-card a {
     display: block;
-    margin-top: 20px;
+    text-align: center;
+    margin-top: 10px;
     font-size: 13px;
     color: var(--movve-green);
+    font-weight: 600;
     text-decoration: none;
 }
 
-.fintech-qr a:hover {
+.qr-card a:hover {
     text-decoration: underline;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .fintech-qr {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* LOGO HEADER */
+.qr-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.qr-header img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+/* EFECTO HOVER */
+.qr-card:hover .qr-header img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* ================= MINI CHART ================= */
 
 .mini-chart {
     width: 100%;
