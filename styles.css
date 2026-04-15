@@ -172,9 +172,6 @@ body{
 }
 
 /* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-
     .menu-toggle {
         display: flex;
         z-index: 1001;
@@ -222,6 +219,92 @@ body{
 /* LINK ACTIVO */
 .active-link {
     color: var(--movve-green) !important;
+}
+
+/* ================= RESPONSIVE PRO ================= */
+
+/* 💻 PC GRANDE (1400px+) */
+@media (min-width: 1400px) {
+    .nav-container {
+        max-width: 1400px;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1.7rem;
+    }
+
+    .nav-menu a {
+        font-size: 1rem;
+    }
+}
+
+/* 💻 LAPTOP (1024px - 1399px) */
+@media (max-width: 1399px) {
+    .nav-container {
+        max-width: 1100px;
+    }
+
+    .nav-menu {
+        gap: 25px;
+    }
+}
+
+/* 📱 TABLET (768px - 1023px) */
+@media (max-width: 1023px) {
+    .nav-logo .logo-text {
+        font-size: 1.3rem;
+    }
+
+    .nav-menu a {
+        font-size: 0.9rem;
+    }
+
+    .nav-btn {
+        padding: 8px 20px;
+    }
+}
+
+/* 📱 MOBILE GRANDE (hasta 768px) */
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        font-size: 1.4rem;
+    }
+}
+
+/* 📱 TELÉFONO PEQUEÑO (hasta 480px) */
+@media (max-width: 480px) {
+
+    .navbar {
+        height: 65px;
+        padding: 0 15px;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1rem;
+    }
+
+    .nav-menu li a {
+        font-size: 1.3rem;
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* ================= HERO NIVEL DIOS+ COMPLETO ================= */
