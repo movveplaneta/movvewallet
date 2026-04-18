@@ -1,0 +1,295 @@
+/* ================================= DASHBOARD CORE ================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+
+    /* COLORES PRINCIPALES */
+    --movve-green: #00e676;
+    --movve-dark: #1a222b;
+
+    /* FONDOS */
+    --movve-card-bg: #ffffff;
+    --movve-sidebar: #f8fafc;
+    --movve-bg: #f1f5f9;
+
+    /* TEXTO */
+    --text-dark: #334155;
+    --text-light: #94a3b8;
+
+    /* BORDES */
+    --border-color: #e2e8f0;
+
+    /* SOMBRAS PRO */
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.04);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 35px rgba(0,0,0,0.08);
+
+    /* RADIUS */
+    --radius: 20px;
+
+    /* TRANSICIONES */
+    --transition: all .25s ease;
+}
+
+/* ================= BASE ================= */
+body {
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+    background: var(--movve-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ================= COMPANY PAGE (FINTECH PRO) ================= */
+
+.company-page {
+    max-width: 760px;
+    margin: auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* LOGO */
+.company-logo {
+    height: 55px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* TITULO */
+.company-page h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+/* DESCRIPCIÓN */
+.company-desc {
+    font-size: 15px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 25px;
+}
+
+/* ================= HIGHLIGHT ================= */
+.highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+
+    padding: 16px;
+    border-radius: 12px;
+
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* ================= BENEFICIOS ================= */
+.company-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.company-benefits .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px;
+    border-radius: 12px;
+
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: var(--transition);
+}
+
+.company-benefits .item i {
+    color: var(--movve-green);
+    font-size: 16px;
+}
+
+.company-benefits .item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ================= QR ================= */
+.company-qr {
+    margin-bottom: 30px;
+}
+
+.company-qr img {
+    height: 140px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.company-qr p {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* ================= BOTÓN ================= */
+.btn-company {
+    display: inline-block;
+    padding: 14px 28px;
+
+    background: var(--movve-green);
+    color: #fff;
+    font-weight: 600;
+
+    border-radius: 12px;
+    text-decoration: none;
+
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-company:hover {
+    background: #00c853;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ================= MICRO PROOF ================= */
+.mini-proof {
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+
+    .company-benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .company-page {
+        padding: 50px 15px;
+    }
+
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 500;
+
+    color: var(--text-light);
+    text-decoration: none;
+
+    transition: var(--transition);
+}
+
+/* ICONO (flecha) */
+.back-link::before {
+    content: "←";
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+/* HOVER */
+.back-link:hover {
+    color: var(--movve-dark);
+}
+
+/* EFECTO MOVIMIENTO */
+.back-link:hover::before {
+    transform: translateX(-3px);
+}
+
+.awards {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.awards img {
+    height: 70px;
+    width: auto;
+
+    max-height: 120px; /* controla tamaño */
+    object-fit: contain;
+
+    opacity: 0.95;
+    transition: var(--transition);
+}
+
+.awards img:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* OVERLAY */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    background: #0a0f14;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+    transition: all 0.8s ease;
+}
+
+/* CONTENIDO */
+.loader-content {
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+/* TEXTO */
+.loader-content h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+}
+
+/* GLOW ANIMADO */
+.loader-glow {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    background: radial-gradient(circle, #00e676, transparent 70%);
+    animation: pulse 1.5s infinite;
+}
+
+/* ANIMACIÓN */
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+/* SALIDA */
+.page-loader.hide {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
