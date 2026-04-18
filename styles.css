@@ -815,6 +815,84 @@ body{
     transition: var(--transition);
 }
 
+/* CONTENEDOR BOTÓN */
+.cta-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-principal {
+    display: inline-block;
+    padding: 16px 38px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: var(--radius);
+
+    background: linear-gradient(135deg, var(--movve-green), #00bcd4);
+
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO GLOW */
+.btn-principal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+
+    transition: 0.6s;
+}
+
+/* HOVER */
+.btn-principal:hover::before {
+    left: 120%;
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ACTIVE CLICK */
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* SEO SECTION STYLE (extra pro) */
+.seo-content {
+    background: var(--movve-card-bg);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.seo-content h2 {
+    color: var(--movve-dark);
+    margin-bottom: 10px;
+}
+
+.seo-content p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
