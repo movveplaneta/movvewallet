@@ -171,58 +171,6 @@ body{
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-
-    .menu-toggle {
-        display: flex;
-        z-index: 1001;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(10,10,10,0.95);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: 0.5s ease-in-out;
-    }
-
-    .nav-menu.active {
-        right: 0;
-    }
-
-    .nav-menu li {
-        margin: 15px 0;
-    }
-
-    .nav-menu li a {
-        font-size: 1.6rem;
-        font-weight: bold;
-        color: white;
-    }
-
-    .nav-btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-}
-
-.no-scroll {
-    overflow: hidden;
-}
-
-/* LINK ACTIVO */
-.active-link {
-    color: var(--movve-green) !important;
-}
 
 /* ================= HERO NIVEL DIOS+ COMPLETO ================= */
 
@@ -548,102 +496,6 @@ body{
     transform: translateY(0);
 }
 
-/* ================= TABLET ================= */
-
-@media (max-width: 1024px) {
-
-    .hero {
-        height: auto;
-        padding: 120px 20px 80px;
-    }
-
-    .hero-title {
-        font-size: 2.8rem;
-    }
-
-    .hero-stats-live {
-        gap: 25px;
-    }
-}
-
-/* ================= MOVIL ================= */
-
-@media (max-width: 768px) {
-
-    .hero {
-        padding: 100px 15px 70px;
-    }
-
-    .hero-bg-video {
-        width: 140%;
-        height: 140%;
-        filter: brightness(0.5);
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .hero-proof {
-        font-size: 0.8rem;
-        gap: 6px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .btn-principal,
-    .btn-secundario {
-        width: 100%;
-        padding: 14px;
-        font-size: 0.95rem;
-    }
-
-    .hero-trust {
-        font-size: 0.8rem;
-    }
-
-    .hero-stats-live {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .hero-security {
-        flex-direction: column;
-        gap: 8px;
-        font-size: 0.75rem;
-    }
-
-    .live-users {
-        font-size: 0.75rem;
-    }
-}
-
-/* ================= MOVIL PEQUEÑO ================= */
-
-@media (max-width: 480px) {
-
-    .hero-title {
-        font-size: 1.7rem;
-    }
-
-    .btn-principal,
-    .btn-secundario {
-        font-size: 0.9rem;
-        padding: 12px;
-    }
-
-    .hero-proof {
-        font-size: 0.7rem;
-    }
-}
-
 /* ================= TRUST SECTION ================= */
 .trust-section {
     padding: 70px 20px;
@@ -960,41 +812,6 @@ body{
     border-color: var(--movve-green);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px){
-
-    .seo-content {
-        padding: 30px 20px;
-        margin: 50px 15px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .section-subtitle {
-        font-size: 0.95rem;
-    }
-
-    .presentacion-cta-box {
-        text-align: center;
-    }
-
-    .movve-main-btn {
-        text-align: center;
-        padding: 30px 20px;
-    }
-
-    .movve-main-btn i {
-        margin: 0 auto 15px;
-    }
-
-    .presentacion-mini-benefits {
-        justify-content: center;
-    }
-}
-
 /* ================= SECCIÓN ECOSISTEMA ================= */
 .ecosistema-pro {
     padding: 100px 20px;
@@ -1084,42 +901,6 @@ body{
     transform: translateX(8px);
     color: var(--movve-dark);
     opacity: 1;
-}
-
-/* TABLET */
-@media (max-width: 1024px){
-
-    .ecosistema-pro {
-        padding: 80px 20px;
-    }
-
-    .ecosistema-grid {
-        gap: 20px;
-    }
-
-    .eco-card {
-        padding: 30px 25px;
-    }
-
-}
-
-/* 📱 MÓVIL PRO */
-@media (max-width: 768px){
-
-    .ecosistema-pro {
-        padding: 60px 15px;
-    }
-
-    .ecosistema-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .eco-card {
-        padding: 25px 20px;
-        border-radius: 18px
-  }
-
 }
 
 /* ================= FINTECH MOVVE IA ================= */
@@ -1369,13 +1150,6 @@ body{
     text-decoration: underline;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .fintech-qr {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* LOGO HEADER */
 .qr-header {
     display: flex;
@@ -1402,146 +1176,6 @@ body{
 .mini-chart {
     width: 100%;
     height: 60px;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 900px) {
-
-    .fintech-head-table {
-        display: none;
-    }
-
-    .row {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .btn-sub {
-        width: 100%;
-    }
-
-}
-
-/* ====================== RESPONSIVE ====================== */
-
-/* -------- TABLET -------- */
-@media (max-width: 1024px){
-    .main {
-        padding: 20px;
-    }
-
-    .fintech-header h2 {
-        font-size: 24px;
-    }
-
-    .stat h3 {
-        font-size: 20px;
-    }
-}
-
-/* -------- MÓVIL PRO -------- */
-@media (max-width: 768px){
-    .app-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-    }
-
-    .sidebar nav {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-    }
-
-    .sidebar nav a {
-        font-size: 12px;
-        padding: 8px 10px;
-        white-space: nowrap;
-    }
-
-    .main {
-        padding: 15px;
-    }
-
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .btn-fintech {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .fintech-stats {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .fintech-table {
-        border: none;
-        box-shadow: none;
-        background: transparent;
-    }
-
-    .row {
-        display: block;
-        background: #fff;
-        margin-bottom: 15px;
-        border-radius: 12px;
-        padding: 15px;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .row.head {
-        display: none;
-    }
-
-    .row span {
-        display: flex;
-        justify-content: space-between;
-        font-size: 13px;
-        margin-bottom: 6px;
-    }
-
-    .row span::before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: var(--text-light);
-    }
-
-    .mini-chart {
-        height: 40px;
-        margin-top: 8px;
-    }
-}
-
-/* -------- MÓVIL PEQUEÑO -------- */
-@media (max-width: 480px){
-    .fintech {
-        padding: 30px 15px;
-    }
-
-    .fintech-header h2 {
-        font-size: 20px;
-    }
-
-    .btn-fintech {
-        font-size: 13px;
-        padding: 10px;
-    }
-
-    .stat {
-        padding: 15px;
-    }
 }
 
 /* ================= CTA SUPER PRO ================= */
@@ -1739,28 +1373,6 @@ body{
     color: #94a3b8;
 }
 
-/* RESPONSIVE */
-@media(max-width: 600px){
-
-    .cta-title {
-        font-size: 28px;
-    }
-
-    .cta-subtitle {
-        font-size: 14px;
-    }
-
-    .btn-cta-pro {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .btn-tutorial {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
 /* ================= FOOTER BLANCO PRO ================= */
 
 .footer-pro {
@@ -1926,35 +1538,6 @@ body{
 #scrollTop:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px){
-
-    .footer-pro {
-        padding: 60px 15px 20px;
-        text-align: center;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .wallet-buttons {
-        justify-content: center;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
 }
 
 /* ================= WA FLOATING ULTRA PRO ================= */
@@ -2249,18 +1832,6 @@ body{
     transform: scale(1.03);
 }
 
-/* RESPONSIVE */
-@media (max-width: 480px) {
-    .movve-menu {
-        width: 300px;
-        right: -10px; /* Ajuste para móviles */
-    }
-    .movve-floating-container {
-        bottom: 20px;
-        right: 20px;
-    }
-}
-
 /* CONTENEDOR GENERAL */
 .ad{
     width:100%;
@@ -2304,21 +1875,6 @@ body{
 .ad-middle{
     max-width:320px;
     min-height:250px;
-}
-
-/* RESPONSIVE */
-@media (max-width:768px){
-
-    .ad-top,
-    .ad-bottom{
-        max-width:320px;
-        min-height:50px;
-    }
-
-    .ad-middle{
-        max-width:300px;
-        min-height:250px;
-    }
 }
 
 /* CONTENEDOR PRINCIPAL (OVERLAY) */
@@ -2410,17 +1966,6 @@ body{
     to { 
         opacity: 1; 
         transform: translateY(0) scale(1); 
-    }
-}
-
-/* RESPONSIVO MÓVIL */
-@media (max-width: 480px) {
-    .popup-box {
-        padding: 40px 25px;
-        border-radius: 25px;
-    }
-    .popup-box h2 {
-        font-size: 22px;
     }
 }
 
@@ -2634,29 +2179,89 @@ body{
     color: var(--text-light);
 }
 
-/* ================= RESPONSIVE ================= */
+/* ==========================================================================
+   RESPONSIVO NAVBAR, HERO Y FINTECH
+   ========================================================================== */
+
+/* --- 1. AJUSTES PARA LAPTOPS Y PC (1024px - 1200px) --- */
+@media (max-width: 1200px) {
+    .nav-container { padding: 0 20px; }
+    .hero-title { font-size: 3.5rem; }
+    .fintech { padding: 40px 20px; }
+}
+
+/* --- 2. AJUSTES PARA TABLETS (769px - 1024px) --- */
+@media (max-width: 1024px) {
+    .hero { height: auto; padding: 140px 20px 100px; }
+    .hero-stats-live { gap: 30px; }
+    
+    .ecosistema-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
+
+    .fintech-head-table {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Ocultamos el 'auto' si estorba */
+    }
+}
+
+/* --- 3. MÓVIL NORMAL (481px - 768px) --- */
 @media (max-width: 768px) {
-
-    .trading-popup {
-        width: 95%;
-        right: 2.5%;
-        bottom: 80px;
+    /* Navbar Mobile ya tiene su lógica, pero reforzamos: */
+    .nav-menu {
+        padding-top: 80px;
+        justify-content: flex-start;
     }
 
-    .ceo-box {
-        position: relative;
-        left: 0;
-        width: 130px;
-        height: 180px;
-        margin: 0 auto 10px;
+    /* Hero */
+    .hero-bg-video { width: 180%; } /* Zoom al video para que llene el alto */
+    .hero-title { font-size: 2.2rem; }
+    .hero-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto 25px; }
+    .btn-principal, .btn-secundario { width: 100%; text-align: center; }
+
+    /* Fintech Table (Transformación a Cards) */
+    .fintech-head-table { display: none; } /* Escondemos cabecera */
+    .row {
+        grid-template-columns: 1fr; /* Una sola columna por fila */
+        text-align: center;
+        gap: 15px;
+        padding: 25px;
+    }
+    
+    .row > span::before {
+        content: attr(data-label); /* Necesitas añadir data-label="Ganancia" en tu HTML */
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        margin-bottom: 5px;
     }
 
-    .trading-content {
-        padding-left: 20px;
+    .hero-stats-live { flex-direction: row; gap: 20px; }
+    .hero-stats-live strong { font-size: 1.4rem; }
+}
+
+/* --- 4. MÓVIL PEQUEÑO (Hasta 480px) --- */
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.8rem; }
+    .hero-subtitle { font-size: 1rem; }
+    
+    .hero-stats-live { 
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+    }
+
+    /* Ajuste de QR Cards */
+    .fintech-qr .qr-card {
+        padding: 25px 15px;
         text-align: center;
     }
+    
+    .qr-card img { width: 120px; }
 
-    .countdown {
-        gap: 5px;
-    }
+    /* Ecosistema */
+    .eco-card { padding: 25px 15px; }
+    .eco-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+
+    /* Modal PDF */
+    .pdf-box { width: 95%; padding: 20px; }
 }
