@@ -231,6 +231,46 @@ body{
     justify-content: flex-start; /* Cambiar a center en móviles con media query */
 }
 
+/* ================= BOTÓN SECUNDARIO (VOLVER) ================= */
+.btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--movve-dark);
+    padding: 16px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-secundario i {
+    margin-right: 10px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+/* HOVER EFECTO */
+.btn-secundario:hover {
+    background-color: var(--movve-dark);
+    color: white;
+    border-color: var(--movve-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secundario:hover i {
+    transform: translateX(-5px); /* Pequeña animación de la flecha */
+}
+
+.btn-secundario:active {
+    transform: translateY(-1px);
+}
+
 /* ================= MODAL DE IMAGEN ================= */
 .image-modal {
     display: none;
