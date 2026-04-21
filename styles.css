@@ -604,6 +604,56 @@ body{
     transform: scale(0.96);
 }
 
+/* ================= TRUST HORIZONTAL PRO ================= */
+
+@media (max-width: 768px) {
+    .trust-section {
+        padding: 40px 15px;
+    }
+
+    .trust-logos {
+        display: flex;
+        flex-wrap: nowrap; /* No rompe la línea */
+        overflow-x: auto;  /* Scroll lateral suave */
+        justify-content: flex-start;
+        padding: 20px 10px;
+        gap: 15px;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
+        scrollbar-width: none; /* Oculta scrollbar en Firefox */
+    }
+
+    .trust-logos::-webkit-scrollbar {
+        display: none; /* Oculta scrollbar en Chrome/Safari */
+    }
+
+    .trust-item {
+        flex: 0 0 auto; /* Evita que la tarjeta se encoja */
+        flex-direction: row; /* Diseño horizontal */
+        width: auto;
+        min-width: 160px;
+        padding: 12px 20px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    .trust-item img {
+        height: 25px; /* Logo más pequeño para horizontal */
+    }
+
+    .trust-item span {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* AJUSTE PARA MÓVIL MUY PEQUEÑO */
+@media (max-width: 480px) {
+    .trust-item {
+        min-width: 140px;
+        padding: 10px 15px;
+    }
+}
+
 /* ================= SEO CONTENT ================= */
 
 .seo-content {
