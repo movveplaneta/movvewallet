@@ -753,166 +753,151 @@ body{
 }
 
 /* ================= SEO CONTENT ================= */
+
 .seo-content {
     max-width: 900px;
-    margin: 60px auto;
-    padding: 60px 50px;
+    margin: 80px auto;
+    padding: 50px 40px;
 
-    background: linear-gradient(180deg, #ffffff, #f9fafb);
+    background: var(--movve-card-bg);
     border-radius: var(--radius);
 
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
 
     position: relative;
+    overflow: hidden;
 }
 
-/* LÍNEA SUPERIOR */
+/* DECORACIÓN SUAVE */
 .seo-content::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 4px;
-
-    background: linear-gradient(90deg, var(--movve-green), #00bcd4);
-
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
+    top: -60px;
+    right: -60px;
+    width: 150px;
+    height: 150px;
+    background: var(--movve-green);
+    opacity: 0.04;
+    border-radius: 50%;
 }
 
 /* TITULOS */
 .seo-content h2 {
-    font-size: 22px;
-    margin-bottom: 12px;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--movve-dark);
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.seo-content h2:first-child {
+    margin-top: 0;
+}
+
+/* LINEA VISUAL */
+.seo-content h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--movve-green);
+    margin-top: 6px;
+    border-radius: 2px;
 }
 
 /* TEXTO */
 .seo-content p {
-    font-size: 15.5px;
-    line-height: 1.8;
     color: var(--text-dark);
-    margin-bottom: 28px;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
 }
 
-/* SEPARACIÓN VISUAL */
-.seo-content h2:not(:first-child) {
-    margin-top: 30px;
-}
+/* ================= PRESENTACION ================= */
 
-/* ================= SECCIÓN PRESENTACIÓN ================= */
 .presentacion-pro {
     padding: 100px 20px;
-    background-color: var(--movve-bg);
+    background: var(--movve-bg);
     text-align: center;
 }
 
+/* TITULO */
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    font-weight: 800;
     color: var(--movve-dark);
     margin-bottom: 15px;
-    font-weight: 800;
 }
 
 .section-title span {
     color: var(--movve-green);
 }
 
+/* SUBTITULO */
 .section-subtitle {
-    color: var(--text-light);
     max-width: 600px;
-    margin: 0 auto 50px;
-    font-size: 1.1rem;
+    margin: 0 auto 40px;
+
+    font-size: 1.05rem;
     line-height: 1.6;
+    color: var(--text-light);
 }
 
-/* CONTENEDOR DE CARDS */
-.cards-pro {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
+/* CONTENEDOR */
+.presentacion-cta-box {
+    max-width: 650px;
     margin: 0 auto;
+    text-align: left;
 }
 
-.card-link {
+/* ================= BOTON CARD ================= */
+
+.movve-main-btn {
+    display: block;
+    background: var(--movve-card-bg);
+
+    padding: 40px 30px;
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+/* ICONO */
+.movve-main-btn i {
+    font-size: 2.3rem;
+    color: var(--movve-green);
+    margin-bottom: 18px;
+    display: block;
+    transition: var(--transition);
+}
+
+/* TITULO */
+.movve-main-btn span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--movve-dark);
     display: block;
 }
 
-/* ESTILO DE LA TARJETA */
-.card-pro {
-    background: var(--movve-card-bg);
-    padding: 40px 30px;
-    border-radius: var(--radius);
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-    text-align: left;
-    height: 100%;
-    box-shadow: var(--shadow-sm);
-}
-
-/* Iconos Dinámicos */
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    transition: var(--transition);
-}
-
-.green .card-icon { color: var(--movve-green); }
-.blue .card-icon { color: #3b82f6; } /* Azul para variar el ecosistema */
-
-.card-pro h3 {
-    color: var(--movve-dark);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.card-pro p {
-    color: var(--text-dark);
+/* DESCRIPCIÓN */
+.movve-main-btn::after {
+    content: "Guía completa del ecosistema y centro de aprendizaje";
+    display: block;
+    margin-top: 10px;
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    color: var(--text-dark);
 }
 
-/* Flecha de Acción */
-.card-arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background: var(--movve-bg);
-    border-radius: 50%;
-    color: var(--movve-dark);
-    transition: var(--transition);
-}
-
-/* EFECTOS HOVER PRO */
-.card-pro:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--movve-green);
-}
-
-.card-pro:hover .card-icon {
-    transform: scale(1.1) rotate(-5deg);
-}
-
-.card-pro:hover .card-arrow {
-    background: var(--movve-green);
-    color: white;
-    transform: translateX(5px);
-}
-
-/* Decoración de fondo sutil */
-.card-pro::before {
+/* EFECTO DECORATIVO */
+.movve-main-btn::before {
     content: '';
     position: absolute;
     top: -50px;
@@ -920,42 +905,68 @@ body{
     width: 120px;
     height: 120px;
     background: var(--movve-green);
-    opacity: 0.03;
+    opacity: 0.04;
     border-radius: 50%;
     transition: var(--transition);
 }
 
-.card-pro:hover::before {
+/* HOVER */
+.movve-main-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--movve-green);
+}
+
+.movve-main-btn:hover i {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.movve-main-btn:hover::before {
     opacity: 0.1;
-    transform: scale(1.5);
+    transform: scale(1.4);
 }
 
-/* TABLET */
-@media (max-width: 1024px){
+/* ================= MINI BENEFICIOS ================= */
 
-    .presentacion-pro {
-        padding: 80px 20px;
-    }
-
-    .section-title {
-        font-size: 2.2rem;
-    }
-
-    .section-subtitle {
-        font-size: 1rem;
-    }
-
-    .cards-pro {
-        gap: 20px;
-    }
-
+.presentacion-mini-benefits {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* 📱 MÓVIL PRO */
+.presentacion-mini-benefits span {
+    background: var(--movve-bg);
+    color: var(--text-dark);
+
+    padding: 8px 12px;
+    border-radius: 999px;
+
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+/* CHECK AUTOMÁTICO */
+.presentacion-mini-benefits span::before {
+    content: "✔ ";
+    color: var(--movve-green);
+}
+
+/* HOVER TAGS */
+.presentacion-mini-benefits span:hover {
+    background: var(--movve-green);
+    color: #fff;
+    border-color: var(--movve-green);
+}
+
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 768px){
 
-    .presentacion-pro {
-        padding: 60px 15px;
+    .seo-content {
+        padding: 30px 20px;
+        margin: 50px 15px;
     }
 
     .section-title {
@@ -964,49 +975,24 @@ body{
 
     .section-subtitle {
         font-size: 0.95rem;
-        margin-bottom: 35px;
     }
 
-    /* CARDS MÁS COMPACTAS */
-    .cards-pro {
-        grid-template-columns: 1fr;
-        gap: 18px;
+    .presentacion-cta-box {
+        text-align: center;
     }
 
-    .card-pro {
-        padding: 25px 20px;
+    .movve-main-btn {
+        text-align: center;
+        padding: 30px 20px;
     }
 
-    .card-pro h3 {
-        font-size: 1.2rem;
+    .movve-main-btn i {
+        margin: 0 auto 15px;
     }
 
-    .card-pro p {
-        font-size: 0.9rem;
+    .presentacion-mini-benefits {
+        justify-content: center;
     }
-
-    .card-icon {
-        font-size: 2rem;
-        margin-bottom: 15px;
-    }
-
-}
-
-/* 📱 MÓVIL PEQUEÑO */
-@media (max-width: 480px){
-
-    .section-title {
-        font-size: 1.5rem;
-    }
-
-    .section-subtitle {
-        font-size: 0.85rem;
-    }
-
-    .card-pro {
-        padding: 20px 15px;
-    }
-
 }
 
 /* ================= SECCIÓN ECOSISTEMA ================= */
