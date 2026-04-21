@@ -668,3 +668,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+function openImage(event) {
+    event.preventDefault(); // Evita que la página salte al inicio
+    const modal = document.getElementById("imageModal");
+    
+    if (modal) {
+        // 1. Mostrar el modal
+        modal.style.display = "flex";
+        
+        // 2. Programar el cierre automático (ejemplo: 5 segundos)
+        setTimeout(() => {
+            closeImage();
+        }, 5000); 
+    }
+}
+
+function closeImage() {
+    const modal = document.getElementById("imageModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Opcional: Cerrar si el usuario hace clic fuera de la imagen
+window.onclick = function(event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target === modal) {
+        closeImage();
+    }
+}
