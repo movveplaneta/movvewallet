@@ -78,3 +78,47 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", toggleWaButton);
     toggleWaButton();
 });
+
+// PARTICULAS
+const container = document.getElementById("particles");
+for (let i = 0; i < 40; i++) {
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    container.appendChild(p);
+}
+
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade, .resumen-card");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+elements.forEach(el => observer.observe(el));
+
+// BOTON SCROLL TOP
+const scrollBtn = document.getElementById("scrollTop");
+
+// MOSTRAR / OCULTAR
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
+});
+
+// CLICK → SUBIR SUAVE
+scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
