@@ -406,73 +406,210 @@ body{
     border-radius: 999px;
 }
 
-/* ================= RESUMEN ================= */
-
+/* ================= SECCION BASE ================= */
 .resumen-pro {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top, var(--movve-dark), #020617);
     padding: 80px 20px;
-    background: #fff;
-    text-align: center;
+    color: #fff;
 }
 
-/* GRID */
+/* ================= PARTICULAS ================= */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--movve-green);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ================= CONTENIDO ================= */
+.resumen-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================= TITULOS ================= */
+.section-title {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: var(--movve-green);
+    text-shadow: 0 0 12px rgba(0,200,83,0.5);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 50px;
+}
+
+/* ================= GRID ================= */
 .resumen-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
-    margin-top: 40px;
 }
 
-/* CARD */
+/* ================= CARDS ================= */
 .resumen-card {
-    background: var(--movve-card-bg);
-    padding: 35px 25px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
+    padding: 30px;
     position: relative;
+    backdrop-filter: blur(10px);
     transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+
+    opacity: 0;
+    transform: translateY(40px);
 }
 
 /* HOVER */
 .resumen-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--movve-green);
+    box-shadow: 0 0 25px rgba(0,200,83,0.2);
 }
 
-/* NUMERO GRANDE */
+/* GLOW */
+.resumen-card::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,200,83,0.2),
+        transparent
+    );
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+}
+
+.resumen-card:hover::before {
+    opacity: 1;
+    animation: glowMove 2s linear infinite;
+}
+
+@keyframes glowMove {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+}
+
+/* ================= NUMERO ================= */
 .resumen-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    opacity: 0.08;
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: rgba(0, 200, 83, 0.15);
 }
 
-/* ICONO */
+/* ================= ICONO ================= */
 .resumen-icon {
-    font-size: 28px;
+    font-size: 2rem;
     color: var(--movve-green);
-    margin-bottom: 15px;
-}
-
-/* TITULO */
-.resumen-card h3 {
     margin-bottom: 10px;
-    font-size: 1.1rem;
-    color: var(--text-dark);
+    text-shadow: 0 0 10px rgba(0,200,83,0.5);
 }
 
-/* TEXTO */
+/* ================= TEXTO ================= */
+.resumen-card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
 .resumen-card p {
-    font-size: 0.9rem;
     color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-/* CTA */
+/* ================= BOTON ================= */
 .resumen-action {
-    margin-top: 30px;
+    text-align: center;
+    margin-top: 50px;
 }
 
+.btn-secundario {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 30px;
+    background: linear-gradient(
+        90deg,
+        var(--movve-green),
+        #22c55e
+    );
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(0,200,83,0.4);
+}
+
+/* HOVER BOTON */
+.btn-secundario:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0,200,83,0.7);
+}
+
+/* ================= ANIMACION ================= */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .resumen-card {
+        padding: 25px;
+    }
+}
 
 /* ================= CTA ================= */
 
@@ -676,125 +813,163 @@ body{
     box-shadow: 0 8px 20px rgba(0,200,83,0.3);
 }
 
-/* ================= WA FLOATING ULTRA PRO ================= */
+/* ================= WA FLOATING PREMIUM MOVVE ================= */
 .wa-floating-pro {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    text-decoration: none;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: fixed;
+bottom: 30px;
+left: 30px;
+text-decoration: none;
+z-index: 9999;
+display: flex;
+align-items: center;
+transition: var(--transition);
 }
 
-/* Capas de Ondas de Radar */
+/* ================= RADAR ================= */
 .wa-radar-waves {
-    position: absolute;
-    left: 28px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+position: absolute;
+left: 28px;
+width: 50px;
+height: 50px;
 }
 
 .wa-radar-waves span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #00ff88;
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: wa-pulse 2.5s infinite;
+position: absolute;
+width: 100%;
+height: 100%;
+background: var(--movve-green);
+border-radius: 50%;
+opacity: 0.4;
+animation: wa-pulse 2.8s infinite;
 }
 
-.wa-radar-waves span:nth-child(2) { animation-delay: 0.8s; }
-.wa-radar-waves span:nth-child(3) { animation-delay: 1.6s; }
+.wa-radar-waves span:nth-child(2) { animation-delay: 0.9s; }
+.wa-radar-waves span:nth-child(3) { animation-delay: 1.8s; }
 
 @keyframes wa-pulse {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(3.5); opacity: 0; }
+0% { transform: scale(1); opacity: 0.4; }
+100% { transform: scale(3.2); opacity: 0; }
 }
 
-/* Tarjeta Principal Glassmorphism */
+/* ================= CARD ================= */
 .wa-inner-card {
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    padding: 12px 20px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
-                inset 0 0 15px rgba(0, 255, 136, 0.05);
-    position: relative;
-    overflow: hidden;
+background: rgba(15, 23, 42, 0.85);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+
+```
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: var(--radius);
+
+padding: 12px 20px;
+display: flex;
+align-items: center;
+gap: 15px;
+
+box-shadow: var(--shadow-lg);
+position: relative;
+overflow: hidden;
+```
+
 }
 
-/* Icono y Punto Online */
+/* Glow sutil */
+.wa-inner-card::after {
+content: "";
+position: absolute;
+inset: 0;
+background: radial-gradient(circle at left, rgba(0,200,83,0.15), transparent 60%);
+opacity: 0;
+transition: var(--transition);
+}
+
+/* ================= ICONO ================= */
 .wa-icon-box {
-    position: relative;
-    font-size: 28px;
-    color: #00ff88;
-    filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.6));
+position: relative;
+font-size: 26px;
+color: var(--movve-green);
+filter: drop-shadow(0 0 6px rgba(0,200,83,0.4));
 }
 
+/* ONLINE DOT */
 .online-dot {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 10px;
-    height: 10px;
-    background: #00ff88;
-    border: 2px solid #0a0a0a;
-    border-radius: 50%;
-    animation: blink 1s infinite;
+position: absolute;
+top: -2px;
+right: -2px;
+width: 10px;
+height: 10px;
+background: var(--movve-green);
+border: 2px solid var(--movve-dark);
+border-radius: 50%;
+animation: blink 1.2s infinite;
 }
 
-/* Texto y Badge */
+/* ================= TEXTO ================= */
 .wa-content-text {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .wa-badge {
-    font-size: 9px;
-    font-weight: 900;
-    color: #00ff88;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 2px;
+font-size: 9px;
+font-weight: 800;
+color: var(--movve-green);
+letter-spacing: 1.2px;
+text-transform: uppercase;
 }
 
 .wa-title {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    white-space: nowrap;
+color: #fff;
+font-size: 14px;
+font-weight: 600;
+white-space: nowrap;
 }
 
+/* ================= ARROW ================= */
 .wa-arrow {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-    transition: 0.3s;
+color: rgba(255,255,255,0.3);
+font-size: 12px;
+transition: var(--transition);
 }
 
-/* Interacción Hover */
+/* ================= HOVER ================= */
 .wa-floating-pro:hover {
-    transform: scale(1.05) translateX(10px);
+transform: translateX(8px) scale(1.04);
 }
 
 .wa-floating-pro:hover .wa-inner-card {
-    border-color: #00ff88;
-    background: rgba(0, 255, 136, 0.1);
+border-color: rgba(0,200,83,0.4);
+}
+
+.wa-floating-pro:hover .wa-inner-card::after {
+opacity: 1;
 }
 
 .wa-floating-pro:hover .wa-arrow {
-    color: #00ff88;
-    transform: translateX(5px);
+color: var(--movve-green);
+transform: translateX(4px);
 }
 
-@keyframes blink { 50% { opacity: 0.3; } }
+/* ================= ANIMACION ================= */
+@keyframes blink {
+50% { opacity: 0.3; }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+.wa-floating-pro {
+bottom: 20px;
+left: 20px;
+}
+
+```
+.wa-inner-card {
+    padding: 10px 16px;
+}
+
+.wa-title {
+    font-size: 13px;
+}
+
+}
+blink { 50% { opacity: 0.3; } }
