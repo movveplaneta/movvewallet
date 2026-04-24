@@ -464,7 +464,7 @@ body{
 }
 
 .section-title span {
-    color: var(--movve-green);
+    color: var(--movve-card-bg);
     text-shadow: 0 0 12px rgba(0,200,83,0.5);
 }
 
