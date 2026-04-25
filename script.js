@@ -123,45 +123,49 @@ scrollBtn.addEventListener("click", () => {
     });
 });
 
-const boton = document.getElementById("wa-radar");
-const badge = document.getElementById("waBadge");
-const title = document.getElementById("waTitle");
-const icon = document.getElementById("waIcon");
+document.addEventListener("DOMContentLoaded", function () {
 
-const estados = [
-    {
-        badge: "ATENCIÓN DIRECTA",
-        title: "Escríbenos ahora",
-        link: "https://wa.me/18495942190?text=Hola%20💡%20quiero%20información%20sobre%20Movve%20Wallet",
-        clase: "estado-1",
-        icono: "fab fa-whatsapp"
-    },
-    {
-        badge: "ACCESO RÁPIDO",
-        title: "Entrar al sistema",
-        link: "https://app.movvewallet.com/register/TBwPNoUJCphFFh52NaizpC8kAgy5xAmHi8",
-        clase: "estado-2",
-        icono: "fas fa-rocket" // puedes cambiar por: fa-arrow-right, fa-user-plus
-    }
-];
+    const boton = document.getElementById("wa-radar");
+    const badge = document.getElementById("waBadge");
+    const title = document.getElementById("waTitle");
+    const icon = document.getElementById("waIcon");
 
-let index = 0;
+    const estados = [
+        {
+            badge: "ATENCIÓN DIRECTA",
+            title: "Escríbenos ahora",
+            link: "https://wa.me/18495942190?text=Hola",
+            clase: "estado-1",
+            icono: "fab fa-whatsapp"
+        },
+        {
+            badge: "ACCESO RÁPIDO",
+            title: "Entrar al sistema",
+            link: "https://app.movvewallet.com/register/TBwPNoUJCphFFh52NaizpC8kAgy5xAmHi8",
+            clase: "estado-2",
+            icono: "fas fa-user-plus"
+        }
+    ];
 
-setInterval(() => {
-    index = (index + 1) % estados.length;
+    let index = 0;
 
-    // Texto
-    badge.textContent = estados[index].badge;
-    title.textContent = estados[index].title;
+    setInterval(() => {
+        index = (index + 1) % estados.length;
 
-    // Link
-    boton.href = estados[index].link;
+        // Texto
+        badge.textContent = estados[index].badge;
+        title.textContent = estados[index].title;
 
-    // Clase visual
-    boton.classList.remove("estado-1", "estado-2");
-    boton.classList.add(estados[index].clase);
+        // Link
+        boton.href = estados[index].link;
 
-    // ICONO (cambio dinámico)
-    icon.className = estados[index].icono;
+        // Clase
+        boton.classList.remove("estado-1", "estado-2");
+        boton.classList.add(estados[index].clase);
 
-}, 6000);
+        // ICONO (FIX CLAVE)
+        icon.className = estados[index].icono;
+
+    }, 10000);
+
+});
