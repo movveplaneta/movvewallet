@@ -166,6 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // ICONO (FIX CLAVE)
         icon.className = estados[index].icono;
 
-    }, 10000);
+    }, 8000);
 
 });
