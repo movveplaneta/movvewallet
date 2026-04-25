@@ -814,163 +814,201 @@ body{
     box-shadow: 0 8px 20px rgba(0,200,83,0.3);
 }
 
-/* ================= WA FLOATING PREMIUM MOVVE ================= */
+/* ================= WA FLOATING PREMIUM ================= */
 .wa-floating-pro {
-position: fixed;
-bottom: 30px;
-left: 30px;
-text-decoration: none;
-z-index: 9999;
-display: flex;
-align-items: center;
-transition: var(--transition);
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    text-decoration: none;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
 }
 
 /* ================= RADAR ================= */
 .wa-radar-waves {
-position: absolute;
-left: 28px;
-width: 50px;
-height: 50px;
+    position: absolute;
+    left: 28px;
+    width: 50px;
+    height: 50px;
 }
 
 .wa-radar-waves span {
-position: absolute;
-width: 100%;
-height: 100%;
-background: var(--movve-green);
-border-radius: 50%;
-opacity: 0.4;
-animation: wa-pulse 2.8s infinite;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--movve-green);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: wa-pulse 2.8s infinite;
 }
 
 .wa-radar-waves span:nth-child(2) { animation-delay: 0.9s; }
 .wa-radar-waves span:nth-child(3) { animation-delay: 1.8s; }
 
 @keyframes wa-pulse {
-0% { transform: scale(1); opacity: 0.4; }
-100% { transform: scale(3.2); opacity: 0; }
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(3.2); opacity: 0; }
 }
 
 /* ================= CARD ================= */
 .wa-inner-card {
-background: rgba(15, 23, 42, 0.85);
-backdrop-filter: blur(18px);
--webkit-backdrop-filter: blur(18px);
-
-```
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: var(--radius);
-
-padding: 12px 20px;
-display: flex;
-align-items: center;
-gap: 15px;
-
-box-shadow: var(--shadow-lg);
-position: relative;
-overflow: hidden;
-```
-
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
 }
 
-/* Glow sutil */
+/* Glow base */
 .wa-inner-card::after {
-content: "";
-position: absolute;
-inset: 0;
-background: radial-gradient(circle at left, rgba(0,200,83,0.15), transparent 60%);
-opacity: 0;
-transition: var(--transition);
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at left, rgba(0,200,83,0.15), transparent 60%);
+    opacity: 0;
+    transition: var(--transition);
 }
 
 /* ================= ICONO ================= */
 .wa-icon-box {
-position: relative;
-font-size: 26px;
-color: var(--movve-green);
-filter: drop-shadow(0 0 6px rgba(0,200,83,0.4));
+    position: relative;
+    font-size: 26px;
+    color: var(--movve-green);
+    filter: drop-shadow(0 0 6px rgba(0,200,83,0.4));
 }
 
-/* ONLINE DOT */
 .online-dot {
-position: absolute;
-top: -2px;
-right: -2px;
-width: 10px;
-height: 10px;
-background: var(--movve-green);
-border: 2px solid var(--movve-dark);
-border-radius: 50%;
-animation: blink 1.2s infinite;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background: var(--movve-green);
+    border: 2px solid var(--movve-dark);
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
 }
 
 /* ================= TEXTO ================= */
 .wa-content-text {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .wa-badge {
-font-size: 9px;
-font-weight: 800;
-color: var(--movve-green);
-letter-spacing: 1.2px;
-text-transform: uppercase;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--movve-green);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
 .wa-title {
-color: #fff;
-font-size: 14px;
-font-weight: 600;
-white-space: nowrap;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 /* ================= ARROW ================= */
 .wa-arrow {
-color: rgba(255,255,255,0.3);
-font-size: 12px;
-transition: var(--transition);
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    transition: var(--transition);
 }
 
 /* ================= HOVER ================= */
 .wa-floating-pro:hover {
-transform: translateX(8px) scale(1.04);
+    transform: translateX(8px) scale(1.04);
 }
 
 .wa-floating-pro:hover .wa-inner-card {
-border-color: rgba(0,200,83,0.4);
+    border-color: rgba(0,200,83,0.4);
 }
 
 .wa-floating-pro:hover .wa-inner-card::after {
-opacity: 1;
+    opacity: 1;
 }
 
 .wa-floating-pro:hover .wa-arrow {
-color: var(--movve-green);
-transform: translateX(4px);
+    color: var(--movve-green);
+    transform: translateX(4px);
+}
+
+/* ================= ESTADO 1 (WHATSAPP) ================= */
+.estado-1 .wa-badge {
+    color: var(--movve-green);
+}
+
+.estado-1 .wa-radar-waves span {
+    background: var(--movve-green);
+}
+
+/* ================= ESTADO 2 (REGISTRO PRO) ================= */
+.estado-2 .wa-inner-card {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    border: 1px solid rgba(0,230,118,0.25);
+}
+
+/* Glow más fuerte */
+.estado-2 .wa-inner-card::after {
+    background: radial-gradient(circle at left, rgba(0,230,118,0.35), transparent 60%);
+    opacity: 1;
+}
+
+/* Texto más fuerte */
+.estado-2 .wa-badge {
+    color: #00e676;
+    letter-spacing: 1.5px;
+}
+
+.estado-2 .wa-title {
+    font-weight: 700;
+}
+
+/* Icono más potente */
+.estado-2 .wa-icon-box {
+    color: #00e676;
+    filter: drop-shadow(0 0 10px rgba(0,230,118,0.7));
+}
+
+/* Radar más intenso */
+.estado-2 .wa-radar-waves span {
+    background: #00e676;
+    opacity: 0.6;
+}
+
+/* Hover más agresivo */
+.estado-2:hover {
+    transform: translateX(10px) scale(1.06);
 }
 
 /* ================= ANIMACION ================= */
 @keyframes blink {
-50% { opacity: 0.3; }
+    50% { opacity: 0.3; }
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-.wa-floating-pro {
-bottom: 20px;
-left: 20px;
-}
+    .wa-floating-pro {
+        bottom: 20px;
+        left: 20px;
+    }
 
-```
-.wa-inner-card {
-    padding: 10px 16px;
-}
+    .wa-inner-card {
+        padding: 10px 16px;
+    }
 
-.wa-title {
-    font-size: 13px;
+    .wa-title {
+        font-size: 13px;
+    }
 }
-
-}
-blink { 50% { opacity: 0.3; } }
