@@ -410,18 +410,15 @@ body{
 .resumen-pro {
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at top, var(--movve-dark), #020617);
-    padding: 80px 20px;
+    background: radial-gradient(circle at top, #0b1220, #020617);
+    padding: 90px 20px;
     color: #fff;
 }
 
 /* ================= PARTICULAS ================= */
 .particles {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    inset: 0;
     z-index: 0;
     pointer-events: none;
 }
@@ -430,22 +427,16 @@ body{
     position: absolute;
     width: 4px;
     height: 4px;
-    background: var(--movve-green);
+    background: #00c853;
     border-radius: 50%;
     opacity: 0.6;
-    animation: floatParticle linear infinite;
+    animation: floatParticle 10s linear infinite;
 }
 
 @keyframes floatParticle {
-    0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-    }
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
     10% { opacity: 1; }
-    100% {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0;
-    }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
 }
 
 /* ================= CONTENIDO ================= */
@@ -456,26 +447,72 @@ body{
     margin: auto;
 }
 
-/* ================= TITULOS ================= */
+/* ================= TITULO (ESTILO MOVVE REAL) ================= */
 .section-title {
     font-size: 2.4rem;
     text-align: center;
     margin-bottom: 10px;
-    color: var(--text-white);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,200,83,0.2);
 }
 
 .section-title span {
-    color: var(--movve-green);
-    text-shadow: 0 0 12px rgba(0,200,83,0.5);
+    background: linear-gradient(90deg, #00c853, #22c55e, #00ff88, #00c853);
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 4s linear infinite;
+
+    text-shadow: 0 0 15px rgba(0,200,83,0.4);
 }
 
+@keyframes gradientMove {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.proyeccion-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 10px auto 30px auto;
+
+    letter-spacing: 0.2px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSub 0.8s ease forwards;
+    animation-delay: 0.2s;
+
+    text-shadow: 0 0 10px rgba(0, 200, 83, 0.08);
+}
+
+/* Entrada suave */
+@keyframes fadeSub {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto hover sutil (opcional) */
+.proyeccion-subtitle:hover {
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 12px rgba(0, 200, 83, 0.2);
+}
+
+/* ================= SUBTITLE ================= */
 .section-subtitle {
     text-align: center;
-    color: var(--text-light);
+    color: rgba(255,255,255,0.7);
     margin-bottom: 50px;
 }
 
-/* ================= GRID ================= */
+/* ================= STEPS ================= */
 .resumen-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -486,21 +523,18 @@ body{
 .resumen-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius);
+    border-radius: 16px;
     padding: 30px;
+    backdrop-filter: blur(12px);
+    transition: 0.3s;
     position: relative;
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-
-    opacity: 0;
-    transform: translateY(40px);
+    overflow: hidden;
 }
 
-/* HOVER */
+/* HOVER MOVVE */
 .resumen-card:hover {
     transform: translateY(-10px) scale(1.02);
-    border-color: var(--movve-green);
+    border-color: #00c853;
     box-shadow: 0 0 25px rgba(0,200,83,0.2);
 }
 
@@ -510,12 +544,7 @@ body{
     position: absolute;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(0,200,83,0.2),
-        transparent
-    );
+    background: linear-gradient(120deg, transparent, rgba(0,200,83,0.2), transparent);
     top: -50%;
     left: -50%;
     opacity: 0;
@@ -531,34 +560,98 @@ body{
     100% { transform: translateX(100%) rotate(25deg); }
 }
 
-/* ================= NUMERO ================= */
-.resumen-number {
-    font-size: 2.5rem;
-    font-weight: bold;
-    opacity: 0.08;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-}
-
 /* ================= ICONO ================= */
 .resumen-icon {
     font-size: 2rem;
-    color: var(--movve-green);
+    color: #00c853;
     margin-bottom: 10px;
+}
+
+/* ================= PROYECCION ================= */
+.proyeccion-box {
+    margin-top: 60px;
+}
+
+/* TITULO PROYECCION */
+.proyeccion-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.proyeccion-title span {
+    color: #00c853;
     text-shadow: 0 0 10px rgba(0,200,83,0.5);
 }
 
-/* ================= TEXTO ================= */
-.resumen-card h3 {
-    color: #fff;
-    margin-bottom: 10px;
+/* ================= TABLA ================= */
+.tabla-pro {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
 }
 
-.resumen-card p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 1.5;
+/* HEADER */
+.tabla-head {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 14px;
+    background: rgba(0,200,83,0.08);
+    color: #00c853;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* ROWS */
+.tabla-body div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 14px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+/* HOVER */
+.tabla-body div:hover {
+    background: rgba(0,200,83,0.06);
+    transform: scale(1.01);
+}
+
+.tabla-body span {
+    color: #fff;
+}
+
+/* ================= METRICA ================= */
+.proyeccion-metric {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.proyeccion-metric span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+}
+
+.proyeccion-metric h3 {
+    color: #00c853;
+    font-size: 28px;
+    text-shadow: 0 0 15px rgba(0,200,83,0.5);
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 5px rgba(0,200,83,0.4); }
+    to { text-shadow: 0 0 20px rgba(0,200,83,0.9); }
+}
+
+/* NOTE */
+.proyeccion-note {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
 }
 
 /* ================= BOTON ================= */
@@ -571,34 +664,17 @@ body{
     display: inline-block;
     padding: 14px 28px;
     border-radius: 30px;
-    background: linear-gradient(
-        90deg,
-        var(--movve-green),
-        #22c55e
-    );
+    background: linear-gradient(90deg, #00c853, #22c55e);
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
     box-shadow: 0 0 15px rgba(0,200,83,0.4);
+    transition: 0.3s;
 }
 
-/* HOVER BOTON */
 .btn-secundario:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0,200,83,0.7);
-}
-
-/* ================= ANIMACION ================= */
-.fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
-}
-
-.show {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -607,11 +683,18 @@ body{
         font-size: 1.8rem;
     }
 
-    .resumen-card {
-        padding: 25px;
+    .tabla-head,
+    .tabla-body div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tabla-head span:nth-child(3),
+    .tabla-head span:nth-child(4),
+    .tabla-body span:nth-child(3),
+    .tabla-body span:nth-child(4) {
+        display: none;
     }
 }
-
 /* ================= CTA ================= */
 
 .cta-super-pro {
