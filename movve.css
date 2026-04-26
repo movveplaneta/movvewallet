@@ -254,28 +254,6 @@ body{
     100% { transform: translateX(100%) rotate(25deg); }
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 900px) {
-    .presentacion-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-
-    .presentacion-action {
-        justify-content: center;
-    }
-
-    .presentacion-benefits {
-        align-items: center;
-    }
-
-    .presentacion-card {
-        justify-content: center;
-        text-align: left;
-    }
-}
-
 /* ================= VIDEO SECTION PRO ================= */
 
 .video-explicacion {
@@ -517,23 +495,6 @@ body{
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .video-gallery {
-        gap: 20px;
-    }
-
-    .play-icon {
-        width: 55px;
-        height: 55px;
     }
 }
 
@@ -990,25 +951,6 @@ body{
     border-color: var(--movve-green);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-    .info-ultra-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .info-right {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .btn-glow {
-        width: 100%;
-    }
-}
-
 /* ================= DARK MODE ================= */
 
 @media (prefers-color-scheme: dark) {
@@ -1269,29 +1211,6 @@ body{
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-    .cta-ultra-card {
-        padding: 40px 20px;
-    }
-
-    .cta-ultra-card h2 {
-        font-size: 2rem;
-    }
-
-    .cta-steps {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn-wallet {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
 /* ================= DARK MODE ================= */
 
 @media (prefers-color-scheme: dark) {
@@ -1536,20 +1455,266 @@ body{
     }
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================================= RESPONSIVE MASTER ================================= */
 
-@media (max-width: 768px) {
+/* ================= 📱 MOBILE PEQUEÑO (iPhone SE / Android pequeño) ================= */
+@media (max-width: 480px) {
 
-    .footer {
-        padding: 60px 20px;
+    html {
+        font-size: 14px;
+    }
+
+    .nav-container {
+        padding: 12px 15px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .presentacion-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .presentacion-action {
+        flex-direction: column;
+    }
+
+    .video-gallery,
+    .tutorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-ultra-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .info-left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-ultra-card {
+        padding: 30px 20px;
+    }
+
+    .cta-ultra-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
     }
 
     .brands-logos {
-        gap: 35px;
+        gap: 25px;
     }
 
-    .footer-socials a {
-        width: 38px;
-        height: 38px;
+    .wa-floating-pro {
+        bottom: 20px;
+        left: 20px;
     }
+
+}
+
+
+/* ================= 📱 MOBILE GRANDE (iPhone Pro Max / Android grande) ================= */
+@media (min-width: 481px) and (max-width: 767px) {
+
+    html {
+        font-size: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .presentacion-container {
+        grid-template-columns: 1fr;
+    }
+
+    .video-gallery,
+    .tutorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-ultra-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-ultra-card h2 {
+        font-size: 2rem;
+    }
+
+}
+
+
+/* ================= 📲 TABLET (iPad / Tablets Android) ================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    html {
+        font-size: 15.5px;
+    }
+
+    .nav-menu {
+        gap: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.6rem;
+    }
+
+    .presentacion-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .video-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tutorial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-ultra-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-ultra-card {
+        padding: 40px 30px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ================= 💻 LAPTOP (pantallas estándar) ================= */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+    html {
+        font-size: 16px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .presentacion-container {
+        grid-template-columns: 1.1fr 1fr;
+    }
+
+    .video-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tutorial-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* ================= 🖥️ PC GRANDE (Desktop Full HD) ================= */
+@media (min-width: 1441px) and (max-width: 1920px) {
+
+    html {
+        font-size: 17px;
+    }
+
+    .hero-title {
+        font-size: 3.4rem;
+    }
+
+    .cta-ultra-card {
+        max-width: 1000px;
+    }
+
+}
+
+
+/* ================= 🖥️ PANTALLAS ULTRA (2K / 4K / TV) ================= */
+@media (min-width: 1921px) {
+
+    html {
+        font-size: 18px;
+    }
+
+    body {
+        max-width: 1600px;
+        margin: auto;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-content {
+        max-width: 1100px;
+    }
+
+    .presentacion-container {
+        max-width: 1400px;
+    }
+
+    .video-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tutorial-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cta-ultra-card {
+        max-width: 1100px;
+        padding: 80px;
+    }
+
+}
+
+
+/* ================= 📺 TV / SMART TV (UX especial) ================= */
+@media (min-width: 2560px) {
+
+    html {
+        font-size: 20px;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .hero-buttons a {
+        padding: 20px 40px;
+        font-size: 1.2rem;
+    }
+
+    .btn-cta-ultra {
+        font-size: 1.3rem;
+        padding: 20px 60px;
+    }
+
 }
