@@ -412,26 +412,6 @@ body{
     }
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .hero-buttons a {
-        width: 100%;
-        justify-content: center;
-    }
-}
 /* ================= SCROLL ANIMATIONS ================= */
 
 .reveal {
@@ -702,25 +682,6 @@ body{
     transform: scale(1.05);
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-
-    .resumen-pro .section-title {
-        font-size: 1.8rem;
-    }
-
-    .tabla-head,
-    .tabla-body div {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tabla-head span:nth-child(3),
-    .tabla-head span:nth-child(4),
-    .tabla-body span:nth-child(3),
-    .tabla-body span:nth-child(4) {
-        display: none;
-    }
-}
 /* ================= CTA ================= */
 
 .cta-super-pro {
@@ -1039,24 +1000,6 @@ body{
     }
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-    .footer {
-        padding: 60px 20px;
-    }
-
-    .brands-logos {
-        gap: 35px;
-    }
-
-    .footer-socials a {
-        width: 38px;
-        height: 38px;
-    }
-}
-
 /* BOTÓN SCROLL */
 #scrollTop {
     background: var(--movve-green);
@@ -1256,18 +1199,258 @@ body{
     50% { opacity: 0.3; }
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-    .wa-floating-pro {
-        bottom: 20px;
-        left: 20px;
+/* =========================================================
+   📱 MOBILE PEQUEÑO (320px – 480px)
+   ========================================================= */
+@media (max-width: 480px){
+
+    /* ===== HERO ===== */
+    .hero{
+        height: auto;
+        padding: 120px 15px 60px;
     }
 
-    .wa-inner-card {
-        padding: 10px 16px;
+    .hero-title{
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
-    .wa-title {
-        font-size: 13px;
+    .hero-subtitle{
+        font-size: 1rem;
     }
+
+    .hero-description{
+        font-size: 0.85rem;
+    }
+
+    .hero-buttons{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-buttons a{
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .hero-trust{
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    /* ===== NAV ===== */
+    .nav-container{
+        padding: 12px 15px;
+    }
+
+    /* ===== SECCIONES ===== */
+    .presentacion-pro,
+    .resumen-pro,
+    .cta-super-pro{
+        padding: 60px 15px;
+    }
+
+    .section-title{
+        font-size: 1.8rem !important;
+    }
+
+    .section-subtitle{
+        font-size: 0.9rem;
+    }
+
+    /* ===== GRID ===== */
+    .resumen-steps{
+        grid-template-columns: 1fr;
+    }
+
+    /* ===== TABLA ===== */
+    .tabla-head,
+    .tabla-body div{
+        grid-template-columns: repeat(2,1fr);
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* ===== CTA ===== */
+    .cta-title{
+        font-size: 1.6rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-container{
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    /* ===== WHATSAPP ===== */
+    .wa-floating-pro{
+        left: 10px;
+        bottom: 15px;
+        transform: scale(0.85);
+    }
+}
+
+
+/* =========================================================
+   📱 MOBILE GRANDE (481px – 768px)
+   ========================================================= */
+@media (min-width: 481px) and (max-width: 768px){
+
+    .hero{
+        height: auto;
+        padding: 130px 20px 70px;
+    }
+
+    .hero-title{
+        font-size: 2.4rem;
+    }
+
+    .hero-buttons{
+        flex-direction: column;
+    }
+
+    .hero-buttons a{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .resumen-steps{
+        grid-template-columns: 1fr;
+    }
+
+    .tabla-head,
+    .tabla-body div{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-container{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   📲 TABLET (769px – 1024px)
+   ========================================================= */
+@media (min-width: 769px) and (max-width: 1024px){
+
+    .hero-title{
+        font-size: 2.8rem;
+    }
+
+    .hero-content{
+        max-width: 700px;
+    }
+
+    .resumen-steps{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .tabla-head,
+    .tabla-body div{
+        grid-template-columns: repeat(4,1fr);
+    }
+
+}
+
+
+/* =========================================================
+   💻 LAPTOP (1025px – 1440px)
+   ========================================================= */
+@media (min-width: 1025px) and (max-width: 1440px){
+
+    .hero-title{
+        font-size: 3rem;
+    }
+
+    .hero-content{
+        max-width: 800px;
+    }
+
+    .resumen-container{
+        max-width: 1000px;
+    }
+
+    .footer-container{
+        max-width: 1100px;
+        margin: auto;
+    }
+
+}
+
+
+/* =========================================================
+   🖥️ DESKTOP GRANDE (1441px – 1920px)
+   ========================================================= */
+@media (min-width: 1441px){
+
+    .hero-title{
+        font-size: 3.5rem;
+    }
+
+    .hero-content{
+        max-width: 1000px;
+    }
+
+    .resumen-container{
+        max-width: 1200px;
+    }
+
+    .footer-container{
+        max-width: 1300px;
+        margin: auto;
+    }
+
+}
+
+
+/* =========================================================
+   📺 TV / ULTRA WIDE (1921px+)
+   ========================================================= */
+@media (min-width: 1921px){
+
+    body{
+        font-size: 18px;
+    }
+
+    .hero{
+        height: 100vh;
+    }
+
+    .hero-title{
+        font-size: 4.5rem;
+    }
+
+    .hero-subtitle{
+        font-size: 1.6rem;
+    }
+
+    .hero-description{
+        font-size: 1.1rem;
+    }
+
+    .hero-content{
+        max-width: 1200px;
+    }
+
+    .resumen-container{
+        max-width: 1400px;
+    }
+
+    .footer-container{
+        max-width: 1600px;
+    }
+
+    .cta-title{
+        font-size: 3rem;
+    }
+
 }
