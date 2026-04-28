@@ -254,6 +254,182 @@ body{
     100% { transform: translateX(100%) rotate(25deg); }
 }
 
+/* ================= SECTION ================= */
+
+.qr-section {
+    padding: 140px 5%;
+    background: radial-gradient(circle at center, #020617, #000);
+    position: relative;
+    overflow: hidden;
+}
+
+/* fondo animado */
+.qr-section::before {
+    content: "";
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0,200,83,0.15), transparent);
+    top: -200px;
+    left: -200px;
+    animation: pulseBg 6s infinite alternate;
+}
+
+@keyframes pulseBg {
+    0% { transform: scale(1); opacity: .3; }
+    100% { transform: scale(1.4); opacity: .6; }
+}
+
+/* ================= HEADER ================= */
+
+.qr-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.qr-header h2 {
+    font-size: 3rem;
+    color: #fff;
+    letter-spacing: -1px;
+}
+
+.qr-header span {
+    color: var(--movve-green);
+    text-shadow: 0 0 20px rgba(0,200,83,0.8);
+}
+
+.qr-header p {
+    color: #94a3b8;
+}
+
+/* ================= GRID ================= */
+
+.qr-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+/* ================= CARD ================= */
+
+.qr-card {
+    position: relative;
+    width: 280px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+/* glow */
+.qr-glow {
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(circle, rgba(0,200,83,0.4), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* scan line */
+.qr-scan {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--movve-green);
+    top: -10%;
+    animation: scan 3s linear infinite;
+    opacity: .6;
+}
+
+@keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+/* hover */
+.qr-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 0 40px rgba(0,200,83,0.3);
+}
+
+.qr-card:hover .qr-glow {
+    opacity: 1;
+}
+
+/* ================= BADGE ================= */
+
+.qr-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 0.7rem;
+    background: var(--movve-green);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* ================= IMAGE ================= */
+
+.qr-image {
+    margin: 20px 0;
+    position: relative;
+}
+
+.qr-image img {
+    width: 170px;
+    border-radius: 10px;
+    transition: .4s;
+}
+
+/* zoom */
+.qr-card:hover img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* ================= TEXT ================= */
+
+.qr-card h4 {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.qr-card span {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+/* ================= FEATURED ================= */
+
+.qr-card.featured {
+    border: 1px solid var(--movve-green);
+    box-shadow: 0 0 50px rgba(0,200,83,0.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    .qr-header h2 {
+        font-size: 2rem;
+    }
+
+    .qr-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-card {
+        width: 100%;
+    }
+}
+
 /* ================= VIDEO SECTION PRO ================= */
 
 .video-explicacion {
