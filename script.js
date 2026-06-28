@@ -171,8 +171,52 @@ if (carousel) {
 const videoModal = document.getElementById('videoModal');
 const youtubeFrame = document.getElementById('youtubeFrame');
 
-function openMovveVideo({ videoId = '', playlistId = '' }) {
-  if (!videoModal || !youtubeFrame) return;
+/**
+ * Extrae el video ID o playlist ID de cualquier formato de URL de YouTube:
+ * https://youtu.be/VIDEO_ID
+ * https://www.youtube.com/watch?v=VIDEO_ID
+ * https://youtube.com/shorts/VIDEO_ID
+ * https://www.youtube.com/playlist?list=PLAYLIST_ID
+ */
+function parseYouTubeUrl(url) {
+  if (!url) return { videoId: '', playlistId: '' };
+
+  try {
+    const u = new URL(url);
+
+    // Playlist explícita
+    const listParam = u.searchParams.get('list');
+    if (u.pathname.includes('/playlist') && listParam) {
+      return { videoId: '', playlistId: listParam };
+    }
+
+    // youtu.be/VIDEO_ID
+    if (u.hostname === 'youtu.be') {
+      return { videoId: u.pathname.replace('/', ''), playlistId: '' };
+    }
+
+    // youtube.com/shorts/VIDEO_ID
+    const shortsMatch = u.pathname.match(/\/shorts\/([^/?&]+)/);
+    if (shortsMatch) {
+      return { videoId: shortsMatch[1], playlistId: '' };
+    }
+
+    // youtube.com/watch?v=VIDEO_ID
+    const vParam = u.searchParams.get('v');
+    if (vParam) {
+      return { videoId: vParam, playlistId: '' };
+    }
+  } catch (e) {
+    // Si no es una URL válida, devolver vacío
+  }
+
+  return { videoId: '', playlistId: '' };
+}
+
+function openMovveVideo(rawUrl) {
+  if (!videoModal || !youtubeFrame || !rawUrl) return;
+
+  const { videoId, playlistId } = parseYouTubeUrl(rawUrl);
 
   let src = '';
   if (videoId) {
@@ -180,6 +224,7 @@ function openMovveVideo({ videoId = '', playlistId = '' }) {
   } else if (playlistId) {
     src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&autoplay=1&rel=0`;
   } else {
+    console.warn('No se pudo extraer el ID de YouTube de:', rawUrl);
     return;
   }
 
@@ -199,10 +244,9 @@ function closeMovveVideo() {
 
 document.querySelectorAll('.video-card-media').forEach(card => {
   card.addEventListener('click', () => {
-    openMovveVideo({
-      videoId: card.dataset.youtube || '',
-      playlistId: card.dataset.playlist || ''
-    });
+    // Acepta tanto data-youtube como data-playlist (ambos son URLs completas)
+    const rawUrl = card.dataset.youtube || card.dataset.playlist || '';
+    openMovveVideo(rawUrl);
   });
 });
 
