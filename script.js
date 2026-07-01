@@ -148,24 +148,36 @@ const youtubeFrame = document.getElementById('youtubeFrame');
 const youtubeFallbackLink = document.getElementById('youtubeFallbackLink');
 function getSafeOrigin() {
   const fallbackOrigin = 'https://movveplaneta.site';
-  if (!window.location || !window.location.origin || window.location.origin === 'null' || window.location.protocol === 'file:') {
-    return fallbackOrigin;
-  }
+  if (!window.location || !window.location.origin || window.location.origin === 'null' || window.location.protocol === 'file:') return fallbackOrigin;
   return window.location.origin;
+}
+function extractYouTubeId(value = '') {
+  const raw = String(value).trim();
+  if (!raw) return '';
+  if (/^[a-zA-Z0-9_-]{11}$/.test(raw)) return raw;
+  try {
+    const url = new URL(raw);
+    if (url.hostname.includes('youtu.be')) return url.pathname.replace('/', '').split(/[?#]/)[0];
+    if (url.searchParams.get('v')) return url.searchParams.get('v');
+    const parts = url.pathname.split('/').filter(Boolean);
+    const shortsIndex = parts.indexOf('shorts');
+    const embedIndex = parts.indexOf('embed');
+    if (shortsIndex >= 0 && parts[shortsIndex + 1]) return parts[shortsIndex + 1];
+    if (embedIndex >= 0 && parts[embedIndex + 1]) return parts[embedIndex + 1];
+  } catch (error) {
+    return raw;
+  }
+  return raw;
 }
 function buildYoutubeUrl({ videoId = '', playlistId = '' }) {
   const origin = encodeURIComponent(getSafeOrigin());
   if (videoId) {
-    return {
-      embed: `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${origin}`,
-      watch: `https://www.youtube.com/watch?v=${videoId}`
-    };
+    const cleanVideoId = extractYouTubeId(videoId);
+    return { embed: `https://www.youtube-nocookie.com/embed/${cleanVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${origin}`, watch: `https://www.youtube.com/watch?v=${cleanVideoId}` };
   }
   if (playlistId) {
-    return {
-      embed: `https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}&autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${origin}`,
-      watch: `https://www.youtube.com/playlist?list=${playlistId}`
-    };
+    const cleanPlaylist = String(playlistId).trim();
+    return { embed: `https://www.youtube-nocookie.com/embed/videoseries?list=${cleanPlaylist}&autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${origin}`, watch: `https://www.youtube.com/playlist?list=${cleanPlaylist}` };
   }
   return { embed: '', watch: 'https://www.youtube.com/@MovvePlaneta' };
 }
@@ -175,9 +187,7 @@ function openMovveVideo({ videoId = '', playlistId = '' }) {
   if (!urls.embed) return;
   youtubeFrame.src = urls.embed;
   youtubeFrame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-  if (youtubeFallbackLink) {
-    youtubeFallbackLink.href = urls.watch;
-  }
+  if (youtubeFallbackLink) youtubeFallbackLink.href = urls.watch;
   videoModal.classList.add('active');
   videoModal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -190,19 +200,11 @@ function closeMovveVideo() {
   document.body.style.overflow = '';
 }
 document.querySelectorAll('.video-card-media').forEach(card => {
-  card.addEventListener('click', () => {
-    openMovveVideo({
-      videoId: card.dataset.youtube || '',
-      playlistId: card.dataset.playlist || ''
-    });
-  });
+  card.addEventListener('click', () => openMovveVideo({ videoId: card.dataset.youtube || '', playlistId: card.dataset.playlist || '' }));
 });
-document.querySelectorAll('[data-close-video]').forEach(closeBtn => {
-  closeBtn.addEventListener('click', closeMovveVideo);
-});
-window.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeMovveVideo();
-});
+document.querySelectorAll('[data-close-video]').forEach(closeBtn => closeBtn.addEventListener('click', closeMovveVideo));
+window.addEventListener('keydown', event => { if (event.key === 'Escape') closeMovveVideo(); });
+
 // Video presentación local en la misma página
 const presentationVideoModal = document.getElementById('presentationVideoModal');
 const presentationVideoPlayer = document.getElementById('presentationVideoPlayer');
